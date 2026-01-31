@@ -1,0 +1,19 @@
+# configs/milvus_config.yaml
+connection:
+  host: "localhost"
+  port: "19530"
+
+collection:
+  name: "academic_multimodal_assets"
+  dim: 1024
+  metric_type: "L2"
+  index_type: "IVF_FLAT"
+  nlist: 128
+
+schema:
+  pk: "id"
+  doc: "doc_name"
+  page: "page_num"
+  image: "image_name"
+  text: "text_context"
+  vec: "vector"
