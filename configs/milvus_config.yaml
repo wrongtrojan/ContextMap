@@ -5,8 +5,8 @@ connection:
 
 collection:
   name: "academic_multimodal_assets"
-  dim: 1024
-  metric_type: "L2"
+  dim: 768
+  metric_type: "IP"
   index_type: "IVF_FLAT"
   nlist: 128
 
