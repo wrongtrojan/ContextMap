@@ -16,7 +16,7 @@ environments:
   
 # 统一模型资产池
 model_paths:
-  whisper: "/home/liangqing/AcademicAgent-Suite/models/whisper"
+  whisper: "/home/liangqing/AcademicAgent-Suite/models/whisper_v3"
   qwen2_vl: "/home/liangqing/AcademicAgent-Suite/models/qwen2_vl"
   miner_u: "/home/liangqing/AcademicAgent-Suite/models/miner_u"
   clip: "/home/liangqing/AcademicAgent-Suite/models/clip"

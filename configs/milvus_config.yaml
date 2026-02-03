@@ -1,4 +1,3 @@
-# configs/milvus_config.yaml
 connection:
   host: "localhost"
   port: "19530"
@@ -12,8 +11,9 @@ collection:
 
 schema:
   pk: "id"
-  doc: "doc_name"
-  page: "page_num"
-  image: "image_name"
-  text: "text_context"
+  asset_name: "asset_name"     
+  modality: "modality"         
+  content_type: "content_type" 
+  content_ref: "content_ref"   
+  timestamp: "timestamp"       
   vec: "vector"

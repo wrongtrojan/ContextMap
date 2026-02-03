@@ -2,131 +2,236 @@ import os
 import json
 import yaml
 import logging
+from pathlib import Path
+from minio import Minio
 from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Collection, utility
 
-# 1. 日志配置
+# ================= 日志配置 =================
 logging.basicConfig(
     level=logging.INFO, 
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - [UnifiedIngestor] - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger("MilvusIngestor")
 
-class MilvusIngestor:
+class UnifiedIngestor:
     def __init__(self, force_reset=False):
-        # --- 路径修正逻辑 ---
-        # self.script_dir 是 ~/AcademicAgent-Suite/data_layer
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
-        # self.root_dir 是 ~/AcademicAgent-Suite
-        self.root_dir = os.path.dirname(self.script_dir)
-        # 配置文件在 ~/AcademicAgent-Suite/configs
-        config_dir = os.path.join(self.root_dir, "configs")
+        # 1. 路径与配置加载
+        self.project_root = Path(__file__).resolve().parent.parent
+        config_dir = self.project_root / "configs"
         
-        logger.info(f"正在从以下目录加载配置: {config_dir}")
-        
-        # 加载双配置
-        try:
-            with open(os.path.join(config_dir, "model_config.yaml"), 'r', encoding='utf-8') as f:
-                self.model_cfg = yaml.safe_load(f)
-            with open(os.path.join(config_dir, "milvus_config.yaml"), 'r', encoding='utf-8') as f:
-                self.db_cfg = yaml.safe_load(f)
-        except FileNotFoundError as e:
-            logger.error(f"配置文件缺失，请检查路径: {e}")
-            raise
+        with open(config_dir / "model_config.yaml", 'r', encoding='utf-8') as f:
+            self.model_cfg = yaml.safe_load(f)
+        with open(config_dir / "milvus_config.yaml", 'r', encoding='utf-8') as f:
+            self.db_cfg = yaml.safe_load(f)
 
-        # 2. 连接 Milvus
+        # 2. 初始化 MinIO 客户端 (基于你的 docker ps 输出)
+        # 注意：这里建议在 milvus_config.yaml 中增加 minio 配置，目前先硬编码确保能跑
+        self.minio_client = Minio(
+            "localhost:9000",
+            access_key="minioadmin",  # 请确认你的 MinIO 账号密码
+            secret_key="minioadmin",
+            secure=False
+        )
+        self.bucket_name = "academic-assets"
+        self._setup_minio()
+
+        # 3. 连接 Milvus
         conn = self.db_cfg['connection']
         connections.connect("default", host=conn['host'], port=conn['port'])
         self.col_name = self.db_cfg['collection']['name']
         
-        # 强制重置逻辑
         if force_reset and utility.has_collection(self.col_name):
             utility.drop_collection(self.col_name)
-            logger.warning(f"⚠️ 已重置集合: {self.col_name}")
+            logger.warning(f"⚠️ 已强制重置集合: {self.col_name}")
 
         self._setup_collection()
 
+    def _setup_minio(self):
+        """确保 MinIO Bucket 存在并设置公共只读权限"""
+        if not self.minio_client.bucket_exists(self.bucket_name):
+            self.minio_client.make_bucket(self.bucket_name)
+            # 设置策略让 Attu 能够直接预览图片（匿名可读）
+            policy = {
+                "Version": "2012-10-17",
+                "Statement": [{
+                    "Effect": "Allow",
+                    "Principal": {"AWS": ["*"]},
+                    "Action": ["s3:GetBucketLocation", "s3:ListBucket", "s3:GetObject"],
+                    "Resource": [f"arn:aws:s3:::{self.bucket_name}", f"arn:aws:s3:::{self.bucket_name}/*"]
+                }]
+            }
+            self.minio_client.set_bucket_policy(self.bucket_name, json.dumps(policy))
+            logger.info(f"📦 MinIO Bucket '{self.bucket_name}' 已创建并配置权限")
+
+    def _upload_file(self, local_path, remote_path):
+        # 1. 转换路径对象
+        p = Path(local_path)
+        
+        # 2. 存在性检查 (核心修复)
+        if not p.exists():
+            logger.error(f"❌ 文件不存在，跳过上传: {p}")
+            return None # 返回 None，后续入库逻辑会自动忽略此条目
+
+        # 3. 校验是否为文件而非目录
+        if not p.is_file():
+            logger.error(f"⚠️ 路径不是有效文件: {p}")
+            return None
+
+        # 4. 0 字节损坏检查
+        if p.stat().st_size == 0:
+            logger.warning(f"⚠️ 检测到 0 字节损坏文件，跳过: {p}")
+            return None
+
+        try:
+            # 执行上传
+            self.minio_client.fput_object(self.bucket_name, remote_path, str(p))
+            
+            # 构造访问 URL (使用服务器真实 IP)
+            server_ip = "202.114.104.220" # 请确保这是你最新的服务器 IP
+            return f"http://{server_ip}:9000/{self.bucket_name}/{remote_path}"
+            
+        except Exception as e:
+            logger.error(f"🔥 MinIO 上传过程中发生异常: {e} | 文件: {p.name}")
+            return None
+
     def _setup_collection(self):
-        """定义 Schema"""
+        """定义 Schema 并检查兼容性"""
         if utility.has_collection(self.col_name):
-            self.collection = Collection(self.col_name)
-            self.collection.load()
-            return
+            col = Collection(self.col_name)
+            # 检查 asset_name 字段是否存在，不存在则视为旧版
+            if "asset_name" not in [f.name for f in col.schema.fields]:
+                logger.warning("检测到旧版结构，正在重建...")
+                utility.drop_collection(self.col_name)
+            else:
+                self.collection = col
+                self.collection.load()
+                return
 
-        s = self.db_cfg['schema']
         c = self.db_cfg['collection']
-
+        s = self.db_cfg['schema']
         fields = [
             FieldSchema(name=s['pk'], dtype=DataType.INT64, is_primary=True, auto_id=True),
-            FieldSchema(name="doc_name", dtype=DataType.VARCHAR, max_length=500),
-            FieldSchema(name="source_type", dtype=DataType.VARCHAR, max_length=50), 
-            FieldSchema(name="content_ref", dtype=DataType.VARCHAR, max_length=1000),
+            FieldSchema(name="asset_name", dtype=DataType.VARCHAR, max_length=500),
+            FieldSchema(name="modality", dtype=DataType.VARCHAR, max_length=50),      
+            FieldSchema(name="content_type", dtype=DataType.VARCHAR, max_length=50),  
+            FieldSchema(name="content_ref", dtype=DataType.VARCHAR, max_length=1000), 
+            FieldSchema(name="timestamp", dtype=DataType.DOUBLE),                    
             FieldSchema(name=s['vec'], dtype=DataType.FLOAT_VECTOR, dim=c['dim'])
         ]
-        
-        schema = CollectionSchema(fields, "Academic Multimodal Index")
+        schema = CollectionSchema(fields, "Unified Academic Assets with MinIO URLs")
         self.collection = Collection(self.col_name, schema)
-
-        index_params = {
-            "metric_type": c['metric_type'],
-            "index_type": c['index_type'],
-            "params": {"nlist": c['nlist']}
-        }
+        
+        index_params = {"metric_type": c['metric_type'], "index_type": c['index_type'], "params": {"nlist": c['nlist']}}
         self.collection.create_index(field_name=s['vec'], index_params=index_params)
         self.collection.load()
-        logger.info(f"✅ Milvus 集合 {self.col_name} 初始化成功")
+        logger.info(f"✅ Unified Milvus Collection Loaded (with MinIO support)")
 
-    def _is_doc_ingested(self, doc_name):
-        res = self.collection.query(expr=f'doc_name == "{doc_name}"', output_fields=["id"], limit=1)
+    def _is_ingested(self, asset_name, modality):
+        expr = f'asset_name == "{asset_name}" and modality == "{modality}"'
+        res = self.collection.query(expr=expr, output_fields=["id"], limit=1)
         return len(res) > 0
 
-    def run_ingestion(self):
-        """同步 multimodal_features.json 到 Milvus"""
-        # 这里的 processed_storage 已经在 model_config.yaml 里定义为绝对路径了
-        processed_root = os.path.join(self.model_cfg['paths']['processed_storage'], "magic-pdf")
-        
-        if not os.path.exists(processed_root):
-            logger.error(f"未找到 magic-pdf 处理目录: {processed_root}")
-            return
+    def ingest_pdf_data(self):
+        """PDF 入库：同步上传图片到 MinIO"""
+        pdf_root = Path(self.model_cfg['paths']['processed_storage']) / "magic-pdf"
+        if not pdf_root.exists(): return
 
-        total_count = 0
-        for doc_name in os.listdir(processed_root):
-            doc_dir = os.path.join(processed_root, doc_name)
-            feature_path = os.path.join(doc_dir, "multimodal_features.json")
-            
-            if not os.path.exists(feature_path): continue
-            if self._is_doc_ingested(doc_name):
-                logger.info(f"⏭️ 跳过已入库文档: {doc_name}")
+        for doc_dir in pdf_root.iterdir():
+            if not doc_dir.is_dir(): continue
+            feature_path = doc_dir / "multimodal_features.json"
+            if not feature_path.exists() or self._is_ingested(doc_dir.name, "pdf"):
+                logger.info(f"⏭️  [SKIP] PDF: {doc_dir.name}")
                 continue
 
-            logger.info(f"🚀 正在同步: {doc_name}")
             with open(feature_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
-            names, types, refs, vecs = [], [], [], []
+            # 找到图片目录 (ocr 或 auto)
+            img_dir = None
+            for sub in ["auto", "ocr"]:
+                if (doc_dir / sub / "images").exists():
+                    img_dir = doc_dir / sub / "images"
+                    break
 
-            # 提取图片
-            for img_name, img_data in data.get("images", {}).items():
-                names.append(doc_name)
-                types.append("image")
-                refs.append(img_name)
-                vecs.append(img_data if isinstance(img_data, list) else img_data.get("embedding"))
+            names, modalities, types, refs, timestamps, vecs = [], [], [], [], [], []
 
-            # 提取文本
+            # 1. 处理图片：先上传 MinIO，再记下 URL
+            for img_name, vec in data.get("images", {}).items():
+                remote_url = img_name
+                if img_dir:
+                    remote_url = self._upload_file(img_dir / img_name, f"pdf/{doc_dir.name}/{img_name}")
+                
+                names.append(doc_dir.name); modalities.append("pdf")
+                types.append("image"); refs.append(remote_url)
+                timestamps.append(-1.0); vecs.append(vec)
+
+            # 2. 处理文本块
             for chunk in data.get("text_chunks", []):
-                names.append(doc_name)
-                types.append("text")
-                refs.append(chunk.get("text_slice", "text_chunk"))
-                vecs.append(chunk["embedding"])
+                names.append(doc_dir.name); modalities.append("pdf")
+                types.append("text"); refs.append(chunk.get("text_slice", ""))
+                timestamps.append(-1.0); vecs.append(chunk["embedding"])
 
             if names:
-                self.collection.insert([names, types, refs, vecs])
-                total_count += len(names)
-                logger.info(f"📈 插入数据: {len(names)} 条")
+                self.collection.insert([names, modalities, types, refs, timestamps, vecs])
+                logger.info(f"✅ [DONE] PDF {doc_dir.name} 入库完成 (含图片上传)")
 
+    def ingest_video_data(self):
+        """视频入库：同步上传关键帧到 MinIO"""
+        video_root = Path(self.model_cfg['paths']['processed_storage']) / "video"
+        if not video_root.exists(): return
+
+        for v_dir in video_root.iterdir():
+            if not v_dir.is_dir(): continue
+            meta_path = v_dir / "alignment_metadata.json"
+            
+            # 增量检查
+            if not meta_path.exists() or self._is_ingested(v_dir.name, "video"):
+                logger.info(f"⏭️  [SKIP] Video: {v_dir.name}")
+                continue
+
+            with open(meta_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            # 准备六个对齐的列表
+            names, modalities, types, refs, timestamps, vecs = [], [], [], [], [], []
+            frames_dir = v_dir / "frames"
+
+            for item in data.get("alignments", []):
+                # --- 1. 处理图像帧 (需过 MinIO) ---
+                img_path = frames_dir / item['frame_name']
+                remote_url = self._upload_file(img_path, f"video/{v_dir.name}/{item['frame_name']}")
+                
+                # 只有上传成功且有向量时才入库
+                if remote_url and item.get("img_vector"):
+                    names.append(v_dir.name)
+                    modalities.append("video")
+                    types.append("image_frame")
+                    refs.append(remote_url)
+                    timestamps.append(item['timestamp'])
+                    vecs.append(item['img_vector'])
+
+                # --- 2. 处理关联文本 (直接入库) ---
+                if item.get("text_vector"):
+                    names.append(v_dir.name)
+                    modalities.append("video")
+                    types.append("transcript_context")
+                    # 存入文本内容前 500 字作为参考
+                    refs.append(item.get('context_text', '')[:500])
+                    timestamps.append(item['timestamp'])
+                    vecs.append(item['text_vector'])
+
+            # 批量插入
+            if names:
+                self.collection.insert([names, modalities, types, refs, timestamps, vecs])
+                logger.info(f"✅ [DONE] 视频 {v_dir.name} 入库完成 (共 {len(names)} 条向量记录)")
+
+    def finish(self):
         self.collection.flush()
-        logger.info(f"✨ 同步结束，总计入库 {total_count} 条向量。")
+        logger.info("✨ 数据同步与 MinIO 映射圆满完成")
 
 if __name__ == "__main__":
-    # 第一次运行建议为 True
-    ingestor = MilvusIngestor(force_reset=False)
-    ingestor.run_ingestion()
+    # 第一次运行建议 force_reset=True 以应用包含 content_ref(URL) 的逻辑
+    ingestor = UnifiedIngestor(force_reset=False)
+    ingestor.ingest_pdf_data()
+    ingestor.ingest_video_data()
+    ingestor.finish()

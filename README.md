@@ -46,7 +46,7 @@
 
 ##### 视频解析
 
-* **音频解析**:使用`Whisper-v3`进行语音转录,利用`Pyannote.audio`进行说话人日志处理,区分讲解与环境音
+* **音频解析**:使用`Whisper-v3`进行语音转录,(利用`Pyannote.audio`进行说话人日志处理)
 * **视觉路径**:使用`OpenCV`计算帧差,仅在屏幕内容显著变化时截取关键帧
 * **跨模态索引**:使用`CLIP`将视觉关键帧内容与语音文本拼接成Embedding,实现搜重点定位视频片段
 * **结构化大纲**:使用`Qwen2-VL`生成结构化大纲,实现语义聚合/标题提取/锚点固定
@@ -96,13 +96,13 @@
 
 > 6个Conda工具环境+1个Docker存储集群
 
-**DocParserCore**: 拆解PDF
-**VideoSemanticSlicer**: 拆解视频
-**AudioTranscriptionExpert**: 转录音频
-**VisualReasoningEye**: 看图说话
-**ScientificSandbox**: 数学和代码验证
-**DataStreamOrchestrator**: 调度数据
-**AgentLogicOrchestrator**: 指挥协作
+- **DocParserCore**: 拆解PDF 
+- **VideoSemanticSlicer**: 拆解视频 
+- **AudioTranscriptionExpert**: 转录音频 
+- **VisualReasoningEye**: 看图说话 
+- **ScientificSandbox**: 数学和代码验证 
+- **DataStreamOrchestrator**: 调度数据 
+- **AgentLogicOrchestrator**: 指挥协作
 
 ---
 
@@ -123,7 +123,7 @@
 ##### **AudioTranscriptionExpert** (语音转写专家)
 
 - 定位: 负责音频转文本及说话人识别
-- 核心组件: `Whisper-v3`, `Pyannote.audio`
+- 核心组件: `Whisper-v3`, (`Pyannote.audio`)
 - 跨项目复用: 会议记录自动生成、播客内容索引、多语言翻译
 
 ##### **VisualReasoningEye** (多模态视觉推理工具)
@@ -141,7 +141,7 @@
 ##### **DataStreamOrchestrator** (数据调度工具)
 跨项目复用: 所有基于大模型的复杂多步骤任务流程控制
 - 定位: 负责将解析后的Markdown、视频元数据和向量Embedding写入数据库,并提供检索服务
-- 核心组件: `pymilvus`, `redis-py`, `sqlalchemy`, `CLIP`
+- 核心组件: `pymilvus`, `redis-py`, `CLIP`, `minio`
 - 跨项目复用: 所有涉及向量检索（RAG）和元数据管理的项目
 
 ##### **AgentLogicOrchestrator** (逻辑编排大脑)
@@ -161,29 +161,29 @@ AcademicAgent-Suite/
 ├── configs/                # 配置文件中心
 │   ├── milvus_config.yaml  
 │   ├── model_config.yaml   
+│   ├── video_config.yaml   
 │   └── magic-PDF.json    
 │
 ├── deploy/                 # 部署与基础设施
-│   └── docker-compose.yml  # 一键启动 Milvus, Redis, MinIO
+│   └── docker-compose.yml  
 │
 ├── models/                   # 模型资产中心
 │   ├── miner_u/              
 │   ├── dinov2/              
-│   ├── whisper/              # 供 AudioTranscriptionExpert 使用的语音转写权重
-│   ├── qwen2_vl/             # 供 VisualReasoningEye 使用的多模态推理权重
-│   └── clip/                 # 供 VideoSemanticSlicer 使用的特征提取模型
+│   ├── whisper_v3/              
+│   ├── qwen2_vl/             
+│   └── clip/                 
 │
 ├── core/                   # 核心逻辑 (AgentLogicOrchestrator 环境运行)
 │   ├── brain.py            # LangGraph 状态机实现
 │   ├── prompts/            # 系统级提示词 (CoT 模板)
 │   └── tools_manager.py    # 跨环境调用网关 (Subprocess 管理器)
 │
-├── services/               # 环境化工具脚本 (各司其职)
+├── services/               # 环境化工具脚本
 │   ├── doc_parser/         # (DocParserCore 运行)
 │   │   └── miner_worker.sh 
 │   ├── video_vision/       # (VideoSemanticSlicer 运行)
-│   │   ├── slicer.py
-│   │   └── clip_aligner.py
+│   │   └── video_slicer.py
 │   ├── audio_pro/          # (AudioTranscriptionExpert 运行)
 │   │   └── whisper_node.py
 │   ├── reasoning_eye/      # (VisualReasoningEye 运行)
@@ -192,11 +192,9 @@ AcademicAgent-Suite/
 │       └── py_executor.py
 │
 ├── data_layer/             # 数据调度 (DataStreamOrchestrator 运行)
-│   ├── asset_coordinator.py    
 │   ├── clip_worker_pdf.py    
-│   ├── milvus_ingestor.py        
-│   ├── vector_db.py        # Milvus 接口
-│   └── storage_client.py   # MinIO 文件上传下载
+│   ├── clip_worker_video.py    
+│   └── milvus_ingestor.py        
 │
 ├── web/                    # 前端交互 (Next.js 框架)
 │   ├── components/         # 侧边栏、PDF 渲染器、视频播放器
@@ -219,9 +217,10 @@ AcademicAgent-Suite/
 ##### **configs/** 全局参数中枢
 - **职能**: 集中管理所有敏感信息和静态配置，避免硬编码
 - **说明**:
-  - milvus_config.yaml: 定义向量检索的维度、索引类型和集合名称
+  - milvus_config.yaml: 向量检索的维度、索引类型和集合名称等配置
   - model_config.yaml: 存储 `API Key`、模型本地权重路径，以及各 `Conda` 环境的 `Python` 解释器绝对路径
-  - magic-PDF.json: `minerU` 的配置文件
+  - video_config.yaml: 滑动窗口切片关键帧相关配置
+  - magic-PDF.json: `minerU` 的配置
 
 ##### **deploy/** 基础设施底座
 - **职能**: 通过 `Docker` 提供数据库和对象存储服务
@@ -256,9 +255,10 @@ AcademicAgent-Suite/
 ##### **data_layer/** 数据屏蔽层 (DataStreamOrchestrator)
 - **职能**: 负责异构数据的持久化与检索逻辑，是"业务"与"存储"的中间层
 - **说明**: 
-  - milvus_ingestor.py: 将 `PDF` 解析存入 `Milvus` 
-  - vector_db.py: 封装了 `Milvus` 的 `SDK`，为大脑提供统一的"语义搜索"接口
-  - storage_client.py: 屏蔽 `MinIO` 的复杂性，提供简单的文件读取/写入方法，支持多模态资源的快速存取
+  - clip_worker_pdf.py: 对 `PDF` 解析做向量化等处理
+  - clip_worker_video.py: 对视频解析做向量化等处理
+  - milvus_ingestor.py: 将已处理数据存入 `Milvus` 
+
 
 ##### **web/** 人机交互门户 (Next.js)
 - **职能**: 提供 "scannable"的侧边栏布局，实现文档与答疑的同屏交互
@@ -322,7 +322,7 @@ pip install modelscope
 # 下载模型权重
 cd models/
 python -c "from modelscope import snapshot_download; snapshot_download('AI-ModelScope/clip-vit-large-patch14', local_dir='./clip')"
-python -c "from modelscope import snapshot_download; snapshot_download('AI-ModelScope/whisper-large-v3', local_dir='./whisper')"
+python -c "from modelscope import snapshot_download; snapshot_download('Systran/faster-whisper-large-v3', local_dir='./whisper_v3')"
 python -c "from modelscope import snapshot_download; snapshot_download('qwen/Qwen2-VL-7B-Instruct', local_dir='./qwen2_vl')"
 python -c "from modelscope import snapshot_download; snapshot_download('opendatalab/PDF-Extract-Kit-1.0', local_dir='./miner_u')"
 # meneru该模型权重版本与magic-pdf有一定差别
@@ -368,13 +368,15 @@ conda env create -f 环境名.yml
 2. 文本与图表对齐
 - 创建 `data_layer/clip_worker_pdf.py` 实现文本和图表向量化,结果存入`storage/process/magic-pdf/文件名/multimodal_features.json`
 
-3. 数据调度
-- 创建 `configs/milvus_config.yaml` 配置 `Milvus`
-- 创建 `data_layer/milvus_ingestor.py` 将 `multimodal_features.json` 存入 `Milvus`
-
 ##### 视频解析模块
 
 ---待完成---
+
+##### 数据调度模块
+
+1. 数据调度
+- 创建 `configs/milvus_config.yaml` 配置 `Milvus`
+- 创建 `data_layer/milvus_ingestor.py` 将 `multimodal_features.json` 和 `alignment_metadata.json` 存入 `Milvus`
 
 --- 
 
