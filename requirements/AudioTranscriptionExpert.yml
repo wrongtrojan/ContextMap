@@ -15,5 +15,6 @@ dependencies:
       - torchaudio
       - faster-whisper         
       - tqdm                 
-      - av                   
+      - av  
+      - pyyaml                 
 

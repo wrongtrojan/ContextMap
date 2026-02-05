@@ -1,0 +1,21 @@
+name: VisualReasoningEye
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - conda-forge 
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - torch==2.4.0 --extra-index-url https://download.pytorch.org/whl/cu121
+      - torchvision==0.19.0 --extra-index-url https://download.pytorch.org/whl/cu121
+      - vllm==0.6.3
+      - qwen-vl-utils==0.0.14
+      - flash-attn==2.8.3 --no-build-isolation
+      - accelerate
+      - pillow
+      - opencv-python-headless
+      - einops
+      - pyyaml

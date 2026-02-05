@@ -20,4 +20,5 @@ dependencies:
       - ftfy
       - regex
       - tqdm
+      - pyyaml
       - git+https://github.com/openai/CLIP.git
