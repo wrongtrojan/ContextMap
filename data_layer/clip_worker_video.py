@@ -8,7 +8,6 @@ from pathlib import Path
 from PIL import Image
 from transformers import CLIPProcessor, CLIPModel
 
-# ================= 日志配置 =================
 logging.basicConfig(
     level=logging.INFO, 
     format='%(asctime)s - [VideoExpert] - %(levelname)s - %(message)s',
@@ -35,18 +34,13 @@ class VideoMultimodalExpert:
     def clip_resources(self):
         if self._model is None:
             model_path = self.config['model_paths']['clip']
-            logger.info(f"--- 加载 CLIP 权重 (Device: {self.device}): {model_path} ---")
-            # 采用 local_files_only 确保离线加载
+            logger.info(f"--- Loading CLIP weights (Device: {self.device}): {model_path} ---")
             self._model = CLIPModel.from_pretrained(model_path, local_files_only=True).to(self.device)
             self._processor = CLIPProcessor.from_pretrained(model_path, local_files_only=True)
             self._model.eval()
         return self._model, self._processor
 
     def _get_aligned_embedding(self, outputs):
-        """
-        移植自 PDF CLIPWorker 的强健解包逻辑
-        解决 BaseModelOutputWithPooling 无法直接 .cpu() 的问题
-        """
         tensor = None
         if hasattr(outputs, "image_embeds"):
             tensor = outputs.image_embeds
@@ -68,14 +62,12 @@ class VideoMultimodalExpert:
                 except:
                     tensor = outputs
 
-        # 确保转为列表返回
         if hasattr(tensor, "detach"):
             return tensor.detach().cpu().numpy().flatten().tolist()
         else:
             return np.array(tensor).flatten().tolist()
 
     def _get_vec(self, text=None, image_path=None):
-        """通用向量提取，使用强健解包"""
         model, processor = self.clip_resources
         try:
             with torch.no_grad():
@@ -89,34 +81,34 @@ class VideoMultimodalExpert:
                     outputs = model.get_image_features(**inputs)
                     return self._get_aligned_embedding(outputs)
         except Exception as e:
-            logger.warning(f"向量化提取失败: {e}")
+            logger.warning(f"Vectorization extraction failed: {e}")
             return None
 
     def process_all(self, force_reprocess=False):
         if not self.processed_root.exists():
-            logger.error(f"路径不存在: {self.processed_root}")
+            logger.error(f"Path does not exist: {self.processed_root}")
             return
 
         video_dirs = [d for d in self.processed_root.iterdir() if d.is_dir()]
-        logger.info(f"🔍 找到 {len(video_dirs)} 个视频资产待处理...")
+        logger.info(f"🔍 Found {len(video_dirs)} video assets pending treatment...")
 
         for v_dir in video_dirs:
             output_json = v_dir / "alignment_metadata.json"
             if output_json.exists() and not force_reprocess:
-                logger.info(f"⏭️  [SKIP] {v_dir.name} 已存在绑定数据。")
+                logger.info(f"⏭️  [SKIP] {v_dir.name} Binding data already exists.")
                 continue
 
             transcript_p = v_dir / "transcript.json"
             frames_p = v_dir / "frames"
             
             if not transcript_p.exists() or not frames_p.exists():
-                logger.warning(f"⚠️  跳过 {v_dir.name}: 缺少前置文件。")
+                logger.warning(f"⚠️  Skipping {v_dir.name}: Missing prerequisite files.")
                 continue
 
             self._process_single_video(v_dir, transcript_p, frames_p, output_json)
 
     def _process_single_video(self, v_dir, transcript_p, frames_p, output_json):
-        logger.info(f"🚀 [START] 处理视频: {v_dir.name}")
+        logger.info(f"🚀 [START] Processing video: {v_dir.name}")
         
         with open(transcript_p, 'r', encoding='utf-8') as f:
             segments = json.load(f).get("segments", [])
@@ -126,26 +118,22 @@ class VideoMultimodalExpert:
 
         alignment_results = []
 
-        # 获取进度总数方便查看
         total_frames = len(frame_files)
         for idx, img_path in enumerate(frame_files):
             ts = float(img_path.stem.split('_')[1])
             
-            # 文本关联
             neighbor_texts = [s['text'] for s in segments 
                              if not (s['end'] < ts - self.window_pre or s['start'] > ts + self.window_post)]
             combined_text = " ".join(neighbor_texts).strip()
 
-            # 向量生成
             img_vec = self._get_vec(image_path=img_path)
             text_vec = self._get_vec(text=combined_text) if combined_text else None
 
-            # 语义缺失预警
             is_critical = img_path.stem.startswith("time")
             need_vlm = True if (is_critical and len(combined_text) < 15) else False
             
             if idx % 10 == 0:
-                logger.info(f"  进度: {idx}/{total_frames} 帧已完成...")
+                logger.info(f"  Progress: {idx}/{total_frames} frames completed...")
 
             alignment_results.append({
                 "frame_name": img_path.name,
@@ -159,7 +147,7 @@ class VideoMultimodalExpert:
         with open(output_json, 'w', encoding='utf-8') as f:
             json.dump({"video_id": v_dir.name, "alignments": alignment_results}, f, ensure_ascii=False, indent=2)
         
-        logger.info(f"✅ [DONE] {v_dir.name} 处理完毕。")
+        logger.info(f"✅ [DONE] {v_dir.name} Processing complete.")
 
 if __name__ == "__main__":
     expert = VideoMultimodalExpert()

@@ -21,10 +21,8 @@ def main():
     
     log_file_path = LOG_DIR / "sandbox_log.txt"
 
-    # 2. 接收参数
     input_str = sys.argv[1] if len(sys.argv) > 1 else "{}"
     
-    # 3. 以追加模式 (append) 记录日志
     with open(log_file_path, "a", encoding="utf-8") as f:
         f.write(f"\n[{datetime.now()}] --- Sandbox Request Start ---\n")
         f.write(f"Raw Input: {input_str}\n")
@@ -36,7 +34,6 @@ def main():
             mode = params.get("mode", "eval")
             sym = params.get("symbol", "x")
 
-            # 调用计算核心
             result = run_calculation(expr, mode, sym)
             
             output = {
@@ -56,7 +53,6 @@ def main():
         
         f.write(f"[{datetime.now()}] --- Sandbox Request End ---\n")
 
-    # 4. 终端仅输出最终 JSON
     print(json.dumps(output))
 
 if __name__ == "__main__":

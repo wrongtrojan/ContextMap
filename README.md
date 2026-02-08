@@ -1,357 +1,355 @@
-## 项目提案
+## PROPOSAL
 
 > Multi-Modal Academic Agent
 
-### 核心创意
+### Core Concept
 
-> 核心竞争力:资源解析的细腻度,交互式答疑的引导性
+> Core Competitiveness: Granularity of resourcr parsing and guided interactive Q&A.
 
-开发一个集"文档深度解析,视频要点提取,交互式答疑"于一体的智能助手
-
----
-
-### 难点分析
-
-> 难度评估:中等偏上,利用现有开源模型可以实现
-
-#### 文档解析
-
-* **布局预测**:将文档识别为"标题/段落/公式/图标"等块状结构,保持逻辑顺序
-* **公式还原**:针对数理公式,转换成LaTex代码,让AI精准读取
-* **多层次索引**:建立"页-段落-实体"的三层索引结构,使学生提问时让智能体能够精准定位
-
-#### 视频解析
-
-* **关键帧-文本桥接**:利用`CLIP`模型进行视觉语义嵌入,将视频中的关键帧于`Whisper`生成的音频文本在向量空间对齐
-* **动态滑窗采样**:不固定帧率采样,识别视频中的"画面突变"来捕捉切换点
-* **语义打桩**:利用`Qwen2-VL`生成结构化大纲,当学生点击总结的某一要点时可以定位到视频的相应时间段
-
-#### 交互式答疑
-
-* **思维链剪枝**:在Agent内部进行全量的思维链推理,但通过Post-processing只展示精炼后的关键点
-* **外部检验**:针对数学/计算机问题,接入`Python Interpreter/SymPy`,实现"学生提问->AI生成代码验证公式/算法->验证无误后简练文字回答"
+Develop an intelligent assistant that integrates "Deep Document Analysis, Video Keypoint Extraction, and Interactive Q&A."
 
 ---
 
-### 基础方案
+### Difficulty Analysis
 
-#### 数据中枢
+> Assessment: Medium-High. Achievable using existing open-source models.
 
-> 将非结构化的学习资源转化为AI可索引可理解的结构化知识
+#### Document Parsing
 
-##### 文档解析
+* **Layout Prediction**: Recongnize documents as block structures (Titles, Paragraphs, Formulas, Charts) to maintain logical flow.
+* **Formula Restoration**: Convert mathematical formulas into LaTeX code for precise AI reading.
+* **Multi-level Indexing**: Establish a "Page-Paragraph-Entity" three-tier index structure, allowing the Agent to pinpoint locations.
 
-* **pdf->markdown**:引入`MinerU`将PDF转换为带有标准LaTex的markdown文档
-* **块状化处理**:使用`LayoutLMv3`进行语义切片,使用`DINOv2`进行图片特征提取
+#### Video Parsing
 
-##### 视频解析
+* **Keyframe-Text Bridging**: Align video keyframes with audio text in a vector space.
+* **Dynamic Sliding Window Sampling**: Use variable frame rate sampling to identify "vsiaul mutations" and capture scene transitions.
+* **Semantic Anchoring**: Generate structured outlines with clickable timestamps for video navigation.
 
-* **音频解析**:使用`Whisper-v3`进行语音转录,(利用`Pyannote.audio`进行说话人日志处理)
-* **视觉路径**:使用`OpenCV`计算帧差,仅在屏幕内容显著变化时截取关键帧
-* **跨模态索引**:使用`CLIP`将视觉关键帧内容与语音文本拼接成Embedding,实现搜重点定位视频片段
-* **结构化大纲**:使用`Qwen2-VL`生成结构化大纲,实现语义聚合/标题提取/锚点固定
+#### Interative Q&A
 
-##### 存储与检索
-
-* **结构化数据存储**:使用`Milvus`存储文档片段和视频关键帧的Embedding,支持多模态混合检索
-
-#### 模型架构
-
-> 调配不同模型确保长文本理解与逻辑推导的准确
-
-##### 双模型调度
-
-* **大脑**:选用`DeepSeek-V3`,负责高难度的数理逻辑推理,代码生成和对话管理
-* **眼睛**:集成`Qwen2-VL`,专门用于解析手写草稿/复杂函数图像/视频中的演示
-
-##### 交互式答疑
-
-* **状态控制**:引入`LangGraph`管理对话状态,维护会话记忆,确保回答依照"结论->推导->拓展"进行
-* **数学验证工具**:涉及计算机算法或复杂计算时,Agent自动调用Python解释器计算中间结果
-
-#### 交互设计
-
-> 界面设计减少干扰,专注内容呈现
-
-##### 渲染界面
-
-* **前端框架**:使用`Next.js`构建灵活侧边栏布局,左侧为文档/视频,右侧为答疑对话框
-* **动态数学公式**:集成`MathJax`,支持实时书写公式,支持点击公式查看推导来源
-
-##### 交互功能
-
-* **划词提问**:基于`PDF.js`定位PDF中划选部分,基于上下文进行重点解释
-* **视频大纲**:根据视频结构自动生成带时间戳跳转的知识点目录,基于`Video.js`支持点击目录跳转关键段落
-* **知识图谱**:使用`D3.js`在`LangGraph`驱动下实时绘制知识图谱
+* **CoT Pruning**: Perform full CoT reasoning within the Agent, but display only refined key points via post-processing.
+* **External Verification**: For math/CS problems, achieve a "Studuent Query -> AI Code Verification -> Concise Answer" workflow.
 
 ---
 
-## 项目结构
+### Basic Solution
 
-### 环境配置
+#### Data Hub
 
-> 组建一个"专家委员会"
+> Transform unstractured learning resources into AI-indexable structured knowledge.
 
-#### "专家委员会"全景图
+##### Document Paersing
 
-> 6个Conda工具环境+1个Docker存储集群
+* **PDF to Markdown**: Integrate `MinerU` to convert PDF files into Markdown documents containing standard LaTeX.
+* **Block Processing**: Utilize `LayoutLMv3` for semantic slicing.
 
-- **DocParserCore**: 拆解PDF 
-- **VideoSemanticSlicer**: 拆解视频 
-- **AudioTranscriptionExpert**: 转录音频 
-- **VisualReasoningEye**: 看图说话 
-- **ScientificSandbox**: 数学和代码验证 
-- **DataStreamOrchestrator**: 调度数据 
-- **AgentLogicOrchestrator**: 指挥协作
+##### Video Parsing
 
----
+* **Audio Analysis**: Use `Whisper-v3` for speech transcription (Use `Pyannote.audio` for speaker diarization).
+* **Visual Path**: Use `OpenCV` to calculate frame differences, capturing keyframes only when screen content changes significantly.
+* **Cross-Modal Indexing**: Use `CLIP` to concatenate visual keyframe content with audio text into Embeddings, enabling focal point search to locate specific video segments.
+* **Structured Outline**: Use `Qwen2-VL` to generate structured outlines, achieving semantic aggregation, title extraction, and another point fixation.
 
-#### "专家"详解
+##### Storage and Retrieval
 
-##### **DocParserCore** (文档解析工具)
+* **Structured Data Storage**: Use `Milvus` to store Embeddings of document fragments and video keyframes, supporting multi-modal hybrid retrieval.
 
-- 定位: 纯粹的非结构化文档处理
-- 核心组件: `MinerU`
-- 跨项目复用: 将PDF转为标准(带LaTeX公式)Markdown的场景
+#### Modal Archtecture
 
-##### **VideoSemanticSlicer** (视频语义切片工具)
+> Coordinating different models to ensure accurate long-text understanding and logical reasoning.
 
-- 定位: 负责视频关键帧定位
-- 核心组件: `OpenCV`
-- 跨项目复用: 视频检索、自动剪辑、长视频监控摘要
+##### Dual-Model Dispatching
 
-##### **AudioTranscriptionExpert** (语音转写专家)
+* **The Brain**: Select `DeepSeek-V3` to handle high-difficulty mathematical logic reasoning, code generation, and dialogue management.
+* **The Eyes**: Integrate `Qwen2-VL`, specialized in parsing handwritten drafts, complex function graphs, and video demonstrations.
 
-- 定位: 负责音频转文本及说话人识别
-- 核心组件: `Whisper-v3`, (`Pyannote.audio`)
-- 跨项目复用: 会议记录自动生成、播客内容索引、多语言翻译
+##### Interactive Q&A
 
-##### **VisualReasoningEye** (多模态视觉推理工具)
+* **State Control**: Introduce `LangGraph` to manage dialogue states and maintain session memory, ensuring answers follow a "Conclusion -> Derivation -> Expansion" structure.
+* **Mathematical Verification Tools**: When involving computer algorithms or complex calculations, the Agent automatically calls a Python interpreter calculate intermediate results.
 
-- 定位: 解析复杂图表、手写公式和视频关键帧语义
-- 核心组件: `Qwen2-VL`
-- 跨项目复用: 图像问答、工业质检场景、自动化GUI测试
+#### Interaction Dessign
 
-##### **ScientificSandbox** (科学计算与验证沙盒)
+> Interface design focused on reducing distractions and prioritizing content presentation.
 
-- 定位:  Agent 的外部检验工具,负责运行 Python 代码和数学公式推导
-- 核心组件: `SymPy`, `NumPy`, `Pandas`, `Matplotlib`
-- 跨项目复用: 数据分析自动化、数学建模、量化计算验证
+##### Rendering Interface
 
-##### **DataStreamOrchestrator** (数据调度工具)
-跨项目复用: 所有基于大模型的复杂多步骤任务流程控制
-- 定位: 负责将解析后的Markdown、视频元数据和向量Embedding写入数据库,并提供检索服务
-- 核心组件: `pymilvus`, `redis-py`, `CLIP`, `minio`
-- 跨项目复用: 所有涉及向量检索(RAG)和元数据管理的项目
+* **Frontend Framework**: Use `Next.js` to build a flexible sidebar layout, with documents/videos on the left and the Q&A dialogue box on the right.
+* **Dynamic Mathematical Formulas**: Integrate `MathJax` to support real-time formula rendering and clicking on formulas to view their derivation sources.
 
-##### **AgentLogicOrchestrator** (逻辑编排大脑)
+##### Interactive Features
 
-- 定位: 负责思维链(CoT)推理、状态机维护和工具调用逻辑
-- 核心组件: `LangGraph`, `DeepSeek-V3-SDK`
-- 跨项目复用: 所有基于大模型的复杂多步骤任务流程控制
+* **Highlight-to-Ask**: Use `PDF.js` to locate selected parts within the PDF and provide key explanations based on context.
+* **Video Outline**: Automatically generate a knowledge point directory with timestamp jumps based on the video structure; use `Video.js` to support clicking the directory to jump to key segments.
+* **Knowledge Graph**: Use `D3.js` to render real-time knowledge graphs driven by `LangGraph`.
 
 ---
 
+## STRUCTURE
 
-### 项目目录
+### Environment Configuration
 
-#### 项目目录结构
+> Assemble a "Committee of Experts".
+
+#### Overview of the "Committee of Experts"
+
+> 6 Conda Tool Environments and 1 Docker Storage Cluster
+
+- **DocParserCore**
+- **VideoSemanticSlicer**
+- **AudioTranscriptionExpert**
+- **VisualReasoningEye**
+- **ScientificSandbox**
+- **DataStreamOrchestrator**
+- **AgentLogicOrchestrator**
+
+---
+
+#### Detailed "Expert" Descriptions
+
+##### **DocParserCore** 
+
+- **Positioning**: Purely for unstructured document processing.
+- **Core Component**: `MinerU`
+- **Cross-project Reuse**: Scenarios involving converting PDF to standard Markdown (with LaTeX formulas).
+
+##### **VideoSemanticSlicer** 
+
+- **Positioning**: Responsible for video keyframe localization.
+- **Core Component**: `OpenCV`
+- **Cross-project Reuse**: Video retrieval, automated editing, long-video surveillance summaries.
+
+##### **AudioTranscriptionExpert** 
+
+- **Positioning**: Responsible for audio-to-text conversion (and speaker diarization).
+- **Core Component**: `Whisper-v3`, (`Pyannote.audio`)
+- **Cross-project Reuse**: Automated meeting minutes, podcast content indexing, multi-language translation.
+
+##### **VisualReasoningEye** 
+
+- **Positioning**: Parses complex charts, handwritten formulas, and video keyframe semantics.
+- **Core Component**: `Qwen2-VL`
+- **Cross-project Reuse**: Visual Q&A, industrial quality inspection scenarios, automated GUI testing.
+
+##### **ScientificSandbox**
+
+- **Positioning**: External validation tool for the Agent, responsible for running Python code and mathematical formula derivation.
+- **Core Component**: `SymPy`, `NumPy`, `Pandas`, `Matplotlib`
+- **Cross-project Reuse**: Data analysis automation, mathematical modeling, quantitative calculation verification.
+
+##### **DataStreamOrchestrator** 
+
+- **Positioning**: Responsible for writing parsed Markdown, video metadata, and vector Embeddings into the database, and providing retrieval services.
+- **Core Component**: `pymilvus`, `redis-py`, `CLIP`, `minio`
+- **Cross-project Reuse**: Projects involving Vector Retrieval and metadata management.
+
+##### **AgentLogicOrchestrator** 
+
+- **Positioning**: Responsible for Chain-of-Thought reasoning, state machine maintenance, and tool-calling logic.
+- **Core Component**: `LangGraph`, `DeepSeek-V3-SDK`
+- **Cross-project Reuse**: Complex multi-step task flow control based on LLMs.
+---
+
+
+### Dirctory
+
+#### Directory Structure
 ```Plaintext
 AcademicAgent-Suite/
-├── configs/                # 配置文件中心
+├── configs/                # Centralized Configuration
 │   ├── milvus_config.yaml  
 │   ├── model_config.yaml   
 │   ├── video_config.yaml   
 │   └── magic-PDF.json    
 │
-├── deploy/                 # 部署与基础设施
+├── deploy/                 # Deployment & Infrastructure
 │   └── docker-compose.yml  
 │
-├── models/                   # 模型资产中心
+├── models/                   # Unified Model Asset Center
 │   ├── miner_u/              
 │   ├── dinov2/              
 │   ├── whisper_v3/              
 │   ├── qwen2_vl/             
 │   └── clip/                 
 │
-├── core/                   # 核心逻辑 (AgentLogicOrchestrator 环境运行)
-│   ├── brain.py            # LangGraph 状态机实现
-│   ├── prompts/            # 系统级提示词 (CoT 模板)
-│   └── tools_manager.py    # 跨环境调用网关 (Subprocess 管理器)
+├── core/                   # Core Logic (Runs in AgentLogicOrchestrator env)
+│   ├── brain.py            
+│   ├── prompts/            
+│   └── tools_manager.py    
 │
-├── services/               # 环境化工具脚本
-│   ├── doc_parser/         # (DocParserCore 运行)
+├── services/               # Environment-specific services scripts
+│   ├── doc_parser/         # (Runs in DocParserCore)
 │   │   ├── miner_worker.sh 
 │   │   └── pdf_wrapper.py 
-│   ├── video_vision/       # (VideoSemanticSlicer 运行)
+│   ├── video_vision/       # (Runs in VideoSemanticSlicer)
 │   │   ├── video_slicer.py
 │   │   └── video_wrapper.py 
-│   ├── audio_pro/          # (AudioTranscriptionExpert 运行)
+│   ├── audio_pro/          # (Runs in AudioTranscriptionExpert)
 │   │   ├── whisper_node.py
 │   │   └── audio_wrapper.py 
-│   ├── reasoning_eye/      # (VisualReasoningEye 运行)
+│   ├── reasoning_eye/      # (Runs in VisualReasoningEye)
 │   │   ├── qwen_inference.py
 │   │   └── visual_wrapper.py 
-│   └── sandbox/            # (ScientificSandbox 运行)
+│   └── sandbox/            # (Runs in ScientificSandbox)
 │        ├── executor_logic.py
 │        └── sandbox_wrapper.py 
 │
-├── data_layer/             # 数据调度 (DataStreamOrchestrator 运行)
+├── data_layer/             # Data Scheduling (Runs in DataStreamOrchestrator)
 │   ├── clip_worker_pdf.py    
 │   ├── clip_worker_video.py    
 │   └── milvus_ingestor.py   
 │
-├── logs/                    # 日志中心
+├── logs/                    # Log Center
 │   ├── doc_parser_log.txt         
 │   ├── video_vision_log.txt 
 │   ├── audio_pro_log.txt 
 │   ├── reasoning_eye_log.txt 
 │   └── sandbox_log.txt            
 │
-├── web/                    # 前端交互 (Next.js 框架)
-│   ├── components/         # 侧边栏、PDF 渲染器、视频播放器
-│   └── api/                # 后端路由,连接 core/brain.py
+├── web/                    # Frontend Interaction (Next.js framework)
+│   ├── components/         
+│   └── api/                
 │
-├── storage/                # 本地挂载点 (不进入 Git 版本控制)
-│   ├── raw_files/          # 原始上传的 PDF/视频
-│   ├── processed/          # 解析后的 Markdown/关键帧图片
-│   └── db_data/            # Docker 容器持久化数据路径
+├── storage/                # Local Mount Points
+│   ├── raw_files/          
+│   ├── processed/          
+│   └── db_data/            
 │
-└── requirements/           # 导出各环境的依赖清单
+└── requirements/           # Dependency manifests for each environment
     ├── DocParserCore.yml
     └── AgentLogicOrchestrator.yml
     └── ...
 ```
 
 
-#### 核心组件说明
+#### Core Folders/Files Descriptions
 
-##### **configs/** 全局参数中枢
-- **职能**: 集中管理所有敏感信息和静态配置,避免硬编码
-- **说明**:
-  - milvus_config.yaml: 向量检索的维度、索引类型和集合名称等配置
-  - model_config.yaml: 存储 `API Key`、模型本地权重路径,以及各 `Conda` 环境的 `Python` 解释器绝对路径
-  - video_config.yaml: 滑动窗口切片关键帧相关配置
-  - magic-PDF.json: `minerU` 的配置
+##### **configs/** Global Parameter Hub
+- **Function**: Centralized management of all sensitive information and static configurations to avoid hardcoding.
+- **Details**:
+  - milvus_config.yaml: Configurations for vector retrieval dimensions, index types, collection names, etc.
+  - model_config.yaml: Stores `API Key`, local model weight paths, and absolute paths for `Python` interpreters in each `Conda` environment.
+  - video_config.yaml: Configurations related to dynamic sliding window keyframe slcing.
+  - magic-PDF.json: Configuration for `minerU`. 
 
-##### **deploy/** 基础设施底座
-- **职能**: 通过 `Docker` 提供数据库和对象存储服务
-- **说明**: 
-  - Etcd: 元数据中心,负责 Milvus 的集合结构、索引状态及数据存储路径映射的强一致性管理
-  - Milvus: 向量数据库,负责文档和视频关键帧语义的索引
-  - Redis: 缓存层,用于存储 `LangGraph` 的会话状态(Checkpoints),支持断点续传式的交互
-  - MinIO: 兼容 `S3` 协议的对象存储,管理大规模原始视频和图片文件
+##### **deploy/** Infrastructure Foundation
+- **Function**: Provides database and object storage services via `Docker`.
+- **Details**: 
+  - Etcd: Metadata center, responsible for strong consistency management of `Milvus` collection structrues, index status, and data storage path mappings.
+  - Milvus: Vector database, responsible for indexing the semantics of document fragments and video keyframes.
+  - Redis: Caching layer, used to store `LangGraph` session states (checkpoints), supporting breakpoint-resume style interactions.
+  - MinIO: `S3`-compatible object storage for managing large-scale raw video and image files.
 
-##### **models/** 统一模型资产池
-- **职能**: 作为全项目唯一的、跨环境共享的只读模型存储中心
-- **说明**: 
-  - 环境复用: 不同 `Conda` 环境可能都会用到 `CLIP` 或相似的视觉底座
-  - 矿工模式支持: 针对 `MinerU` 这种对模型存放路径有严格要求的工具,可以在其启动脚本中通过软链接保持资产池的整洁
-  - 运维便利: 在 `Linux` 上部署时,只需通过 `scp` 或 `rsync` 维护这一个文件夹即可完成所有模型的迁移。
+##### **models/** Model Asset Pool
+- **Function**: Serves as the project's singular, cross-environment shared read-only model storage center.
+- **Details**: 
+  - Environment Reuse: Different `Conda` environments can utilize the same `CLIP` or similar visual backbones.
+  - O&M Convenience: When deploying on `Linux`, only this single folder needs to be maintained via `scp` or `rsync` to complete the migration of all models.
 
-##### **core/** 大脑与决策中心 (AgentLogicOrchestrator)
-- **职能**: 负责逻辑推理、思维链生成及跨环境的任务分派
-- **说明**: 
-  - brain.py: 使用 LangGraph 构建的状态机,管理从"理解提问"到"输出结论"的整个流程
-  - tools_manager.py: 项目的"网关",封装了 `subprocess` 逻辑,允许大脑在不离开当前环境的情况下,调用其他 `Conda` 环境中的 `Python` 脚本并捕获其返回结果
+##### **core/** Brain & Decision Center (AgentLogicOrchestrator)
+- **Function**: Responsible for logical reasoning, Chain-of-Thought generation, and cross-environment task dispatching.
+- **Details**: 
+  - brain.py: A state machine built with `LangGraph`, managing the entire process from "understanding questions" to "outputting conclusions."
+  - tools_manager.py: The project's "gateway," encapsulating `subprocess` logic to allow the Brain to invoke `Python` scripts in other `Conda` environments and capture their return results without leaving its own environment.
 
-##### **services/** 执行层专家库 (各专项 Conda 环境)
-- **职能**: 完成特定的模态解析任务,每个子目录代表一个独立的工具化环境
-- **说明**: 
-  - doc_parser/: 利用 `MinerU` 或 `LayoutLM` 解决布局预测与公式还原
-  - video_vision/: 负责动态滑窗采样,将视频切分为语义对齐的关键帧序列
-  - audio_pro/: 使用 `Whisper-v3` 进行语音识别,并区分说话人
-  - reasoning_eye/: 解析视频大纲、数学函数或图表
-  - sandbox/: 纯净的 `ScientificSandbox` 环境,用于运行 `Agent` 生成的 `Python` 代码,通过物理执行结果验证逻辑
+##### **services/** Execution Layer Services Library
+- **Function**: Completes specific modal tasks, with each subdirectory representing an independent tool-based environment.
+- **Details**: 
+  - doc_parser/: Utilizes `MinerU` or `LayoutLM` to handle layout prediction and formula restoration.
+  - video_vision/: Responsible for dynamic sliding window sampling, slicing videos into semantically aligned keyframe sequences.
+  - audio_pro/: Uses `Whisper-v3` for speech recognition (and speaker diarization).
+  - reasoning_eye/: Parses video outlines, mathematical functions, or charts.
+  - sandbox/: Run Agent-generated `Python` code, verifying logic through physical execution results.
 
-##### **data_layer/** 数据屏蔽层 (DataStreamOrchestrator)
-- **职能**: 负责异构数据的持久化与检索逻辑,是"业务"与"存储"的中间层
-- **说明**: 
-  - clip_worker_pdf.py: 对 `PDF` 解析做向量化等处理
-  - clip_worker_video.py: 对视频解析做向量化等处理
-  - milvus_ingestor.py: 将已处理数据存入 `Milvus` 
+##### **data_layer/** Data Abstraction Layer (DataStreamOrchestrator)
+- **Function**: Responsible for the persistence and retrieval logic of heterogeneous data, acting as the intermediate layer between "business" and "storage".
+- **Details**: 
+  - clip_worker_pdf.py: Handles vectorization and processing for PDF parsing.
+  - clip_worker_video.py: Handles vectorization and processing for video parsing.
+  - milvus_ingestor.py: Ingests processed data into `Milvus`. 
 
 
-##### **web/** 人机交互门户 (Next.js)
-- **职能**: 提供 "scannable"的侧边栏布局,实现文档与答疑的同屏交互
-- **说明**: 
-  - components/: 构建响应式、可交互的学术阅读与视频学习界面
-  - api/: 作为 `Next.js` 服务端逻辑层,负责接收前端请求并与核心 Agent 环境进行通信
+##### **web/** Human-Computer Interaction Portal (Next.js)
+- **Function**: Provides a "scannable" sidebar layout to achieve simultaneous interaction between documents and Q&A.
+- **Details**: 
+  - components/: Builds responsive, interactive interfaces for academic reading and video learning.
+  - api/: Acts as the `Next.js` server-side logic layer, responsible for receiving frontend requests and communicating with the core Agent environment.
 
-##### **storage/** 多模态流转中心
-- **职能**: 作为各 `Conda` 环境之间的数据交互总线
-- **说明**: 
-  - raw_files/: 暂存区,保留原始学习资源
-  - processed/: 结果区,存放 PDF 拆解后的文本块、提取的 LaTeX 图片、视频切片和语音转录文本
-  - db_data/: 宿主机挂载点,储存 Docker 容器数据库内容
+##### **storage/** Multi-modal Data Bus
+- **Function**: Acts as the data interaction bus between various `Conda` environments.
+- **Details**: 
+  - raw_files/: Staging area, retaining original uploaded learning resources.
+  - processed/: Result area, storing text blocks from PDF decomposition, extracted LaTeX images, video slices, and audio transcription text.
+  - db_data/: Host mount point, storing the database content for `Docker` containers.
 
 ---
 
-### 项目架构图
+### Architecture Diagram
 
 ```mermaid
 graph LR
-    %% 全局样式定义
+    %% Global Style Definitions
     classDef webStyle fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
     classDef coreStyle fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#ef6c00
     classDef serviceStyle fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#7b1fa2
     classDef dataStyle fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#c2185b
     classDef deployStyle fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 
-    %% 1. 用户交互层
+    %% 1. User Interaction Layer
     subgraph web_env [💻 web - Next.js]
-        UI["学术看板 Dashboard<br/>同屏交互, 动态渲染"]:::webStyle
+        UI["Academic Dashboard<br/>(Split-screen Interaction, Dynamic Rendering)"]:::webStyle
     end
 
-    %% 2. 核心调度层
+    %% 2. Core Orchestration Layer
     subgraph core_env [🧠 AgentLogicOrchestrator]
-        brain["brain.py<br/><b>决策大脑</b>"]:::coreStyle
-        state[LangGraph 状态机]:::coreStyle
-        tools_manager[tools_manager.py 网关]:::coreStyle
+        brain["brain.py<br/><b>(Decision Brain)</b>"]:::coreStyle
+        state["LangGraph (State Machine)"]:::coreStyle
+        tools_manager["tools_manager.py (Gateway)"]:::coreStyle
         
         brain --> state --> tools_manager
     end
 
-    %% 3. 执行专家库
+    %% 3. Execution Expert Library
     subgraph services_envs [🛠️ services ]
-        DP["DocParserCore<br/><b>文档拆解, 公式还原</b>"]:::serviceStyle
-        VS["VideoSemanticSlicer<br/><b>动态采样, 关键帧定</b>"]:::serviceStyle
-        AE["AudioTranscriptionExpert<br/><b>语音转录, 角色识别</b>"]:::serviceStyle
-        RE["VisualReasoningEye<br/><b>图像解析, 语义提取</b>"]:::serviceStyle
-        SB["ScientificSandbox<br/><b>代码执行, 数理验证</b>"]:::serviceStyle
+        DP["DocParserCore<br/><b>(Doc Decomposition, Formula Restoration)</b>"]:::serviceStyle
+        VS["VideoSemanticSlicer<br/><b>(Dynamic Sampling, Keyframe Localization)</b>"]:::serviceStyle
+        AE["AudioTranscriptionExpert<br/><b>(Speech Transcription, Speaker ID)</b>"]:::serviceStyle
+        RE["VisualReasoningEye<br/><b>(Image Analysis, Semantic Extraction)</b>"]:::serviceStyle
+        SB["ScientificSandbox<br/><b>(Code Execution, Math Verification)</b>"]:::serviceStyle
     end
 
-    %% 4. 数据调度层
+    %% 4. Data Orchestration Layer
     subgraph data_env [🔄 DataStreamOrchestrator]
-        DSO["clip_worker / milvus_ingestor<br/><b>异构对齐,数据存储</b>"]:::dataStyle
+        DSO["clip_worker / milvus_ingestor<br/><b>(Heterogeneous Alignment, Data Storage)</b>"]:::dataStyle
     end
 
-    %% 5. 基础设施层
-    subgraph deploy_env [🗄️ deploy - Docker 集群]
+    %% 5. Infrastructure Layer
+    subgraph deploy_env [🗄️ deploy - Docker Cluster]
         direction LR
-        Milvus[(Milvus 向量数据库)]:::deployStyle
-        Redis[(Redis 会话快照)]:::deployStyle
-        MinIO[(MinIO 对象存储)]:::deployStyle
+        Milvus[(Milvus Vector DB)]:::deployStyle
+        Redis[(Redis Session Snapshot)]:::deployStyle
+        MinIO[(MinIO Object Storage)]:::deployStyle
     end
 
-    %% 指令流
+    %% Instruction Flow
     UI <--> |API| brain
-    tools_manager ==> |分派| DP
-    tools_manager ==> |分派| VS
-    tools_manager ==> |分派| AE
-    tools_manager ==> |分派| RE
-    tools_manager ==> |分派| SB
+    tools_manager ==> |Dispatch| DP
+    tools_manager ==> |Dispatch| VS
+    tools_manager ==> |Dispatch| AE
+    tools_manager ==> |Dispatch| RE
+    tools_manager ==> |Dispatch| SB
     
-    %% 数据生命周期流
+    %% Data Lifecycle Flow
     DP & VS & AE & RE & SB -.-> DSO
-    DSO ==> |数据存储| deploy_env
-    DSO ==> |工作反馈| brain
+    DSO ==> |Data Storage| deploy_env
+    DSO ==> |Job Feedback| brain
     
-    %% 反馈循环
+    %% Feedback Loop
     deploy_env -.-> |RAG| brain
     
 
-    %% 布局优化
+    %% Layout Optimization
     style web_env fill:transparent,stroke-dasharray: 5 5
     style core_env fill:transparent,stroke-dasharray: 5 5
     style services_envs fill:transparent,stroke-dasharray: 5 5
@@ -361,27 +359,27 @@ graph LR
 
 ---
 
-## 项目实现
+## Implementation
 
-### 基础设施与环境搭建
+### Infrastructure & Environment Setup
 
-> 打通底座,确保“专家委员会”就位
+> Establishing the foundation to ensure the "Committee of Experts" is in place.
 
-#### 硬件与存储准备
+#### Container & Storage Preparation
 
-- 部署 `Docker` 容器,确保本地挂载路径 `storage/db_data` 正确映射
+- Deploy `Docker` containers and ensure the local mount path `storage/db_data` is correctly mapped.
 ```bash
-# 下载密钥
+# Download GPG key
 curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-# 添加清华源
+# Add Tsinghua mirror source
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 
-# 安装docker及相关工具
+# Install Docker and related tools
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
-# 优化docker核心配置
+# Optimize Docker core configuration
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
@@ -392,141 +390,143 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 EOF
 sudo systemctl restart docker
 
-# 创键docker挂载配置文件
+# Create Docker Compose configuration
 nano deploy/docker-compose.yaml
-    #---具体配置略去---
+    #--- Specific configurations omitted ---
 
-# 部署
+# Deployment
 cd deploy
 sudo docker compose up -d
 ```
 
-- 创建 `models/` 统一资产池,提前下载模型权重。
+- Create the `models/` unified asset pool and pre-download model weights.
 ```bash
-# 任意挑选一个环境
+# Choose any environment
 pip install modelscope
-# 下载模型权重
+
+# Download model weights
 cd models/
 python -c "from modelscope import snapshot_download; snapshot_download('AI-ModelScope/clip-vit-large-patch14', local_dir='./clip')"
 python -c "from modelscope import snapshot_download; snapshot_download('Systran/faster-whisper-large-v3', local_dir='./whisper_v3')"
 python -c "from modelscope import snapshot_download; snapshot_download('qwen/Qwen2-VL-7B-Instruct', local_dir='./qwen2_vl')"
 python -c "from modelscope import snapshot_download; snapshot_download('opendatalab/PDF-Extract-Kit-1.0', local_dir='./miner_u')"
-# meneru该模型权重版本与magic-pdf有一定差别
+
+# Adjust MinerU weights (structure differs slightly from Magic-PDF requirements)
 cd mener_u/models
-## 调整Layout
+## Adjust Layout
 mv Layout/LayoutLMv3/config.json Layout
 mv Layout/LayoutLMv3/model_final.pth Layout
 rm -r Layout/LayoutLMv3/
-## 调整MFD
+## Adjust MFD
 mv MFD/YOLO/yolo_v8_ft.pt MFD/weights.pt
 rm -r MFD/YOLO/
-# 未在魔搭上找到dinov2模型权重
+# Download DINOv2 (as it may not be on ModelScope)
 mkdir dinov2 | cd dinov2
 curl -L -O https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth
 ```
 
-#### 环境隔离与依赖安装
+#### Environment Isolation & Dependency Installation
 
-- 依照项目 `requierements/环境名.yml` ,依次创建7个 `Conda` 环境
+- Create 7 `Conda` environments sequentially according to the `requirements/env_name.yml` files.
 ```bash
-conda env create -f 环境名.yml
+conda env create -f env_name.yml.yml
 ```
 
-#### 写全局配置
+#### Global Configuration
 
-- 完善 `configs/model_config.yaml`,填入各环境 `Python` 解释器的绝对路径
+- Complete `configs/model_config.yaml` by filling in the absolute paths of the `Python` interpreters for each environment.
 
 --- 
 
-### 专家环境构建
+### Expert Environment Construction
 
-> 让每个“专家”都能独立工作并产生结构化输出。
+> Enabling each "Expert" to work independently and produce structured output.
 
-##### 文档解析模块 (DocParserCore)
+##### Document Parsing Module (DocParserCore)
 
-1. `PDF` 识别
-- 创建 `configs/magic-pdf.json` 配置 `magic-pdf`
+1. PDF Recognition
+- Create `configs/magic-pdf.json` to configure `magic-pdf`.
 <!-->
-原计划使用python脚本调用magic-pdf底层函数实现识别,但接口由于版本匹配难度较大,最终直接使用shell脚本调用内置命令行工具
+While originally planned to call Magic-PDF low-level functions via Python, version matching proved difficult. The final implementation uses a Shell script to call the built-in CLI tool.
 <!-->
-- 创建 `services/doc_parser/mineru_worker.sh` 实现 `PDF` 识别,结果存入 `storage/process/magic-pdf/`
+- Create `services/doc_parser/mineru_worker.sh` to execute PDF recognition, storing results in `storage/process/magic-pdf/`.
 
-##### 视频解析模块 (VideoSemanticSlicer/AudioTranscriptionExpert)
+##### Video Parsing Modules (VideoSemanticSlicer/AudioTranscriptionExpert)
 
-1. 视频语义切片
-- 创建 `configs/video_config.yaml` 配置切片参数
-- 创建 `services/video_vison/video_slicer.py` 实现视频转码/切片(若长期静默画面则按时间切分),结果存入 `storage/process/video/`
+1. Video Semantic Slicing
+- Create `configs/video_config.yaml` to configure slicing parameters.
+- Create `services/video_vison/video_slicer.py` to implement video transcoding and slicing (using time-based slicing for long periods of static imagery). Results are stored in `storage/process/video/`.
 
-2. 音频转文本
-- 创建 `services/audio_pro/whisper_node.py` 实现视频音频句级文本化,结果存入 `storage/processed/video/视频名/transcript.json`
+2. Audio-to-Text
+- Create `services/audio_pro/whisper_node.py` to implement sentence-level transcription of video audio. Results are stored in `storage/processed/video/video_name/transcript.json`.
 
-##### 沙盒验证模块 (ScientificSandbox)
+##### Sandbox Verification Module (ScientificSandbox)
 
-1. 问题验证
-- 创建 `services/sandbox/executor_logic.py` 实现对数值计算/符号求解的验证
+1. Problem Verification
+- Create `services/sandbox/executor_logic.py` to implement verification for numerical calculations and symbolic solving.
 
-##### 视觉推理模块 (VisualReasoningEye)
+##### Visual Reasoning Module (VisualReasoningEye)
 
-1. 视觉推理
-- 创建 `services/reasoning_eye/qwen_inference.py` 实现视觉推理本地化
+1. Visual Reasoning Module
+- Create `services/reasoning_eye/qwen_inference.py` to implement localized visual reasoning.
 
-##### 数据调度模块 (DataStreamOrchestrator)
+##### Data Orchestration Module (DataStreamOrchestrator)
 
-1. 数据处理
-- 创建 `data_layer/clip_worker_pdf.py` 实现pdf文本和图表向量化,结果存入 `storage/process/magic-pdf/文件名/multimodal_features.json`
-- 创建 `data_layer/clip_worker_pdf.py` 实现视频切片与语音文本对齐并向量化,结果存入 `storage/processed/video/视频名/alignment_metadata.json`
+1. Data Processing
+- Create `data_layer/clip_worker_pdf.py` to vectorize PDF text and charts. Results are saved in `storage/process/magic-pdf/file_name/multimodal_features.json`.
+- Create `data_layer/clip_worker_pdf.py` to align video slices with audio text and vectorize them. Results are saved in `storage/processed/video/video_name/alignment_metadata.json`.
 
-2. 数据存储
-- 创建 `configs/milvus_config.yaml` 配置 `Milvus`
-- 创建 `data_layer/milvus_ingestor.py` 将 `multimodal_features.json` 和 `alignment_metadata.json` 存入 `Milvus`,将图片存入 `Minio`
+2. Data Storage
+- Create `configs/milvus_config.yaml` to configure `Milvus`.
+- Create `data_layer/milvus_ingestor.py` to ingest `multimodal_features.json` and `alignment_metadata.json` into `Milvus`, and upload images to `Minio`.
 
-3. 数据检索
- --- 待完成 ---
-
---- 
-
-### Agent 逻辑编排
-
----待修改---
-
-> 实现逻辑闭环,让 Agent 学会思考和调用工具。
-
-#### 跨环境网关开发：
-
-在 core/tools_manager.py 中实现基于 subprocess 的调用逻辑,封装统一的输入输出接口。
-
-#### 状态机构建 (LangGraph)：
-
-设计 brain.py 逻辑：提问理解 -> 检索策略选择 -> 多模态召回 -> 结果整合。
-
-#### 验证沙盒集成：
-
-接入 ScientificSandbox,实现“思维链生成代码 -> 执行 -> 修正反馈”的闭环,解决幻觉问题。
-
-#### 思维链剪枝：
-
-编写 Post-processing 逻辑,确保输出给用户的是精炼的“结论->推导->拓展”结构。
+3. Data Retrieval
+ --- Pending ---
 
 --- 
 
-### 前端交互与联调
+### Agent Logic Orchestration
 
----待修改---
+--- Pending ---
 
-> 将底层能力通过 Web 界面优雅地呈现。
+> Achieving a closed-loop logic that enables the Agent to reason and invoke tools.
 
-#### 核心看板开发：
+#### Cross-Environment Gateway Development
 
-使用 Next.js 实现左右分屏：左侧集成 PDF.js 和 Video.js,右侧为对话流。
+Implement calling logic based on `subprocess` within `core/tools_manager.py`, encapsulating a unified input/output interface to bridge different Conda environments.
 
-#### 深度交互功能：
+#### State Machine Construction (LangGraph)
 
-划词提问：捕获 PDF 坐标信息并传递给 Agent。
+Design the logic for `brain.py`: Query Understanding -> Retrieval Strategy Selection -> Multi-modal Recall -> Result Synthesis.
 
-视频大纲跳转：利用 Qwen2-VL 生成的带时间戳大纲,实现点击跳转关键帧。
+#### Verification Sandbox Integration
 
-#### 渲染优化：
+Integrate the `ScientificSandbox` to implement a "Chain-of-Thought Code Generation -> Execution -> Corrective Feedback" closed loop, specifically targeting and resolving model hallucination issues.
 
-配置 MathJax 渲染 Markdown 中的 LaTeX 公式。
+#### Chain-of-Thought Pruning
 
-使用 D3.js 实时可视化 LangGraph 的思考路径(知识图谱)。
+Develop post-processing logic to ensure the final output delivered to the user follows a refined structure: "Conclusion -> Derivation -> Expansion."
+
+--- 
+
+### Frontend Interaction & Integration
+
+--- Pending ---
+
+> Presenting underlying capabilities elegantly through a Web interface.
+
+#### Core Dashboard Development
+
+Utilize `Next.js` to implement a split-screen layout: the left side integrates `PDF.js` and `Video.js`, while the right side handles the interactive dialogue stream.
+
+#### Deep Interaction Features
+
+Highlight-to-Ask: Capture PDF coordinate information and pass the context to the Agent for targeted explanations.
+
+Video Outline Jumps: Utilize the timestamped outlines generated by `Qwen2-VL` to enable one-click jumping to keyframes.
+
+#### Rendering Optimization
+
+Configure `MathJax` to render LaTeX formulas within Markdown dynamically.
+
+Use `D3.js` to provide real-time visualization of the `LangGraph` reasoning path (Knowledge Graph).

@@ -1,5 +1,5 @@
 import os
-import sys  # 补上缺失的导入
+import sys  
 import json
 import yaml
 import torch
@@ -10,7 +10,6 @@ import transformers
 from transformers import CLIPProcessor, CLIPModel
 from pathlib import Path
 
-# 日志配置
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -20,21 +19,18 @@ transformers.utils.logging.set_verbosity_error()
 
 class CLIPWorker:
     def __init__(self, force_reprocess=False):
-        # 1. 修正路径逻辑
         self.current_file_path = Path(__file__).resolve()
-        # 脚本在 AcademicAgent-Suite/data_layer/，向上跳2级到达根目录
         self.project_root = self.current_file_path.parent.parent
         
         config_path = self.project_root / "configs" / "model_config.yaml"
         
         if not config_path.exists():
-            logger.error(f"找不到配置文件: {config_path}")
+            logger.error(f"Cannot find configuration file: {config_path}")
             sys.exit(1)
 
         with open(config_path, 'r', encoding='utf-8') as f:
             self.full_config = yaml.safe_load(f)
         
-        # 从配置中读取路径
         self.model_path = self.full_config['model_paths']['clip']
         self.processed_root = os.path.join(self.full_config['paths']['processed_storage'], "magic-pdf")
         
@@ -47,8 +43,7 @@ class CLIPWorker:
     @property
     def model(self):
         if self._model is None:
-            logger.info(f"--- 开启离线模式，加载 CLIP 权重: {self.model_path} ---")
-            # 确保使用本地路径加载
+            logger.info(f"--- Offline mode enabled, loading CLIP weights: {self.model_path} ---")
             self._model = CLIPModel.from_pretrained(self.model_path, local_files_only=True).to(self.device)
             self._model.eval()
         return self._model
@@ -60,7 +55,6 @@ class CLIPWorker:
         return self._processor
 
     def _get_aligned_embedding(self, outputs):
-        """保持原有的强健解包逻辑"""
         tensor = None
         if hasattr(outputs, "image_embeds"):
             tensor = outputs.image_embeds
@@ -89,7 +83,7 @@ class CLIPWorker:
 
     def batch_process(self):
         if not os.path.exists(self.processed_root):
-            logger.error(f"路径不存在: {self.processed_root}")
+            logger.error(f"Path does not exist: {self.processed_root}")
             return
 
         for doc_name in os.listdir(self.processed_root):
@@ -97,16 +91,13 @@ class CLIPWorker:
             if not os.path.isdir(doc_path): continue
 
             output_json = os.path.join(doc_path, "multimodal_features.json")
-            
-            # --- 增强的增量提示逻辑 ---
+
             if os.path.exists(output_json) and not self.force_reprocess:
-                # 使用特殊的标记 [SKIP]，让你在大量日志中一眼看到
-                logger.info(f"==== [SKIP] 已存在特征文件，跳过处理: {doc_name} ====")
+                logger.info(f"==== [SKIP] Feature file already exists, skipping processing: {doc_name} ====")
                 continue
 
-            logger.info(f">>> [PROCESS] 正在处理新文档: {doc_name}")
+            logger.info(f">>> [PROCESS] Processing new document: {doc_name}")
             
-            # 尝试不同的子目录结构
             found_ocr = False
             for sub in ["auto", "ocr"]:
                 ocr_dir = os.path.join(doc_path, sub)
@@ -115,7 +106,7 @@ class CLIPWorker:
                     break
             
             if not found_ocr:
-                logger.warning(f"在 {doc_name} 中找不到 auto 或 ocr 目录，跳过")
+                logger.warning(f"Could not find auto or ocr directory in {doc_name}, skipping")
                 continue
                 
             img_dir = os.path.join(ocr_dir, "images")
@@ -123,7 +114,6 @@ class CLIPWorker:
 
             doc_results = {"images": {}, "text_chunks": []}
 
-            # 1. 处理图片
             if os.path.exists(img_dir):
                 images = [f for f in os.listdir(img_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
                 for img_name in images:
@@ -134,9 +124,8 @@ class CLIPWorker:
                             outputs = self.model.get_image_features(**inputs)
                             doc_results["images"][img_name] = self._get_aligned_embedding(outputs)
                     except Exception as e:
-                        logger.warning(f"图片 {img_name} 向量化失败: {e}")
+                        logger.warning(f"Image {img_name} vectorization failed: {e}")
 
-            # 2. 处理文本
             if os.path.exists(content_list_path):
                 try:
                     with open(content_list_path, 'r', encoding='utf-8') as f:
@@ -156,12 +145,12 @@ class CLIPWorker:
                             "embedding": embedding
                         })
                 except Exception as e:
-                    logger.warning(f"文本块处理失败: {e}")
+                    logger.warning(f"Text chunk processing failed: {e}")
 
             # 3. 保存结果
             with open(output_json, "w", encoding='utf-8') as f:
                 json.dump(doc_results, f, indent=4, ensure_ascii=False)
-            logger.info(f"文档 {doc_name} 特征保存成功")
+            logger.info(f"Document {doc_name} features saved successfully")
 
 if __name__ == "__main__":
     worker = CLIPWorker(force_reprocess=False)

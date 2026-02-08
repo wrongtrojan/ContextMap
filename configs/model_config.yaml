@@ -1,10 +1,8 @@
-# 全局路径配置
 paths:
   base_dir: "/home/liangqing/AcademicAgent-Suite"
   raw_storage: "/home/liangqing/AcademicAgent-Suite/storage/raw_files"
   processed_storage: "/home/liangqing/AcademicAgent-Suite/storage/processed"
 
-# 专家委员会：各 Conda 环境解释器路径
 environments:
   doc_parser: "/home/liangqing/miniconda3/envs/DocParserCore/bin/python"
   video_slicer: "/home/liangqing/miniconda3/envs/VideoSemanticSlicer/bin/python"
@@ -14,7 +12,6 @@ environments:
   data_layer: "/home/liangqing/miniconda3/envs/DataStreamOrchestrator/bin/python"
   brain: "/home/liangqing/miniconda3/envs/AgentLogicOrchestrator/bin/python"
   
-# 统一模型资产池
 model_paths:
   whisper: "/home/liangqing/AcademicAgent-Suite/models/whisper_v3"
   qwen2_vl: "/home/liangqing/AcademicAgent-Suite/models/qwen2_vl"
@@ -22,7 +19,6 @@ model_paths:
   clip: "/home/liangqing/AcademicAgent-Suite/models/clip"
   dinov2: "/home/liangqing/AcademicAgent-Suite/models/dinov2/"
   
-# 数据库连接（Docker 映射）
 database:
   milvus_host: "localhost"
   milvus_port: "19530"

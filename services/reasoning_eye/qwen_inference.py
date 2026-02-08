@@ -2,29 +2,40 @@ import os
 import sys
 import yaml
 import json
+import logging
 from pathlib import Path
 from vllm import LLM, SamplingParams
 from qwen_vl_utils import process_vision_info
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - [VisualExpert] - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger("QwenInference")
+
 def load_config():
-    """修正版：精准定位 configs/model_config.yaml"""
     current_dir = Path(__file__).resolve().parent
-    # 你的脚本在 services/reasoning_eye/，根目录是 current_dir.parent.parent
-    # 配置文件在 根目录/configs/model_config.yaml
     config_path = current_dir.parent.parent / "configs" / "model_config.yaml"
         
     if not config_path.exists():
-        raise FileNotFoundError(f"致命错误：在以下路径未找到配置文件: {config_path}")
+        logger.error(f"Configuration file missing: {config_path}")
+        raise FileNotFoundError(f"Error: Configuration file not found at: {config_path}: {config_path}")
         
-    with open(config_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = yaml.safe_load(f)
+            logger.info("Configuration loaded successfully.")
+            return config
+    except Exception as e:
+        logger.error(f"Failed to parse config: {e}")
+        raise
 
 class VisualExpert:
     def __init__(self, config):
-        # 你的 model_config.yaml 里定义的路径是 model_paths -> qwen2_vl
         self.model_path = config['model_paths']['qwen2_vl']
         
-        print(f"[VisualExpert] 正在加载模型: {self.model_path}")
+        logger.info(f"[VisualExpert] Loading model: {self.model_path}")
         
         self.llm = LLM(
             model=self.model_path,
@@ -45,7 +56,7 @@ class VisualExpert:
         
         for item in visual_content:
             if not os.path.exists(item):
-                print(f"[Warning] 文件不存在: {item}", file=sys.stderr)
+                logger.warning(f"Resource not found, skipping: {item}")
                 continue
             ext = os.path.splitext(item)[1].lower()
             if ext in ['.jpg', '.jpeg', '.png', '.webp']:
@@ -70,12 +81,10 @@ class VisualExpert:
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Qwen2-VL 逻辑执行器")
-    # 对标 Wrapper 发出的命令行参数
-    parser.add_argument("--image", type=str, help="单张图片路径")
-    parser.add_argument("--prompt", type=str, default="请描述图片")
-    # 兼容未来可能的批量文件传入
-    parser.add_argument("--files", type=str, help="JSON 格式的文件列表")
+    parser = argparse.ArgumentParser(description="Qwen2-VL Logic Executor")
+    parser.add_argument("--image", type=str, help="Path to a single image")
+    parser.add_argument("--prompt", type=str, default="Prompt (Default: Please describe the image)")
+    parser.add_argument("--files", type=str, help="JSON formatted list of files")
     
     args = parser.parse_args()
     
@@ -83,7 +92,6 @@ def main():
         config = load_config()
         expert = VisualExpert(config)
         
-        # 处理输入：如果提供了 --image，构造为列表；如果有 --files，则解析 JSON
         visual_content = []
         if args.image:
             visual_content.append(args.image)
@@ -91,19 +99,16 @@ def main():
             visual_content.extend(json.loads(args.files))
             
         if not visual_content:
-            raise ValueError("未提供任何图片或视频资源")
+            raise ValueError("No image or video resources provided")
 
-        # 执行推理
         result = expert.reason(args.prompt, visual_content)
         
-        # 【关键】使用特殊标记包裹 JSON，确保 Wrapper 能精准提取
         print("\n--- RESULT_START ---")
         print(json.dumps({"status": "success", "response": result}, ensure_ascii=False))
         print("--- RESULT_END ---")
         
     except Exception as e:
-        # 错误信息打入 stderr，会被 Wrapper 捕获进日志
-        sys.stderr.write(f"逻辑层崩溃: {str(e)}\n")
+        sys.stderr.write(f"Logic layer crash: {str(e)}\n")
         sys.exit(1)
 
 if __name__ == "__main__":
