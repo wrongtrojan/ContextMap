@@ -13,15 +13,31 @@ def run_calculation(expression: str, mode: str = "eval", symbol: str = "x"):
     else:
         builtins_dict = vars(__builtins__)
 
-    allowed_builtins = ['abs', 'min', 'max', 'round', 'len', 'sum', 'float', 'int', 'list', 'dict', 'range']
+    allowed_builtins = ['abs', 'min', 'max', 'round', 'len', 'sum', 'float', 'int', 'list', 'dict', 'range', 'print']
+    
     safe_dict = {
         "np": np, 
         "sp": sp, 
         "math": math,
+        "symbols": sp.symbols,
+        "Function": sp.Function,
+        "Eq": sp.Eq,
+        "dsolve": sp.dsolve,
+        "diff": sp.diff,
         "__builtins__": {k: builtins_dict[k] for k in allowed_builtins if k in builtins_dict}
     }
 
     try:
+        # --- 新增：脚本模式 ---
+        if mode == "script":
+            local_vars = {}
+            exec(expression, safe_dict, local_vars)
+            
+            if "general_solution" in local_vars:
+                res = local_vars["general_solution"]
+                return sp.latex(res) if hasattr(res, 'free_symbols') else str(res)
+            return {k: str(v) for k, v in local_vars.items() if not k.startswith('__')}
+        
         # 2. Pre-processing: Auto-detect and handle LaTeX if necessary
         # If expression starts with '\', treat it as LaTeX
         if expression.strip().startswith('\\'):

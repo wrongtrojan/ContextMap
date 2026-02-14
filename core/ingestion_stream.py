@@ -5,7 +5,7 @@ import json
 import httpx
 import time
 from core.tools_manager import ToolsManager
-from core.system_state import SystemStateManager
+from core.system_state import SystemStateManager,SystemStatus
 from core.prompt_manager import PromptManager
 from dotenv import load_dotenv
 
@@ -24,47 +24,65 @@ class IngestionStream:
         """
         🎬 [Global Sync] 
         """
-        start_time = time.time()
-        logger.info("🎬 [START] Global ingestion sync initiated.")
+        try:
+            start_time = time.time()
+            self.state_manager.reset_progress()
+            self.state_manager.update_progress("Global", 0, "Initiating global sync...")
+            logger.info("🎬 [START] Global ingestion sync initiated.")
 
-        await self._drive_raw_processing_suite()
+            await self._drive_raw_processing_suite()
 
-        logger.info("🔎 [Messenger] Scanning storage for incremental assets...")
-        scan_res = await asyncio.to_thread(self.tools.call_messenger_come)
-        
-        pending_tasks = scan_res.get("tasks", [])
-        if not pending_tasks:
-            logger.info("✨ [Finished] No new content found. System is up-to-date.")
-            return
+            logger.info("🔎 [Messenger] Scanning storage for incremental assets...")
+            scan_res = await asyncio.to_thread(self.tools.call_messenger_come)
+            
+            pending_tasks = scan_res.get("tasks", [])
+            if not pending_tasks:
+                logger.info("✨ [Finished] No new content found. System is up-to-date.")
+                return
 
-        logger.info(f"📦 [Discovery] Found {len(pending_tasks)} new items awaiting AI synthesis.")
+            logger.info(f"📦 [Discovery] Found {len(pending_tasks)} new items awaiting AI synthesis.")
 
-        for task in pending_tasks:
-            asset_id = task["asset_id"]
-            asset_type = task["asset_type"]
-            context = task["context"]
+            self.state_manager.set_active_assets([task["asset_id"] for task in pending_tasks])
+            total_pending = len(pending_tasks)
 
-            if not self.state_manager.acquire_ingestion_lock(task_id=asset_id):
-                logger.warning(f"⏳ [VRAM Locked] Skipping {asset_id} due to resource contention.")
-                continue
+            for i, task in enumerate(pending_tasks):
+                asset_id = task["asset_id"]
+                asset_type = task["asset_type"]
+                context = task["context"]
 
-            try:
-                task_start = time.time()
-                logger.info(f"🧠 [AI-Process] Synthesizing outline for [{asset_type}] : {asset_id}")
-                
-                outline = await self._ask_deepseek_for_outline(context, asset_type)
+                try:
+                    current_pct = int(((i + 1) / total_pending) * 100)
+                    self.state_manager.update_progress(
+                        "AI-Synthesis", 
+                        current_pct, 
+                        f"Processing {asset_type}: {asset_id} ({i+1}/{total_pending})"
+                    )
+                    
+                    task_start = time.time()
 
-                logger.info(f"📤 [Messenger] Archiving structured data for {asset_id}...")
-                await asyncio.to_thread(self.tools.call_messenger_back, asset_id, asset_type, outline)
-                
-                duration = time.time() - task_start
-                logger.info(f"✅ [Success] {asset_id} processed in {duration:.2f}s")
+                    logger.info(f"🧠 [AI-Process] Synthesizing outline for [{asset_type}] : {asset_id}")
+                    
+                    outline = await self._ask_deepseek_for_outline(context, asset_type)
 
-            except Exception as e:
-                logger.error(f"❌ [Error] Failed at {asset_id}: {str(e)}")
-            finally:
+                    logger.info(f"📤 [Messenger] Archiving structured data for {asset_id}...")
+                    await asyncio.to_thread(self.tools.call_messenger_back, asset_id, asset_type, outline)
+                    
+                    duration = time.time() - task_start
+                    logger.info(f"✅ [Success] {asset_id} processed in {duration:.2f}s")
+
+                except Exception as e:
+                    logger.error(f"❌ [Error] Failed at {asset_id}: {str(e)}")
+                finally:
+                    self.state_manager.release_lock()
+        except Exception as e:
+            logger.error(f"🚨 [Global Crash] Critical error during ingestion: {str(e)}")
+            self.state_manager.update_progress("Global", 0, f"Critical Error: {str(e)}")
+        finally:
+            # Absolute safety: ensure the system returns to IDLE
+            if self.state_manager.get_status != SystemStatus.IDLE:
                 self.state_manager.release_lock()
-
+                logger.info("🔓 [Safety] Forced lock release after global sync completion/failure.")
+        
         total_duration = time.time() - start_time
         logger.info(f"🏁 [Global Sync] Completed. Total time: {total_duration:.2f}s")
 
@@ -80,10 +98,13 @@ class IngestionStream:
 
         for name, func, params in wrappers:
             logger.info(f"⏳ [Running] {name} ...")
+            self.state_manager.update_progress(name, 10, f"Starting {name}...") # 10% of the sub-task
             try:
                 res = await asyncio.to_thread(func, params)
                 if res.get("status") == "success":
                     logger.info(f"🟢 [Done] {name}")
+                    milestones = {"📄 PDF-Parser": 20, "📽️ Video-Slicer": 40, "🎙️ Audio-Whisper": 60, "📡 Data-Layer": 80}
+                    self.state_manager.update_progress("Pipeline", milestones.get(name, 0), f"Completed {name}")
                 else:
                     logger.warning(f"🟡 [Warning] {name} reported issues: {res.get('message')}")
             except Exception as e:

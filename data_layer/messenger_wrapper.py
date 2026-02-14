@@ -5,7 +5,6 @@ from pathlib import Path
 from json_messenger import JsonMessenger
 
 def main():
-    # 1. 路径初始化
     SCRIPT_DIR = Path(__file__).resolve().parent
     PROJECT_ROOT = SCRIPT_DIR.parent
     LOG_DIR = PROJECT_ROOT / "logs"

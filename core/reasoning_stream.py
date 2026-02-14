@@ -8,11 +8,12 @@ from typing import List, Dict, Any, TypedDict
 from pathlib import Path
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.redis import AsyncRedisSaver
+from langchain_core.callbacks.manager import adispatch_custom_event
 from dotenv import load_dotenv
 
 # Internal core components
 from core.tools_manager import ToolsManager
-from core.system_state import SystemStateManager, SystemStatus
+from core.system_state import SystemStateManager
 from core.prompt_manager import PromptManager
 
 # Standard logging configuration
@@ -71,18 +72,23 @@ class ReasoningStream:
             return False
         return True
     
-    async def _deepseek_call(self, prompt: str, json_mode: bool = False) -> Any:
+    async def _deepseek_call(self, prompt: str, json_mode: bool = False, stream:bool=False) -> Any:
         """Standard DeepSeek API caller."""
         headers = {"Authorization": f"Bearer {self.api_key}"}
         payload = {
             "model": "deepseek-chat",
             "messages": [{"role": "user", "content": prompt}],
+            "stream":stream
         }
         if json_mode:
             payload["response_format"] = {"type": "json_object"}
 
         try:
-            async with httpx.AsyncClient() as client:
+            client = httpx.AsyncClient(timeout=60.0)
+            if stream:
+                return client.stream("POST", f"{self.base_url}/chat/completions", headers=headers, json=payload, timeout=60.0)
+            
+            async with client:
                 response = await client.post(
                     f"{self.base_url}/chat/completions", 
                     headers=headers, 
@@ -278,12 +284,27 @@ class ReasoningStream:
             eval_report=state.get("eval_report") 
         )
         
-        final_answer = await self._deepseek_call(synth_prompt)
+        full_answer = ""
+        response_ctx = await self._deepseek_call(synth_prompt, stream=True)
+        
+        async with response_ctx as response:
+            async for line in response.aiter_lines():
+                if not line.startswith("data: "): continue
+                if "[DONE]" in line: break
+                
+                try:
+                    chunk = json.loads(line[6:])
+                    token = chunk['choices'][0]['delta'].get('content', "")
+                    if token:
+                        full_answer += token
+                        await adispatch_custom_event("academic_token", {"content": token})
+                except:
+                    continue
         
         mock_graph = {"nodes": [], "links": []}
         
         return {
-            "final_answer": final_answer,
+            "final_answer": full_answer,
             "graph_data": mock_graph,
             "status": "completed",
             "reasoning_chain": state["reasoning_chain"] + ["Synthesis complete. Pruned CoT."]
@@ -324,26 +345,83 @@ class ReasoningStream:
         workflow.add_edge("synthesize", END)
         
         return workflow.compile(checkpointer=saver)
+    
+    async def stream_query(self, query: str, thread_id: str):
+        """
+        [Phase 2 Surgery] 
+        Replaces execute_query. Uses astream_events (v2) to yield real-time 
+        signals (Node starts, LLM tokens, Final results).
+        """
+        # 1. Resource Guard
+        if not self.state_manager.acquire_query_lock():
+            current_status_val = self.state_manager.get_status.value
+            logger.warning(f"🚨 VRAM Conflict: Blocking query. System status: {current_status_val}")
+            yield json.dumps({
+                "event": "error", 
+                "content": f"VRAM Locked: System is currently {current_status_val}. Please wait."
+            }, ensure_ascii=False)
+            return
 
-    async def execute_query(self, query: str,thread_id: str):
-        """Entry point with VRAM guard and Lock management."""
-        if not await self._check_resource_lock():
-            return {"status": "error", "message": "VRAM Locked by Ingestion."}
-
-        self.state_manager._current_status = SystemStatus.QUERYING
-        
-        config = {"configurable": {"thread_id": thread_id}}
+        # 2. Transition State
+        # Directly setting protected attribute for simplicity in this logic flow
         
         try:
+            config = {"configurable": {"thread_id": thread_id}}
             async with AsyncRedisSaver.from_conn_string(self.redis_url) as saver:
                 app = self._build_workflow(saver)
-                inputs = {
+                
+                initial_state = {
                     "query": query, "retrieved_docs": [], "verification_results": "",
                     "vlm_feedback": "", "reasoning_chain": [f"Init: {query}"],
                     "final_answer": "", "citations": [], "status": "started",
                     "task_manifest": {}, "has_video": False, "graph_data": {},
                     "eval_report": {}, "retry_count": 0
                 }
-                return await app.ainvoke(inputs, config=config)
+
+                # Start LangGraph Event Stream (v2)
+                async for event in app.astream_events(initial_state, config, version="v2"):
+                    kind = event["event"]
+                    name = event["name"]
+
+                    # A. Capture Node Transitions
+                    # Filter for our specific logic nodes defined in _build_workflow
+                    if kind == "on_chain_start" and name in ["research", "evaluate", "vision_eye", "verify", "synthesize"]:
+                        yield json.dumps({
+                            "event": "node_start",
+                            "node": name,
+                            "message": f"Agent entering: {name}"
+                        },ensure_ascii=False)
+
+                    # B. Capture LLM Tokens (from the synthesize node or others)
+                    elif kind == "on_chat_model_stream":
+                        # data["chunk"] is the MessageChunk object
+                        content = event["data"]["chunk"].content
+                        if content:
+                            yield json.dumps({
+                                "event": "token",
+                                "content": content
+                            },ensure_ascii=False)
+
+                    # C. Final result extraction when the whole graph ends
+                    elif kind == "on_chain_end" and name == "LangGraph":
+                        final_output = event["data"]["output"]
+                        yield json.dumps({
+                            "event": "final_result",
+                            "citations": final_output.get("citations", []),
+                            "status": "completed"
+                        },ensure_ascii=False)
+                    elif kind == "on_custom_event" and event["name"] == "academic_token":
+                        yield json.dumps({
+                            "event": "token",
+                            "content": event["data"]["content"]   
+                        },ensure_ascii=False)
+        except GeneratorExit:
+            logger.warning(f"🔌 Client dropped connection for thread {thread_id}")
+
+        except Exception as e:
+            logger.error(f"🔴 Streaming reasoning failed: {str(e)}")
+            yield json.dumps({"event": "error", "content": str(e)})
         finally:
+            # Absolute Safety: return to IDLE regardless of success or crash
             self.state_manager.release_lock()
+            logger.info(f"🔓 [Stream] Lock released for thread {thread_id}")
