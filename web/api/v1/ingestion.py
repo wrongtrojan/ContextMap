@@ -1,11 +1,10 @@
 import logging
-import shutil
+import aiofiles
 from pathlib import Path
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException,UploadFile, File
 
 # Import our orchestrator gateway
 from web.orchestrator import get_orchestrator, AgentLogicOrchestrator
-
 # Standardized logging for Ingestion API
 logger = logging.getLogger("IngestionAPI")
 
@@ -59,31 +58,38 @@ async def upload_academic_asset(
     Receives a file and stores it in the corresponding raw_files directory.
     This is the entry point for the frontend to introduce new assets.
     """
+    filename = file.filename
+    extension = filename.split(".")[-1].lower()
+    
     try:
-        filename = file.filename
-        extension = filename.split(".")[-1].lower()
-        
-        # Determine destination based on file extension
+        # 1. Determine destination based on file extension
         if extension == "pdf":
             target_dir = Path("storage/raw_files/PDF")
         elif extension in ["mp4", "mkv", "mov"]:
             target_dir = Path("storage/raw_files/video")
         else:
+            logger.warning(f"Unsupported file type attempted: {extension}")
             return {"status": "error", "message": f"Unsupported file type: {extension}"}
 
+        # 2. Ensure target directory exists
         target_dir.mkdir(parents=True, exist_ok=True)
         save_path = target_dir / filename
-
-        # Efficiently save the uploaded file
-        with save_path.open("wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+        
+        # 3. Asynchronously write the file to disk in chunks to avoid blocking
+        # Using aiofiles to ensure the event loop remains responsive
+        async with aiofiles.open(save_path, 'wb') as out_file:
+            while content := await file.read(1024 * 1024):  # 1MB chunks
+                await out_file.write(content)
 
         logger.info(f"Successfully uploaded {filename} to {target_dir}")
+        
+        # 4. Return success immediately without touching the global system state
         return {
             "status": "success",
             "filename": filename,
             "path": str(save_path)
         }
+        
     except Exception as e:
-        logger.error(f"Failed to upload file: {str(e)}")
+        logger.error(f"Failed to upload file [{filename}]: {str(e)}")
         return {"status": "error", "message": str(e)}

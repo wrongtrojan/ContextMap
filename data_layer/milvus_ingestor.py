@@ -147,7 +147,7 @@ class UnifiedIngestor:
                     names.append(doc_dir.name); modalities.append("pdf")
                     types.append("image"); refs.append(remote_url)
                     timestamps.append(float(page_idx+1)); vecs.append(actual_vec)
-                    coords.append(json.dumps(chunk.get("bbox", [])))
+                    coords.append(json.dumps(img_info.get("bbox", [])))
 
             for chunk in data.get("text_chunks", []):
                 names.append(doc_dir.name); modalities.append("pdf")
@@ -207,7 +207,7 @@ class UnifiedIngestor:
         logger.info("✨ Data synchronization and MinIO mapping completed successfully")
 
 if __name__ == "__main__":
-    ingestor = UnifiedIngestor(force_reset=False)
+    ingestor = UnifiedIngestor(force_reset=True)
     ingestor.ingest_pdf_data()
     ingestor.ingest_video_data()
     ingestor.finish()

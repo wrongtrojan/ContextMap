@@ -1,0 +1,71 @@
+
+==================== Whisper Task Started: 2026-02-15 12:49:57.362573 ====================
+2026-02-15 12:49:58 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 12:49:58 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 12:50:01 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 1 pending tasks) =========
+2026-02-15 12:50:01 - [AudioExpert] - INFO - 
+[1/1] Task object: 高阶常系数齐次线性微分方程求解方法
+2026-02-15 12:50:01 - [AudioExpert] - INFO - ==== [SKIP] Incremental skip: transcript.json already exists ====
+2026-02-15 12:50:01 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========
+
+==================== Whisper Task Started: 2026-02-15 13:31:20.620058 ====================
+2026-02-15 13:31:21 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 13:31:21 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 13:31:24 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 0 pending tasks) =========
+2026-02-15 13:31:24 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========
+
+==================== Whisper Task Started: 2026-02-15 16:54:08.602838 ====================
+2026-02-15 16:54:09 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 16:54:09 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 16:54:12 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 1 pending tasks) =========
+2026-02-15 16:54:12 - [AudioExpert] - INFO - 
+[1/1] Task object: 高阶常系数齐次线性微分方程求解方法
+2026-02-15 16:54:12 - [AudioExpert] - INFO - --- [START] Extracting semantic text: 高阶常系数齐次线性微分方程求解方法.standard.mp4 ---
+2026-02-15 16:54:12 - [AudioExpert] - INFO - Processing audio with duration 09:31.712
+2026-02-15 16:54:13 - [AudioExpert] - INFO - VAD filter removed 00:19.504 of audio
+2026-02-15 16:54:13 - [AudioExpert] - INFO - Detected language: zh | Video duration: 571.71s
+2026-02-15 16:54:18 - [AudioExpert] - INFO - Transcription progress: 118.2 seconds of semantic extraction completed...
+2026-02-15 16:54:22 - [AudioExpert] - INFO - Transcription progress: 210.4 seconds of semantic extraction completed...
+2026-02-15 16:54:33 - [AudioExpert] - INFO - Transcription progress: 249.8 seconds of semantic extraction completed...
+2026-02-15 16:54:34 - [AudioExpert] - INFO - Transcription progress: 294.9 seconds of semantic extraction completed...
+2026-02-15 16:54:37 - [AudioExpert] - INFO - Transcription progress: 334.1 seconds of semantic extraction completed...
+2026-02-15 16:54:38 - [AudioExpert] - INFO - Transcription progress: 389.4 seconds of semantic extraction completed...
+2026-02-15 16:54:39 - [AudioExpert] - INFO - Transcription progress: 427.0 seconds of semantic extraction completed...
+2026-02-15 16:54:42 - [AudioExpert] - INFO - Transcription progress: 469.6 seconds of semantic extraction completed...
+2026-02-15 16:54:43 - [AudioExpert] - INFO - Transcription progress: 512.4 seconds of semantic extraction completed...
+2026-02-15 16:54:45 - [AudioExpert] - INFO - Transcription progress: 550.3 seconds of semantic extraction completed...
+2026-02-15 16:54:45 - [AudioExpert] - INFO - Transcription complete: Generated 212 semantic segments | Time elapsed: 33.86s
+2026-02-15 16:54:45 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========
+
+==================== Whisper Task Started: 2026-02-15 17:01:11.929649 ====================
+2026-02-15 17:01:13 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 17:01:13 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 17:01:15 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 1 pending tasks) =========
+2026-02-15 17:01:15 - [AudioExpert] - INFO - 
+[1/1] Task object: 高阶常系数齐次线性微分方程求解方法
+2026-02-15 17:01:15 - [AudioExpert] - INFO - ==== [SKIP] Incremental skip: transcript.json already exists ====
+2026-02-15 17:01:15 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========
+
+==================== Whisper Task Started: 2026-02-15 17:02:29.535182 ====================
+2026-02-15 17:02:30 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 17:02:30 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 17:02:33 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 1 pending tasks) =========
+2026-02-15 17:02:33 - [AudioExpert] - INFO - 
+[1/1] Task object: 高阶常系数齐次线性微分方程求解方法
+2026-02-15 17:02:33 - [AudioExpert] - INFO - ==== [SKIP] Incremental skip: transcript.json already exists ====
+2026-02-15 17:02:33 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========
+
+==================== Whisper Task Started: 2026-02-15 17:16:48.567866 ====================
+2026-02-15 17:16:49 - [AudioExpert] - INFO - Configuration loaded successfully.
+2026-02-15 17:16:49 - [AudioExpert] - INFO - Loading Whisper model: whisper_v3
+2026-02-15 17:16:52 - [AudioExpert] - INFO - ========= Starting Audio Transcription Pipeline (Total 1 pending tasks) =========
+2026-02-15 17:16:52 - [AudioExpert] - INFO - 
+[1/1] Task object: 高阶常系数齐次线性微分方程求解方法
+2026-02-15 17:16:52 - [AudioExpert] - INFO - ==== [SKIP] Incremental skip: transcript.json already exists ====
+2026-02-15 17:16:52 - [AudioExpert] - INFO - 
+========= All audio transcription tasks have ended =========

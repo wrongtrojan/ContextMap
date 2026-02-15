@@ -85,6 +85,12 @@ class SystemStateManager:
         with self._state_lock:
             self._active_assets = assets
 
+    def set_status(self, status: SystemStatus):
+        """强制切换系统状态"""
+        with self._state_lock:
+            self._current_status = status
+            logger.info(f"System status forced to {status.value}")
+    
     def get_full_state(self) -> dict:
         """Export a snapshot of the current state for Web API consumption."""
         with self._state_lock:

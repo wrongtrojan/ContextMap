@@ -1,0 +1,173 @@
+
+==================== Task Started: 2026-02-15 12:49:57.013901 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Skip] 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) already processed. Skipping...
+------------------------------------------------
+--- DocParser Task Completed ---
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Task Started: 2026-02-15 13:31:20.339030 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Exit] No PDF files found in /home/liangqing/AcademicAgent-Suite/storage/raw_files/PDF
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Task Started: 2026-02-15 16:53:25.704923 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Exit] No PDF files found in /home/liangqing/AcademicAgent-Suite/storage/raw_files/PDF
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Task Started: 2026-02-15 17:01:11.634246 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Exit] No PDF files found in /home/liangqing/AcademicAgent-Suite/storage/raw_files/PDF
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Task Started: 2026-02-15 17:02:29.236120 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Exit] No PDF files found in /home/liangqing/AcademicAgent-Suite/storage/raw_files/PDF
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Task Started: 2026-02-15 17:14:33.418123 ====================
+--- Expert: DocParser (MinerU) Smart & Clean ---
+[Debug] Project Root: /home/liangqing/AcademicAgent-Suite
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+------------------------------------------------
+[Task] Processing: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-15 17:14:34.615 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json /home/liangqing/AcademicAgent-Suite/storage/raw_files/PDF/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocParserCore/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-15 17:14:39.243 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-15 17:14:39.243 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-15 17:14:39.243 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ----------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocParserCore/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocParserCore/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocParserCore/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ----------------------------------------------------------------------------------------------------
+
+
+[02/15 17:14:52 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/15 17:14:52 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-15 17:14:53.742 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-15 17:14:55.709 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.56
+
+0: 1888x1248 31 embeddings, 2 isolateds, 98.7ms
+Speed: 12.1ms preprocess, 98.7ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:00.339 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 1.97
+2026-02-15 17:15:06.254 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.91
+2026-02-15 17:15:06.768 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.51
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 11.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:08.262 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.4
+2026-02-15 17:15:14.055 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.79
+2026-02-15 17:15:14.360 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.8ms
+Speed: 10.0ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:16.609 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.17
+2026-02-15 17:15:21.603 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.99
+2026-02-15 17:15:22.155 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.55
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 11.3ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:24.810 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.55
+2026-02-15 17:15:31.670 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.86
+2026-02-15 17:15:31.960 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.29
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:34.860 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.74
+2026-02-15 17:15:42.883 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.02
+2026-02-15 17:15:43.179 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.29
+
+0: 1888x1248 53 embeddings, 7 isolateds, 24.8ms
+Speed: 10.9ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:44.951 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.61
+2026-02-15 17:15:51.655 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.7
+2026-02-15 17:15:51.945 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.29
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:15:56.972 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 4.88
+2026-02-15 17:16:02.033 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.06
+2026-02-15 17:16:02.319 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.28
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.8ms
+Speed: 9.2ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:16:09.223 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 6.74
+2026-02-15 17:16:14.843 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.62
+2026-02-15 17:16:15.142 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 40 embeddings, 7 isolateds, 24.8ms
+Speed: 10.9ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:16:17.965 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.69
+2026-02-15 17:16:23.575 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.61
+2026-02-15 17:16:24.018 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.44
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.8ms
+Speed: 9.5ms preprocess, 24.8ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:16:29.167 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.05
+2026-02-15 17:16:36.125 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.96
+2026-02-15 17:16:36.422 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.8ms
+Speed: 9.1ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-15 17:16:37.764 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.25
+2026-02-15 17:16:45.740 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.98
+2026-02-15 17:16:45.741 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 110.58811712265015
+2026-02-15 17:16:46.120 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-15 17:16:46.190 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-15 17:16:46.255 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.06
+2026-02-15 17:16:46.260 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-15 17:16:46.269 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-15 17:16:46.295 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-15 17:16:46.317 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-15 17:16:46.333 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-15 17:16:46.355 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-15 17:16:46.369 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-15 17:16:46.378 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-15 17:16:46.431 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-15 17:16:46.431 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-15 17:16:46.440 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-15 17:16:46.440 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-15 17:16:46.447 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-15 17:16:46.447 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-15 17:16:46.480 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-15 17:16:46.480 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-15 17:16:46.480 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-15 17:16:46.887 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-15 17:16:46.962 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-15 17:16:46.963 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Finished: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+------------------------------------------------
+--- DocParser Task Completed ---
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
