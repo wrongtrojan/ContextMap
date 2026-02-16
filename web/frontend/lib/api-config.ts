@@ -6,4 +6,5 @@ export const API_ENDPOINTS = {
   // 后端通常需要资产 ID 来获取状态：/status?id=xxx
   STATUS: `${BASE_URL}/api/v1/ingest/status`,
   SYNC: `${BASE_URL}/api/v1/ingest/sync`,
+  ASSET_MAP: '/api/v1/asset/map',
 };

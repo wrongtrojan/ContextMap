@@ -222,3 +222,262 @@ Params: {"mode": "back", "asset_id": "工科数学分析基础第三版 上册 (
 Exit_Code: 0
 Duration: 0.04s
 -------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:55:34 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 136.24s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:56:07 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 33.26s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:56:48 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 41.28s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:57:12 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 23.66s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:57:12 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:57:48 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "高阶常系数齐次线性微分方程求解方法", "asset_type": "video", "content": {"title": "高阶常系数线性齐次微分方程求解方法", "outline": [{"heading": "高阶常系数线性齐次微分方程的基本概念与特征方程", "anchor": 0.02, "summary": "介绍n阶常系数线性齐次微分方程的形式，并说明其求解的基本思路与二阶方程一致，即通过特征方程进行求解。", "sub_points": [{"heading": "方程形式与特征方程的定义", "anchor": 0.02, "summary": "假设有一个n阶的线性齐次方程，其系数a1到an都是常数。求解的第一步是写出其特征方程。"}, {"heading": "特征方程的构造方法", "anchor": 7.48, "summary": "特征方程的写法与二阶方程一致，将y的若干阶导数替换为r的若干次方。具体形式为：r^n + a1*r^(n-1) + ... + an-1*r + an = 0。"}]}, {"heading": "特征根与解的对应关系", "anchor": 41.52, "summary": "根据特征方程的根的情况，列出对应的解的情况，包括单实根、k重实根、单复根和k重复根四种情形。", "sub_points": [{"heading": "单实根对应的解", "anchor": 67.64, "summary": "如果有一个单实根r，则对应一个解：e^(r*x)。"}, {"heading": "k重实根对应的解", "anchor": 81.28, "summary": "如果有一个k重实根r，则对应k个解：e^(r*x), x*e^(r*x), x^2*e^(r*x), ..., x^(k-1)*e^(r*x)。"}, {"heading": "单复根对应的解", "anchor": 129.3, "summary": "如果有一对单复根α±iβ，则对应两个解：e^(α*x)*cos(β*x) 和 e^(α*x)*sin(β*x)。"}, {"heading": "k重复根对应的解", "anchor": 160.39, "summary": "如果有一对k重复根α±iβ，则对应2k个解：在e^(α*x)*cos(β*x)和e^(α*x)*sin(β*x)的基础上，分别乘以x, x^2, ..., x^(k-1)。"}]}, {"heading": "通解的构造与理论总结", "anchor": 239.79, "summary": "总结n阶方程的特征方程有n个根（重根按重数计算），根据这些根可以写出n个线性无关的解，通过线性组合得到原方程的通解。", "sub_points": [{"heading": "根的个数与解的个数关系", "anchor": 242.23, "summary": "n阶方程的特征方程是n次的，共有n个根（重根按重数计算），对应n个解。"}, {"heading": "通解的构造方法", "anchor": 253.09, "summary": "根据特征根写出对应的解，这些解是线性无关的，将它们进行线性组合即可得到原方程的通解。"}]}, {"heading": "实例分析：四阶常系数线性齐次方程求解", "anchor": 298.9, "summary": "通过一个具体例子演示高阶方程的求解过程：写出特征方程，求解特征根，根据根的情况写出对应的解，最后组合得到通解。", "sub_points": [{"heading": "问题描述与特征方程建立", "anchor": 303.4, "summary": "求解方程：y'''' - 2y''' + 5y'' = 0。首先写出特征方程：r^4 - 2r^3 + 5r^2 = 0。"}, {"heading": "特征根求解", "anchor": 340.56, "summary": "特征方程可整理为r^2*(r^2 - 2r + 5) = 0。解得：二重实根r1=r2=0；一对共轭单复根r3,4=1±2i。"}, {"heading": "根据特征根写出对应解", "anchor": 412.03, "summary": "对于二重实根0，对应两个解：1和x。对于单复根1±2i（α=1, β=2），对应两个解：e^x*cos(2x)和e^x*sin(2x)。"}, {"heading": "通解的组合", "anchor": 478.16, "summary": "将四个解线性组合，得到通解：y = c1*1 + c2*x + c3*e^x*cos(2x) + c4*e^x*sin(2x)。"}]}, {"heading": "高阶方程与二阶方程的对比与学习建议", "anchor": 496.98, "summary": "比较高阶方程与二阶方程理论的一致性，指出高阶方程在特征根个数、解的数量及特征方程求解难度上可能增加，建议以掌握二阶方程为主，高阶方程作了解。", "sub_points": [{"heading": "理论与方法的一致性", "anchor": 499.34, "summary": "高阶方程的理论和二阶方程基本一致，主要区别在于特征根的个数和解的个数可能更多。"}, {"heading": "求解难度的差异", "anchor": 507.86, "summary": "高阶方程的特征方程求解难度可能增加（如四次或更高次方程），而二阶方程的特征方程是二次的，相对简单。"}, {"heading": "学习重点与建议", "anchor": 530.22, "summary": "在线性方程部分，应以掌握二阶方程的解法为主，高阶方程只需了解并会求解简单情况即可。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 03:58:05 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)", "asset_type": "pdf", "content": {"title": "高阶线性微分方程", "outline": [{"heading": "高阶线性微分方程概述", "anchor": 0, "summary": "本节讨论高阶线性微分方程，包括其概念、解的性质与结构，以及常系数高阶线性微分方程的求解方法。", "sub_points": [{"heading": "高阶线性微分方程举例", "anchor": 0, "summary": "通过弹簧机械振动和RLC电路两个例子，引出二阶线性微分方程的具体形式。"}, {"heading": "高阶线性微分方程的一般形式", "anchor": 2, "summary": "n阶线性微分方程的一般形式为：若p₀(t)≠0，可写成标准形式，其中F(t)不恒为零时为非齐次方程，F(t)≡0时为齐次方程。"}, {"heading": "解的存在唯一性定理", "anchor": 3, "summary": "若方程系数及F(t)在区间内连续，则存在唯一满足初值条件的解。"}]}, {"heading": "线性微分方程解的结构", "anchor": 3, "summary": "讨论线性齐次和非齐次微分方程解的结构性质，包括解的叠合性、线性无关性及通解表示。", "sub_points": [{"heading": "线性齐次微分方程解的结构", "anchor": 3, "summary": "引入线性微分算子L，讨论其性质（如L(0)=0，线性性），以及解的叠合性定理：若x₁,...,xₙ是齐次方程的解，则其线性组合也是解。"}, {"heading": "线性相关与线性无关", "anchor": 4, "summary": "定义函数组的线性相关与线性无关。例如，函数组1, x, x²,..., xⁿ⁻¹在任何区间上线性无关。"}, {"heading": "齐次方程的通解结构", "anchor": 6, "summary": "若求得n个线性无关的特解，则通解为这些特解的线性组合。关键在于寻找线性无关的特解。"}, {"heading": "Wronski行列式与线性无关判别", "anchor": 6, "summary": "解组线性无关的充要条件是存在一点t₀，使Wronski行列式w(t₀)≠0。对于方程的解，w(t)要么恒不为零，要么恒为零。"}, {"heading": "线性非齐次方程解的结构", "anchor": 9, "summary": "非齐次方程的通解等于其任一特解加上对应齐次方程的通解。通解包括了全部解。"}, {"heading": "非齐次方程解的叠加性", "anchor": 10, "summary": "若x₁和x₂分别为非齐次方程L(x)=F₁(t)和L(x)=F₂(t)的解，则x₁+x₂是方程L(x)=F₁(t)+F₂(t)的解。"}]}, {"heading": "高阶常系数线性齐次微分方程的解法", "anchor": 10, "summary": "针对常系数线性方程，通过代数运算求解，以二阶方程为例讲解待定系数法。", "sub_points": [{"heading": "常系数线性方程的定义", "anchor": 10, "summary": "当方程系数均为常数时，称为常系数线性微分方程。"}, {"heading": "二阶常系数线性齐次方程的求解", "anchor": 10, "summary": "一般形式为x''+a₁x'+a₂x=0，使用待定系数法，设解为指数函数形式，通过代入方程确定系数。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:01:29 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 138.09s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:02:03 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 34.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:02:31 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 28.01s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:02:55 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 24.24s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:02:55 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:03:16 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "高阶常系数齐次线性微分方程求解方法", "asset_type": "video", "content": {"title": "高阶常系数线性齐次微分方程解法", "outline": [{"heading": "高阶常系数线性齐次方程的特征方程", "anchor": 0.02, "summary": "介绍n阶常系数线性齐次方程的特征方程形式，其写法与二阶方程一致，将y的导数替换为r的幂次。", "sub_points": [{"heading": "特征方程的构造", "anchor": 7.48, "summary": "求解高阶方程的第一步是写出特征方程，思路与二阶方程相同。"}, {"heading": "特征方程的具体形式", "anchor": 23.3, "summary": "特征方程为r^n + a1*r^(n-1) + ... + an-1*r + an = 0。"}]}, {"heading": "特征根与解的对应关系", "anchor": 41.52, "summary": "根据特征方程的根（单实根、重实根、单复根、重复根）列出对应的解的形式，并总结根与解的数量关系。", "sub_points": [{"heading": "单实根对应的解", "anchor": 67.64, "summary": "若有一个单实根r，则对应一个解e^(r*x)。"}, {"heading": "k重实根对应的解", "anchor": 81.28, "summary": "若有一个k重实根r，则对应k个解：e^(r*x), x*e^(r*x), x^2*e^(r*x), ..., x^(k-1)*e^(r*x)。"}, {"heading": "单复根对应的解", "anchor": 129.3, "summary": "若有一对单复根α±iβ，则对应两个解：e^(α*x)*cos(β*x)和e^(α*x)*sin(β*x)。"}, {"heading": "k重复根对应的解", "anchor": 160.41, "summary": "若有一对k重复根α±iβ，则对应2k个解：在e^(α*x)*cos(β*x)和e^(α*x)*sin(β*x)基础上，分别乘以x, x^2, ..., x^(k-1)。"}, {"heading": "根与解的数量关系", "anchor": 230.69, "summary": "n阶方程有n个根（重根按重数计），对应n个线性无关的解，其线性组合构成通解。"}]}, {"heading": "求解步骤与示例", "anchor": 272.53, "summary": "通过一个四阶常系数线性齐次方程示例，演示求解过程：写出特征方程、求特征根、根据根写出对应解、线性组合得通解。", "sub_points": [{"heading": "示例方程", "anchor": 303.56, "summary": "求解方程y'''' - 2y''' + 5y'' = 0。"}, {"heading": "特征方程与根", "anchor": 328.72, "summary": "特征方程为r^4 - 2r^3 + 5r^2 = 0，分解为r^2*(r^2 - 2r + 5) = 0，得到二重实根r1=r2=0和一对单复根r3,4=1±2i。"}, {"heading": "根据根写解", "anchor": 412.43, "summary": "二重实根0对应解1和x；单复根1±2i（α=1, β=2）对应解e^x*cos(2x)和e^x*sin(2x)。"}, {"heading": "通解", "anchor": 481.38, "summary": "通解为y = c1*1 + c2*x + c3*e^x*cos(2x) + c4*e^x*sin(2x)。"}]}, {"heading": "高阶方程与二阶方程的对比与学习重点", "anchor": 497.92, "summary": "总结高阶方程解法与二阶方程的一致性，指出高阶方程特征根更多、求解可能更复杂，强调以掌握二阶方程为主，高阶方程作了解。", "sub_points": [{"heading": "理论与方法的一致性", "anchor": 497.92, "summary": "高阶方程解法与二阶方程基本一致，均基于特征方程和特征根。"}, {"heading": "高阶方程的复杂性", "anchor": 503.28, "summary": "高阶方程特征根更多，特征方程求解难度可能增加（如四次或更高次方程）。"}, {"heading": "学习重点", "anchor": 527.92, "summary": "重点掌握二阶常系数线性齐次方程的解法，高阶方程作了解，会求解简单情况即可。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 05:03:50 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)", "asset_type": "pdf", "content": {"title": "高阶线性微分方程", "outline": [{"heading": "高阶线性微分方程概述", "anchor": 0, "summary": "介绍高阶线性微分方程的基本概念、与一阶方程的区别，以及本节讨论的主要内容，包括解的性质、结构和常系数方程的求解方法。", "sub_points": [{"heading": "高阶线性微分方程的定义与举例", "anchor": 0, "summary": "高阶线性微分方程是指未知函数及其各阶导数均为一次的方程。通过弹簧机械振动和RLC电路两个实例，建立并展示了二阶线性微分方程的具体形式。"}, {"heading": "方程的一般形式与分类", "anchor": 2, "summary": "n阶线性微分方程的一般形式为：x^(n) + P1(t)x^(n-1) + ... + Pn(t)x = F(t)。当F(t)恒为零时为齐次方程，否则为非齐次方程。"}, {"heading": "解的存在唯一性定理", "anchor": 3, "summary": "若方程系数P1(t),..., Pn(t)及F(t)在区间(a,b)内连续，则对于任意初始条件，方程存在唯一的解。"}]}, {"heading": "线性微分方程解的结构", "anchor": 3, "summary": "详细阐述线性齐次和非齐次微分方程解的基本性质与结构，包括解的叠合性、线性无关性、通解形式以及Wronski行列式的判别作用。", "sub_points": [{"heading": "线性齐次方程解的结构", "anchor": 3, "summary": "引入线性微分算子L，其具有线性性质。解的叠合性定理表明：若x1,..., xn是齐次方程的解，则其线性组合也是解。平凡解x(t)≡0总是齐次方程的解。"}, {"heading": "线性相关与线性无关", "anchor": 4, "summary": "定义函数组的线性相关与线性无关。线性相关意味着存在不全为零的常数使线性组合恒为零；否则为线性无关。线性无关是构成通解的基础。"}, {"heading": "齐次方程的通解结构", "anchor": 6, "summary": "定理2.2和2.4指出：若找到n阶齐次方程的n个线性无关特解x1,..., xn，则其通解为x = C1x1 + ... + Cnxn，且该通解包含了方程的全部解。"}, {"heading": "Wronski行列式与线性无关判别", "anchor": 6, "summary": "定理2.3：对于齐次方程的n个解，它们在区间I上线性无关的充要条件是，存在一点t0 ∈ I，使得其Wronski行列式w(t0) ≠ 0。若解线性相关，则w(t)恒为零。"}, {"heading": "线性非齐次方程解的结构", "anchor": 9, "summary": "定理2.5：设x̄是非齐次方程的一个特解，X是对应齐次方程的通解，则非齐次方程的通解为x = X + x̄。此通解也包含了非齐次方程的全部解。定理2.6描述了非齐次方程解的叠加性质。"}]}, {"heading": "高阶常系数线性齐次微分方程的解法", "anchor": 10, "summary": "针对系数为常数的线性齐次方程，介绍其求解方法。重点以二阶方程为例，说明如何通过代数运算（特征方程法）求通解，并指出该方法可推广至高阶方程。", "sub_points": [{"heading": "常系数线性方程的定义", "anchor": 10, "summary": "当线性微分方程中的系数P1,..., Pn均为常数时，称为常系数线性微分方程。"}, {"heading": "二阶常系数齐次方程的解法思路", "anchor": 10, "summary": "以二阶方程x'' + a1x' + a2x = 0为例，采用待定系数法，尝试设解为指数函数形式x = e^(λt)，通过代入方程转化为代数问题求解。"}]}, {"heading": "应用问题示例", "anchor": 0, "summary": "素材开头部分给出了几个具体的微分方程应用问题，涉及肿瘤生长模型、冷却定律破案问题等，作为建立和求解微分方程的实际背景。", "sub_points": [{"heading": "肿瘤生长模型", "anchor": 0, "summary": "问题(1)：设肿瘤体积V随时间t的增长率与V成正比（比例系数k为常数），求V(t)及倍增时间。问题(2)：比例系数k本身随时间减少，且减少速率与k成正比，求V(t)、倍增时间及体积上限。"}, {"heading": "冷却定律与破案问题", "anchor": 0, "summary": "应用Newton冷却定律（物体冷却速率与温差成正比），通过测量尸体温度变化的时间数据，结合室温恒定，建立微分方程模型，以推断死亡时间，从而分析犯罪嫌疑人张某的作案可能性。"}, {"heading": "函数方程与微分方程", "anchor": 0, "summary": "问题3和4：给定函数满足的积分方程或函数方程，要求导出该函数所满足的微分方程并求解。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:10:11 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 0.05s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:10:11 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 0.24s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:10:15 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 3.83s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:10:29 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 14.31s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:10:29 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:11:45 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 0.05s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:12:24 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 39.10s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:12:55 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 31.01s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:13:17 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 21.58s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:13:17 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:13:45 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "高阶常系数齐次线性微分方程求解方法", "asset_type": "video", "content": {"title": "高阶常系数线性齐次微分方程的解法", "outline": [{"heading": "高阶常系数线性齐次微分方程的特征方程", "anchor": 0.02, "summary": "介绍n阶常系数线性齐次微分方程的特征方程形式及其与二阶方程的相似性", "sub_points": [{"heading": "特征方程的写法", "anchor": 7.48, "summary": "解法基本思路与二阶方程一致，第一步是写出特征方程"}, {"heading": "特征方程的具体形式", "anchor": 14.76, "summary": "将y的各阶导数替换为r的相应次幂，得到特征方程：r^n + a1*r^(n-1) + ... + an-1*r + an = 0"}]}, {"heading": "特征根与解的对应关系", "anchor": 41.52, "summary": "根据特征根的不同情况（单实根、重实根、单复根、重复根）列出对应的解的形式", "sub_points": [{"heading": "单实根的情况", "anchor": 67.64, "summary": "若有一个单实根r，对应一个解：e^(r*x)"}, {"heading": "k重实根的情况", "anchor": 81.28, "summary": "若有一个k重实根r，对应k个解：e^(r*x), x*e^(r*x), x^2*e^(r*x), ..., x^(k-1)*e^(r*x)"}, {"heading": "单复根的情况", "anchor": 129.3, "summary": "若有一对单复根α±iβ，对应两个解：e^(α*x)*cos(β*x) 和 e^(α*x)*sin(β*x)"}, {"heading": "k重复根的情况", "anchor": 160.39, "summary": "若有一对k重复根α±iβ，对应2k个解：在单复根解的基础上分别乘以x, x^2, ..., x^(k-1)"}]}, {"heading": "通解的构成", "anchor": 230.69, "summary": "总结n阶方程的特征根个数与解的关系，以及如何通过线性组合得到通解", "sub_points": [{"heading": "根与解的个数关系", "anchor": 235.83, "summary": "特征方程是n次的，有n个根（重根按重数计），对应n个解"}, {"heading": "解的线性无关性", "anchor": 259.45, "summary": "这些解是线性无关的"}, {"heading": "通解的获得", "anchor": 266.25, "summary": "将这些解线性组合，得到原方程的通解"}]}, {"heading": "例题解析", "anchor": 298.72, "summary": "通过一个四阶常系数线性齐次微分方程的实例，演示求解过程", "sub_points": [{"heading": "例题与特征方程", "anchor": 303.48, "summary": "求解方程：y'''' - 2y''' + 5y'' = 0，写出特征方程：r^4 - 2r^3 + 5r^2 = 0"}, {"heading": "特征根的求解", "anchor": 340.54, "summary": "因式分解得：r^2*(r^2 - 2r + 5) = 0，得到二重实根r1=r2=0和一对共轭单复根r3,4=1±2i"}, {"heading": "对应解的写出", "anchor": 412.45, "summary": "二重实根0对应解：1和x；单复根1±2i对应解：e^x*cos(2x)和e^x*sin(2x)"}, {"heading": "通解的得出", "anchor": 475.0, "summary": "线性组合得通解：y = c1*1 + c2*x + c3*e^x*cos(2x) + c4*e^x*sin(2x)"}]}, {"heading": "总结与重点", "anchor": 497.56, "summary": "总结高阶方程与二阶方程解法的一致性，指出学习重点和难点", "sub_points": [{"heading": "与二阶方程的一致性", "anchor": 497.56, "summary": "高阶方程的理论与二阶方程基本一致，主要在特征根和解的个数上更多"}, {"heading": "求解难点", "anchor": 508.82, "summary": "特征方程可能更高阶（如四次、五次），求解难度增加"}, {"heading": "学习重点", "anchor": 527.1, "summary": "常微分方程线性部分以二阶方程为主，需重点掌握；高阶方程作了解，会解简单问题即可"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:27:26 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 139.95s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:27:26 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 0.24s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:27:30 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 3.86s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:27:50 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 20.31s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:27:50 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:28:06 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)", "asset_type": "pdf", "content": {"title": "高阶线性微分方程", "outline": [{"heading": "高阶线性微分方程概述", "anchor": 0, "summary": "介绍高阶线性微分方程的概念、在科学技术中的重要性，以及本节的主要内容，包括高阶线性微分方程的有关概念、解的性质和结构，以及常系数高阶线性微分方程的求解方法。", "sub_points": [{"heading": "高阶线性微分方程举例", "anchor": 0, "summary": "通过弹簧的机械振动和RLC电路中的电压变化规律两个例子，引出二阶线性微分方程的具体形式，并说明其物理背景。"}, {"heading": "高阶线性微分方程的一般形式", "anchor": 2, "summary": "给出n阶线性微分方程的一般形式，区分线性齐次方程和线性非齐次方程，并说明初值条件的一般形式。"}, {"heading": "解的存在唯一性定理", "anchor": 3, "summary": "在系数和自由项连续的条件下，n阶线性微分方程存在唯一的满足给定初值条件的解。"}]}, {"heading": "线性微分方程解的结构", "anchor": 3, "summary": "深入探讨线性齐次方程和线性非齐次方程解的结构理论，包括解的叠合性、线性无关性、通解结构以及Wronski行列式的作用。", "sub_points": [{"heading": "线性齐次微分方程解的结构", "anchor": 3, "summary": "引入线性微分算子，讨论其性质，并证明解的叠合性定理：线性齐次方程解的线性组合仍是解。"}, {"heading": "线性相关与线性无关", "anchor": 4, "summary": "定义函数组的线性相关与线性无关，并举例说明如何判断线性无关，强调线性无关特解对构成通解的关键作用。"}, {"heading": "线性齐次方程的通解结构", "anchor": 6, "summary": "证明若找到n个线性无关的特解，则其线性组合（含n个任意常数）即为通解，且通解包含了全部解。"}, {"heading": "线性非齐次方程解的结构", "anchor": 9, "summary": "证明线性非齐次方程的通解等于其一个特解加上对应齐次方程的通解，且此通解包含了全部解。"}, {"heading": "解的叠加原理（非齐次情形）", "anchor": 10, "summary": "若x1和x2分别是非齐次方程L(x)=F1(t)和L(x)=F2(t)的解，则x1+x2是方程L(x)=F1(t)+F2(t)的解。"}]}, {"heading": "高阶常系数线性齐次微分方程的解法", "anchor": 10, "summary": "针对系数为常数的线性齐次方程，介绍其解法。以二阶方程为例，说明通过代数运算（特征方程法）求解通解的基本思路。", "sub_points": [{"heading": "常系数线性方程的定义", "anchor": 10, "summary": "当线性微分方程的系数均为常数时，称为常系数线性微分方程。"}, {"heading": "二阶常系数线性齐次方程的解法思路", "anchor": 10, "summary": "以二阶方程为例，说明采用待定系数法（设解为指数函数形式）来求解常系数线性齐次方程的基本方法。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:03 2026
+Script: services/doc_parser/pdf_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 141.01s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:03 2026
+Script: services/video_vision/video_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 0.23s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:07 2026
+Script: services/audio_pro/audio_wrapper.py
+Params: {"mode": "all"}
+Exit_Code: 0
+Duration: 3.72s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:27 2026
+Script: data_layer/data_wrapper.py
+Params: {"target_type": "all", "force_reset": false}
+Exit_Code: 0
+Duration: 20.48s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:27 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "come"}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------
+--- [SUBPROCESS_INVOCATION] ---
+Timestamp: Mon Feb 16 06:35:46 2026
+Script: data_layer/messenger_wrapper.py
+Params: {"mode": "back", "asset_id": "工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)", "asset_type": "pdf", "content": {"title": "高阶线性微分方程", "outline": [{"heading": "高阶线性微分方程概述", "anchor": 0, "summary": "介绍高阶线性微分方程的基本概念、与一阶方程的区别，以及本节的主要内容，包括解的性质、结构和常系数方程的求解方法。", "sub_points": [{"heading": "高阶线性微分方程的定义与举例", "anchor": 0, "summary": "高阶线性微分方程是指未知函数及其各阶导数均为一次的方程。本节通过弹簧机械振动和RLC电路两个实例，推导出相应的二阶线性微分方程，展示其在科学技术中的应用。"}, {"heading": "方程的一般形式与分类", "anchor": 2, "summary": "n阶线性微分方程的一般形式为：x^{(n)} + P_1(t)x^{(n-1)} + ... + P_n(t)x = F(t)。当F(t)恒为零时为齐次方程，否则为非齐次方程。同时介绍了初值条件的一般形式。"}, {"heading": "解的存在唯一性定理", "anchor": 3, "summary": "若系数P_i(t)和F(t)在区间(a,b)内连续，则对于给定的初值条件，方程存在唯一的解。此定理保证了线性微分方程解的良好性质。"}]}, {"heading": "线性微分方程解的结构", "anchor": 3, "summary": "详细阐述线性齐次和非齐次微分方程解的结构理论，包括解的叠合性、线性无关性、Wronski行列式以及通解的构成。", "sub_points": [{"heading": "线性齐次方程解的结构", "anchor": 3, "summary": "引入线性微分算子L，其具有线性性质。定理2.1（解的叠合性）指出：若x_1, ..., x_n是齐次方程的解，则它们的线性组合也是解。平凡解（恒为零）也是解。"}, {"heading": "线性无关与通解", "anchor": 4, "summary": "定义函数组的线性相关与线性无关。定理2.2指出：若找到n个线性无关的特解，则其线性组合构成齐次方程的通解。通解包含了方程的全部解。"}, {"heading": "Wronski行列式与线性无关判别", "anchor": 6, "summary": "定理2.3给出解组线性无关的充要条件：存在一点t_0，使得由解及其导数在t_0处构成的Wronski行列式w(t_0)不为零。对于方程的解，w(t)要么恒不为零，要么恒为零。"}, {"heading": "线性非齐次方程解的结构", "anchor": 9, "summary": "定理2.5指出：非齐次方程的通解等于它的一个特解加上对应齐次方程的通解。该通解也包含了非齐次方程的全部解。定理2.6说明解的可叠加性适用于非齐次项。"}]}, {"heading": "高阶常系数线性齐次微分方程的解法", "anchor": 10, "summary": "针对系数为常数的线性齐次方程，介绍其求解方法。本节以二阶方程为例，说明如何通过代数运算（特征方程法）求通解，该方法可推广至n阶方程。", "sub_points": [{"heading": "常系数线性方程的定义", "anchor": 10, "summary": "当方程中的系数P_1, ..., P_n均为常数时，称为常系数线性微分方程。二阶常系数齐次方程的一般形式为：x'' + a_1 x' + a_2 x = 0，其中a_1, a_2为常数。"}, {"heading": "待定系数法（指数函数试探法）", "anchor": 10, "summary": "由于指数函数求导后仍为指数函数，可设解的形式为x = e^{λt}，代入方程后转化为关于λ的代数方程（特征方程），通过求解特征根来确定通解的具体形式。"}]}]}}
+Exit_Code: 0
+Duration: 0.04s
+-------------------------------

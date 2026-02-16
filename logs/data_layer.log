@@ -135,3 +135,219 @@ The image processor of type `CLIPImageProcessor` is now loaded as a fast process
 2026-02-15 17:17:10,866 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
 2026-02-15 17:17:10,947 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
 2026-02-15 17:17:12,447 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 19.67s =========
+2026-02-16 03:56:48,885 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 03:56:48,885 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 03:56:48,885 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 03:56:51,355 - CLIPWorker - INFO - >>> [PROCESS] Processing new document: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 03:56:51,804 - CLIPWorker - INFO - --- Offline mode enabled, loading CLIP weights: /home/liangqing/AcademicAgent-Suite/models/clip ---
+2026-02-16 03:56:53,594 - CLIPWorker - INFO - Document 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) features saved successfully
+2026-02-16 03:56:54,083 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 03:56:55,583 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 03:56:58 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 03:56:58 - [VideoExpert] - INFO - 🚀 [START] Processing video: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 03:56:58 - [VideoExpert] - INFO - --- Loading CLIP weights (Device: cuda): /home/liangqing/AcademicAgent-Suite/models/clip ---
+CLIPModel LOAD REPORT from: /home/liangqing/AcademicAgent-Suite/models/clip
+Key                                  | Status     |  | 
+-------------------------------------+------------+--+-
+vision_model.embeddings.position_ids | UNEXPECTED |  | 
+text_model.embeddings.position_ids   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+The image processor of type `CLIPImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+2026-02-16 03:56:59 - [VideoExpert] - INFO -   Progress: 0/51 frames completed...
+2026-02-16 03:56:59 - [VideoExpert] - INFO -   Progress: 10/51 frames completed...
+2026-02-16 03:57:00 - [VideoExpert] - INFO -   Progress: 20/51 frames completed...
+2026-02-16 03:57:00 - [VideoExpert] - INFO -   Progress: 30/51 frames completed...
+2026-02-16 03:57:01 - [VideoExpert] - INFO -   Progress: 40/51 frames completed...
+2026-02-16 03:57:01 - [VideoExpert] - INFO -   Progress: 50/51 frames completed...
+2026-02-16 03:57:01 - [VideoExpert] - INFO - ✅ [DONE] 高阶常系数齐次线性微分方程求解方法 Processing complete.
+2026-02-16 03:57:02,305 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 03:57:03,806 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 03:57:04,226 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 03:57:07,558 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 03:57:07,652 - [UnifiedIngestor] - INFO - ✅ [DONE] PDF 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) ingestion complete (including image uploads)
+2026-02-16 03:57:07,915 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 03:57:10,927 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 03:57:11,010 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 03:57:12,510 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 23.62s =========
+2026-02-16 04:30:18,241 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 04:30:18,241 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 04:30:18,241 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 04:30:20,664 - CLIPWorker - INFO - >>> [PROCESS] Processing new document: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 04:30:21,114 - CLIPWorker - INFO - --- Offline mode enabled, loading CLIP weights: /home/liangqing/AcademicAgent-Suite/models/clip ---
+2026-02-16 04:30:23,155 - CLIPWorker - INFO - Document 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) features saved successfully
+2026-02-16 04:30:23,690 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 04:30:25,191 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 04:30:27 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 04:30:27 - [VideoExpert] - INFO - ⏭️  [SKIP] 高阶常系数齐次线性微分方程求解方法 Binding data already exists.
+2026-02-16 04:30:28,018 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 04:30:29,519 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 04:30:29,934 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 04:30:33,469 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 04:30:33,573 - [UnifiedIngestor] - INFO - ✅ [DONE] PDF 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) ingestion complete (including image uploads)
+2026-02-16 04:30:33,843 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 04:30:36,852 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 04:30:36,934 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 04:30:38,434 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 20.19s =========
+2026-02-16 05:02:31,301 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 05:02:31,301 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 05:02:31,301 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 05:02:33,818 - CLIPWorker - INFO - >>> [PROCESS] Processing new document: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 05:02:34,282 - CLIPWorker - INFO - --- Offline mode enabled, loading CLIP weights: /home/liangqing/AcademicAgent-Suite/models/clip ---
+2026-02-16 05:02:36,359 - CLIPWorker - INFO - Document 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) features saved successfully
+2026-02-16 05:02:36,921 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 05:02:38,422 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 05:02:40 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 05:02:40 - [VideoExpert] - INFO - 🚀 [START] Processing video: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 05:02:40 - [VideoExpert] - INFO - --- Loading CLIP weights (Device: cuda): /home/liangqing/AcademicAgent-Suite/models/clip ---
+CLIPModel LOAD REPORT from: /home/liangqing/AcademicAgent-Suite/models/clip
+Key                                  | Status     |  | 
+-------------------------------------+------------+--+-
+text_model.embeddings.position_ids   | UNEXPECTED |  | 
+vision_model.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+The image processor of type `CLIPImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+2026-02-16 05:02:42 - [VideoExpert] - INFO -   Progress: 0/51 frames completed...
+2026-02-16 05:02:42 - [VideoExpert] - INFO -   Progress: 10/51 frames completed...
+2026-02-16 05:02:43 - [VideoExpert] - INFO -   Progress: 20/51 frames completed...
+2026-02-16 05:02:43 - [VideoExpert] - INFO -   Progress: 30/51 frames completed...
+2026-02-16 05:02:44 - [VideoExpert] - INFO -   Progress: 40/51 frames completed...
+2026-02-16 05:02:44 - [VideoExpert] - INFO -   Progress: 50/51 frames completed...
+2026-02-16 05:02:44 - [VideoExpert] - INFO - ✅ [DONE] 高阶常系数齐次线性微分方程求解方法 Processing complete.
+2026-02-16 05:02:45,319 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 05:02:46,819 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 05:02:47,226 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 05:02:50,560 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 05:02:50,661 - [UnifiedIngestor] - INFO - ✅ [DONE] PDF 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) ingestion complete (including image uploads)
+2026-02-16 05:02:50,927 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 05:02:53,936 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 05:02:54,012 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 05:02:55,512 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 24.21s =========
+2026-02-16 06:10:15,241 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 06:10:15,241 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 06:10:15,241 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 06:10:18,054 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 06:10:19,555 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 06:10:22 - [VideoExpert] - INFO - 🔍 Found 0 video assets pending treatment...
+2026-02-16 06:10:22,412 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 06:10:23,912 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 06:10:24,317 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 06:10:27,449 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 06:10:27,953 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 06:10:28,025 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 06:10:29,526 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 14.28s =========
+2026-02-16 06:12:55,775 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 06:12:55,775 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 06:12:55,775 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 06:12:58,663 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 06:13:00,163 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 06:13:02 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 06:13:02 - [VideoExpert] - INFO - 🚀 [START] Processing video: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 06:13:02 - [VideoExpert] - INFO - --- Loading CLIP weights (Device: cuda): /home/liangqing/AcademicAgent-Suite/models/clip ---
+CLIPModel LOAD REPORT from: /home/liangqing/AcademicAgent-Suite/models/clip
+Key                                  | Status     |  | 
+-------------------------------------+------------+--+-
+vision_model.embeddings.position_ids | UNEXPECTED |  | 
+text_model.embeddings.position_ids   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+The image processor of type `CLIPImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+2026-02-16 06:13:03 - [VideoExpert] - INFO -   Progress: 0/51 frames completed...
+2026-02-16 06:13:04 - [VideoExpert] - INFO -   Progress: 10/51 frames completed...
+2026-02-16 06:13:04 - [VideoExpert] - INFO -   Progress: 20/51 frames completed...
+2026-02-16 06:13:05 - [VideoExpert] - INFO -   Progress: 30/51 frames completed...
+2026-02-16 06:13:05 - [VideoExpert] - INFO -   Progress: 40/51 frames completed...
+2026-02-16 06:13:06 - [VideoExpert] - INFO -   Progress: 50/51 frames completed...
+2026-02-16 06:13:06 - [VideoExpert] - INFO - ✅ [DONE] 高阶常系数齐次线性微分方程求解方法 Processing complete.
+2026-02-16 06:13:06,981 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 06:13:08,481 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 06:13:08,909 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 06:13:12,446 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 06:13:12,721 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 06:13:15,731 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 06:13:15,823 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 06:13:17,324 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 21.55s =========
+2026-02-16 06:27:30,149 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 06:27:30,149 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 06:27:30,149 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 06:27:32,629 - CLIPWorker - INFO - >>> [PROCESS] Processing new document: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 06:27:33,085 - CLIPWorker - INFO - --- Offline mode enabled, loading CLIP weights: /home/liangqing/AcademicAgent-Suite/models/clip ---
+2026-02-16 06:27:35,204 - CLIPWorker - INFO - Document 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) features saved successfully
+2026-02-16 06:27:35,843 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 06:27:37,345 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 06:27:39 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 06:27:39 - [VideoExpert] - INFO - ⏭️  [SKIP] 高阶常系数齐次线性微分方程求解方法 Binding data already exists.
+2026-02-16 06:27:40,208 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 06:27:41,708 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 06:27:42,112 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 06:27:45,446 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 06:27:45,555 - [UnifiedIngestor] - INFO - ✅ [DONE] PDF 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) ingestion complete (including image uploads)
+2026-02-16 06:27:45,816 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 06:27:48,829 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 06:27:48,931 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 06:27:50,431 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 20.28s =========
+2026-02-16 06:35:07,135 - [DATA-MANAGER] - INFO - DataManager initialized. Logs will be exported to: /home/liangqing/AcademicAgent-Suite/logs/data_layer.log
+2026-02-16 06:35:07,135 - [DATA-MANAGER] - INFO - ========= Starting Ingestion Pipeline (Target: all) =========
+2026-02-16 06:35:07,135 - [DATA-MANAGER] - INFO - --- [START] PDF Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_pdf.py ====================
+2026-02-16 06:35:09,706 - CLIPWorker - INFO - >>> [PROCESS] Processing new document: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 06:35:10,163 - CLIPWorker - INFO - --- Offline mode enabled, loading CLIP weights: /home/liangqing/AcademicAgent-Suite/models/clip ---
+2026-02-16 06:35:12,282 - CLIPWorker - INFO - Document 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) features saved successfully
+2026-02-16 06:35:12,943 - [DATA-MANAGER] - INFO - --- [FINISHED] PDF Vectorization ---
+2026-02-16 06:35:14,444 - [DATA-MANAGER] - INFO - --- [START] Video Vectorization ---
+
+==================== Subprocess Log: data_layer/clip_worker_video.py ====================
+2026-02-16 06:35:16 - [VideoExpert] - INFO - 🔍 Found 1 video assets pending treatment...
+2026-02-16 06:35:16 - [VideoExpert] - INFO - ⏭️  [SKIP] 高阶常系数齐次线性微分方程求解方法 Binding data already exists.
+2026-02-16 06:35:17,336 - [DATA-MANAGER] - INFO - --- [FINISHED] Video Vectorization ---
+2026-02-16 06:35:18,836 - [DATA-MANAGER] - INFO - --- [START] Database Ingestion ---
+
+==================== Subprocess Log: data_layer/milvus_ingestor.py ====================
+2026-02-16 06:35:19,255 - [UnifiedIngestor] - WARNING - ⚠️ Forced reset of collection: academic_multimodal_assets
+2026-02-16 06:35:22,590 - [UnifiedIngestor] - INFO - ✅ Unified Milvus Collection Loaded (with MinIO support)
+2026-02-16 06:35:22,701 - [UnifiedIngestor] - INFO - ✅ [DONE] PDF 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) ingestion complete (including image uploads)
+2026-02-16 06:35:22,983 - [UnifiedIngestor] - INFO - ✅ [DONE] Video 高阶常系数齐次线性微分方程求解方法 ingestion complete (Total 102 vector records)
+2026-02-16 06:35:25,994 - [UnifiedIngestor] - INFO - ✨ Data synchronization and MinIO mapping completed successfully
+2026-02-16 06:35:26,078 - [DATA-MANAGER] - INFO - --- [FINISHED] Database Ingestion ---
+2026-02-16 06:35:27,579 - [DATA-MANAGER] - INFO - ========= Pipeline Completed Successfully in 20.44s =========

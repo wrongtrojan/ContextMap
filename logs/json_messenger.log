@@ -37,3 +37,64 @@
 2026-02-15 17:17:34,912 [INFO] Main: Archiving result for pdf ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
 2026-02-15 17:17:34,912 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/summary_outline.json
 2026-02-15 17:17:34,912 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 03:57:12,551 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 03:57:12,553 [INFO] Main: Initiating global scan for increments...
+2026-02-16 03:57:12,554 [INFO] Main: Scan complete. Found 2 pending tasks.
+2026-02-16 03:57:12,554 [INFO] Main:     - ID: 高阶常系数齐次线性微分方程求解方法 | Type: video
+2026-02-16 03:57:12,554 [INFO] Main:     - ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) | Type: pdf
+2026-02-16 03:57:12,554 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 03:57:48,219 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 03:57:48,220 [INFO] Main: Archiving result for video ID: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 03:57:48,221 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法/summary_outline.json
+2026-02-16 03:57:48,221 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 03:58:05,893 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 03:58:05,895 [INFO] Main: Archiving result for pdf ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 03:58:05,895 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/summary_outline.json
+2026-02-16 03:58:05,895 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 05:02:55,553 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 05:02:55,554 [INFO] Main: Initiating global scan for increments...
+2026-02-16 05:02:55,555 [INFO] Main: Scan complete. Found 2 pending tasks.
+2026-02-16 05:02:55,555 [INFO] Main:     - ID: 高阶常系数齐次线性微分方程求解方法 | Type: video
+2026-02-16 05:02:55,555 [INFO] Main:     - ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) | Type: pdf
+2026-02-16 05:02:55,555 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 05:03:16,996 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 05:03:16,998 [INFO] Main: Archiving result for video ID: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 05:03:16,998 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法/summary_outline.json
+2026-02-16 05:03:16,998 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 05:03:50,553 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 05:03:50,554 [INFO] Main: Archiving result for pdf ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 05:03:50,554 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/summary_outline.json
+2026-02-16 05:03:50,554 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:10:29,567 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 06:10:29,568 [INFO] Main: Initiating global scan for increments...
+2026-02-16 06:10:29,569 [INFO] Main: Scan complete. Found 0 pending tasks.
+2026-02-16 06:10:29,569 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:13:17,364 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 06:13:17,366 [INFO] Main: Initiating global scan for increments...
+2026-02-16 06:13:17,366 [INFO] Main: Scan complete. Found 1 pending tasks.
+2026-02-16 06:13:17,366 [INFO] Main:     - ID: 高阶常系数齐次线性微分方程求解方法 | Type: video
+2026-02-16 06:13:17,366 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:13:45,335 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 06:13:45,336 [INFO] Main: Archiving result for video ID: 高阶常系数齐次线性微分方程求解方法
+2026-02-16 06:13:45,337 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法/summary_outline.json
+2026-02-16 06:13:45,337 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:27:50,472 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 06:27:50,473 [INFO] Main: Initiating global scan for increments...
+2026-02-16 06:27:50,473 [INFO] JsonMessenger: ⏭️  [Incremental] Skip 高阶常系数齐次线性微分方程求解方法, outline exists.
+2026-02-16 06:27:50,474 [INFO] Main: Scan complete. Found 1 pending tasks.
+2026-02-16 06:27:50,474 [INFO] Main:     - ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) | Type: pdf
+2026-02-16 06:27:50,474 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:28:06,294 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 06:28:06,295 [INFO] Main: Archiving result for pdf ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 06:28:06,296 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/summary_outline.json
+2026-02-16 06:28:06,296 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:35:27,622 [INFO] Main: ==================== Messenger Task (come) Started ====================
+2026-02-16 06:35:27,624 [INFO] Main: Initiating global scan for increments...
+2026-02-16 06:35:27,624 [INFO] JsonMessenger: ⏭️  [Incremental] Skip 高阶常系数齐次线性微分方程求解方法, outline exists.
+2026-02-16 06:35:27,624 [INFO] Main: Scan complete. Found 1 pending tasks.
+2026-02-16 06:35:27,624 [INFO] Main:     - ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2) | Type: pdf
+2026-02-16 06:35:27,624 [INFO] Main: ==================== Messenger Task Finished ====================
+2026-02-16 06:35:46,409 [INFO] Main: ==================== Messenger Task (back) Started ====================
+2026-02-16 06:35:46,411 [INFO] Main: Archiving result for pdf ID: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)
+2026-02-16 06:35:46,411 [INFO] Main: Data persisted to: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/summary_outline.json
+2026-02-16 06:35:46,411 [INFO] Main: ==================== Messenger Task Finished ====================

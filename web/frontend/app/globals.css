@@ -22,3 +22,10 @@
     color: var(--color-dracula-fg);
   }
 }
+@keyframes infinite-scroll {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(300%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 2s linear infinite;
+}

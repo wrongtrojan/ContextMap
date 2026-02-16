@@ -141,27 +141,39 @@ class CLIPWorker:
                             block_type = block.get("type", "")
                             block_bbox = block.get("bbox", [])
 
-                            if block_type in ["image", "table"] and "img_path" in block:
-                                img_relative_dir = block["img_path"]
-                                full_img_path = os.path.join(ocr_dir, img_relative_dir)
-                                if os.path.exists(full_img_path):
-                                    try:
-                                        image = Image.open(full_img_path).convert("RGB")
-                                        inputs = self.processor(images=image, return_tensors="pt").to(self.device)
-                                        with torch.no_grad():
-                                            outputs = self.model.get_image_features(**inputs)
-                                            embedding = self._get_aligned_embedding(outputs)
-                                        
-                                        img_name = os.path.basename(img_relative_dir)
-                                        doc_results["images"][img_name] = {
-                                            "type": block_type,
-                                            "page_idx": page_idx,
-                                            "text_slice": block.get("img_caption", "")[:50],
-                                            "embedding": embedding,
-                                            "bbox": block_bbox 
-                                        }
-                                    except Exception as e:
-                                        logger.warning(f"Image {img_name} failed: {e}")
+                            if block_type in ["image", "table"]:
+                                img_relative_dir = None
+                                sub_blocks = block.get("blocks", [])
+                                caption = ""
+                                for sub_block in sub_blocks:
+                                    for line in sub_block.get("lines", []):
+                                        for span in line.get("spans", []):
+                                            if "image_path" in span:
+                                                img_relative_dir = span["image_path"]
+                                                break
+                                            if "content" in span and span.get("type") == "text":
+                                                caption += span["content"]
+                                
+                                if img_relative_dir:
+                                    full_img_path = os.path.join(ocr_dir, "images", img_relative_dir)
+                                    if os.path.exists(full_img_path):
+                                        try:
+                                            image = Image.open(full_img_path).convert("RGB")
+                                            inputs = self.processor(images=image, return_tensors="pt").to(self.device)
+                                            with torch.no_grad():
+                                                outputs = self.model.get_image_features(**inputs)
+                                                embedding = self._get_aligned_embedding(outputs)
+                                            
+                                            img_name = os.path.basename(img_relative_dir)
+                                            doc_results["images"][img_name] = {
+                                                "type": block_type,
+                                                "page_idx": page_idx,
+                                                "text_slice": caption[:50],
+                                                "embedding": embedding,
+                                                "bbox": block_bbox 
+                                            }
+                                        except Exception as e:
+                                            logger.warning(f"Image {img_name} failed: {e}")
 
                             else:
                                 lines = block.get("lines", [])
