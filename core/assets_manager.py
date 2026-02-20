@@ -1,10 +1,9 @@
-import os
 import json
 import logging
 import asyncio
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict,Optional
 from datetime import datetime
 
 # --- 配置与日志 ---
@@ -17,23 +16,29 @@ logger = logging.getLogger("AssetManager")
 class AssetStatus(Enum):
     UPLOADING = "Uploading"     # 接口已调用，文件正在写入磁盘
     RAW = "Raw"                 # 文件写入完成，进入待处理队列
-    RECOGNIZING= "recognizing"  # 处理过程中（如视频识别或PDF解析）
+    RECOGNIZING= "recognizing"  # 处理过程中
     CLIPING = "Cliping"
     STRUCTURING = "Structuring"
     INGESTING ="Ingesting"
     READY = "Ready"             # 处理完成
     FAILED = "Failed"           # 发生错误
 
+class GlobalStatus(Enum):
+    WAITING = "Waiting"     # 队列为空或未启动
+    HANDLING = "Handling"   # 正在处理资产
+    UPLOADING = "Uploading" # 有资产正在上传
+
 class AssetType(Enum):
     PDF = "pdf"
     VIDEO = "video"
 
 class AcademicAsset:
-    def __init__(self, asset_id: str, asset_type: AssetType, raw_path: str):
+    """资产实例类：用于与 ServicesManager 交互"""
+    def __init__(self, asset_id: str, asset_type: AssetType, asset_raw_path: str):
         self.asset_id = asset_id
         self.asset_type = asset_type
-        self.status = AssetStatus.UPLOADING # 初始状态设为上传中
-        self.asset_raw_path = raw_path
+        self.status = AssetStatus.UPLOADING 
+        self.asset_raw_path = asset_raw_path
         self.asset_processed_path = ""
         self.created_at = datetime.now().isoformat()
         self.retry_count = 0
@@ -51,16 +56,22 @@ class AcademicAsset:
 
     @classmethod
     def from_dict(cls, data: dict):
-        asset = cls(data["asset_id"], AssetType(data["asset_type"]), data["asset_raw_path"])
+        # 统一使用带有 asset_ 前缀的键名
+        asset = cls(
+            asset_id=data["asset_id"], 
+            asset_type=AssetType(data["asset_type"]), 
+            asset_raw_path=data["asset_raw_path"]
+        )
         asset.status = AssetStatus(data["status"])
         asset.asset_processed_path = data.get("asset_processed_path", "")
         asset.created_at = data.get("created_at")
         asset.retry_count = data.get("retry_count", 0)
         return asset
 
+# --- 资产管理类 ---
 class GlobalAssetManager:
     _instance = None
-    _lock = asyncio.Lock() # 协程锁，保证并发安全
+    _lock = asyncio.Lock()
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
@@ -68,80 +79,177 @@ class GlobalAssetManager:
         return cls._instance
 
     def __init__(self, storage_root: str = "./storage"):
-        if hasattr(self, "_initialized") and self._initialized:
-            return
+        if hasattr(self, "_initialized"): return
         self.storage_root = Path(storage_root)
-        self.storage_root.mkdir(parents=True, exist_ok=True)
         self.db_file = self.storage_root / "assets_registry.json"
         
-        self.assets_map: Dict[str, AcademicAsset] = {} 
-        self.pending_queue: List[str] = [] # 只有状态为 RAW 的才进入此队列
+        self.assets_map: Dict[str, dict] = {}
+        self.pending_queue = asyncio.Queue() 
+        self.current_processing_id: Optional[str] = None
+        self.is_worker_running = False
+        self._worker_task = None  
         
         self._initialized = True
         self.load_state()
 
-    # --- 核心业务逻辑接口 ---
-
-    async def register_new_upload(self, asset_id: str, asset_type: AssetType, expected_path: str):
-        """
-        [逻辑接口 1]: 当 API 被调用时，首先实例化资产。
-        此时状态为 UPLOADING，不会被后台 Worker 抓取。
-        """
+    async def register_new_upload(self, asset_id: str, asset_type: str, raw_path: str):
+        """[API] 注册新上传 - 修正了字典键名"""
         async with self._lock:
-            if asset_id in self.assets_map:
-                logger.warning(f"Asset {asset_id} already exists. Skipping registration.")
-                return
-            
-            new_asset = AcademicAsset(asset_id, asset_type, expected_path)
-            self.assets_map[asset_id] = new_asset
+            # 这里的键名必须与 AcademicAsset.to_dict() 保持一致
+            self.assets_map[asset_id] = {
+                "asset_id": asset_id,
+                "asset_type": asset_type,
+                "status": AssetStatus.UPLOADING.value,
+                "asset_raw_path": raw_path,
+                "asset_processed_path": "",
+                "created_at": datetime.now().isoformat(),
+                "retry_count": 0
+            }
             self.save_state()
-            logger.info(f"==> [REGISTERED] Asset {asset_id} created. Status: UPLOADING")
+            logger.info(f"Asset {asset_id} registered.")
 
     async def update_to_raw(self, asset_id: str):
-        """
-        [逻辑接口 2]: 当文件真实上传成功并落盘后调用。
-        将状态改为 RAW，并正式加入待处理队列。
-        """
         async with self._lock:
-            asset = self.assets_map.get(asset_id)
-            if asset and asset.status == AssetStatus.UPLOADING:
-                asset.status = AssetStatus.RAW
-                if asset_id not in self.pending_queue:
-                    self.pending_queue.append(asset_id)
+            if asset_id in self.assets_map:
+                self.assets_map[asset_id]["status"] = AssetStatus.RAW.value
+                await self.pending_queue.put(asset_id)
                 self.save_state()
-                logger.info(f"==> [RAW READY] Asset {asset_id} upload complete. Added to queue.")
+                logger.info(f"Asset {asset_id} moved to RAW and queued.")
 
-    async def get_next_task(self) -> Optional[AcademicAsset]:
-        """供后台处理进程调用的接口"""
-        async with self._lock:
-            if not self.pending_queue:
-                return None
-            aid = self.pending_queue.pop(0)
-            asset = self.assets_map[aid]
-            asset.status = AssetStatus.RECOGNIZING
-            return asset
+    async def start_queue_processing(self):
+        if not self.is_worker_running:
+            logger.info("Starting Asset Queue Worker...")
+            self.is_worker_running = True
+            self._worker_task = asyncio.create_task(self._queue_worker())
+            self._worker_task.add_done_callback(self._on_worker_done)
+            return {"status": "success", "message": "Queue processor started"}
+        return {"status": "success", "message": "Queue processor is already running"}
 
-    # --- 持久化 ---
+    def _on_worker_done(self, task):
+        self.is_worker_running = False
+        try:
+            task.result()
+        except Exception as e:
+            logger.error(f"Worker Task exited with CRITICAL ERROR: {e}", exc_info=True)
+    
+    def get_asset_status(self, asset_id: str) -> Optional[dict]:
+        return self.assets_map.get(asset_id)
+
+    def get_global_status(self) -> dict:
+        has_uploading = any(a["status"] == AssetStatus.UPLOADING.value for a in self.assets_map.values())
+        state = GlobalStatus.WAITING.value
+        if self.current_processing_id:
+            state = GlobalStatus.HANDLING.value
+        elif has_uploading:
+            state = GlobalStatus.UPLOADING.value
+
+        return {
+            "global_state": state,
+            "assets_number": len(self.assets_map),
+            "queue_length": self.pending_queue.qsize(),
+            "current_processing": self.current_processing_id
+        }
+
+    async def _queue_worker(self):
+        logger.info("Worker: [ENTERED] Background loop started.")
+        try:
+            from core.services_manager import ServicesManager
+            sm = ServicesManager()
+            logger.info("Worker: ServicesManager integrated.")
+        except Exception as e:
+            logger.error(f"Worker: Failed to import ServicesManager: {e}")
+            return
+
+        while True:
+            try:
+                q_size = self.pending_queue.qsize()
+                logger.info(f"Worker: Waiting for task... Current Queue Size: {q_size}")
+                
+                asset_id = await self.pending_queue.get()
+                self.current_processing_id = asset_id
+                
+                logger.info(f"Worker: >>> START Processing: {asset_id}")
+                await self._drive_pipeline(asset_id, sm)
+                logger.info(f"Worker: <<< FINISH Processing: {asset_id}")
+
+            except Exception as e:
+                logger.error(f"Worker: Pipeline Error for {self.current_processing_id}: {e}", exc_info=True)
+            finally:
+                if self.current_processing_id:
+                    self.current_processing_id = None
+                    self.pending_queue.task_done()
+                self.save_state()
+
+    async def _drive_pipeline(self, asset_id: str, sm):
+        """驱动状态机：Raw -> Ready"""
+        # 每次从 map 获取最新的字典数据
+        asset_dict = self.assets_map[asset_id]
+        
+        steps = [
+            (AssetStatus.RAW, AssetStatus.RECOGNIZING),
+            (AssetStatus.RECOGNIZING, AssetStatus.CLIPING),
+            (AssetStatus.CLIPING, AssetStatus.STRUCTURING),
+            (AssetStatus.STRUCTURING, AssetStatus.INGESTING),
+            (AssetStatus.INGESTING, AssetStatus.READY)
+        ]
+
+        for current_step, next_step in steps:
+            asset_dict["status"] = current_step.value
+            self.save_state()
+
+            res = {"status": "error", "message": "Unknown step"}
+            
+            # 关键：实例化 AcademicAsset 对象传递给服务
+            asset_obj = AcademicAsset.from_dict(asset_dict)
+            
+            if current_step == AssetStatus.RAW:
+                if asset_dict["asset_type"] == "pdf":
+                    res = await sm.start_pdf_recognition(asset_obj)
+                else:
+                    res = await sm.start_video_recognition(asset_obj)
+            
+            elif current_step == AssetStatus.RECOGNIZING:
+                res = await sm.start_clip_indexing(asset_obj)
+            
+            elif current_step == AssetStatus.CLIPING:
+                res = await sm.start_structure_generation(asset_obj)
+            
+            elif current_step == AssetStatus.STRUCTURING:
+                res = await sm.start_milvus_ingestion(asset_obj)
+            
+            elif current_step == AssetStatus.INGESTING:
+                res = {"status": "success"}
+
+            if res.get("status") == "success":
+                if "processed_path" in res:
+                    asset_dict["asset_processed_path"] = res["processed_path"]
+                
+                if next_step == AssetStatus.READY:
+                    asset_dict["status"] = AssetStatus.READY.value
+            else:
+                asset_dict["status"] = AssetStatus.FAILED.value
+                logger.error(f"Pipeline failed at {current_step.value}: {res.get('message')}")
+                break 
 
     def save_state(self):
-        data = {
-            "assets_map": {aid: a.to_dict() for aid, a in self.assets_map.items()},
-            "updated_at": datetime.now().isoformat()
-        }
-        with open(self.db_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
+        try:
+            with open(self.db_file, 'w', encoding='utf-8') as f:
+                json.dump(self.assets_map, f, indent=4, ensure_ascii=False)
+        except Exception as e:
+            logger.error(f"Save state failed: {e}")
 
     def load_state(self):
         if self.db_file.exists():
             try:
-                with open(self.db_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    for aid, a_data in data.get("assets_map", {}).items():
-                        asset = AcademicAsset.from_dict(a_data)
-                        self.assets_map[aid] = asset
-                        # 恢复时：只有 RAW 状态的任务需要重新入队
-                        if asset.status == AssetStatus.RAW:
-                            self.pending_queue.append(aid)
-                logger.info(f"State loaded. {len(self.assets_map)} assets in registry.")
+                data = json.loads(self.db_file.read_text(encoding='utf-8'))
+                # 兼容旧版本 JSON 结构或直接覆盖
+                if "assets_map" in data:
+                    self.assets_map = data["assets_map"]
+                else:
+                    self.assets_map = data
+                
+                for aid, a_data in self.assets_map.items():
+                    if a_data["status"] == AssetStatus.RAW.value:
+                        self.pending_queue.put_nowait(aid)
             except Exception as e:
-                logger.error(f"Persistence error: {e}")
+                logger.error(f"Load state failed: {e}")

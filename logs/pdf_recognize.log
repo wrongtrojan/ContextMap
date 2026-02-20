@@ -1,0 +1,1949 @@
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 08:58:20.073190 ====================
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Target: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+/home/liangqing/AcademicAgent-Suite/services/original/mineru_worker.sh: line 42: ./magic-pdf: No such file or directory
+[Error] MinerU failed with exit code 127
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:12:40.482190 ====================
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+/home/liangqing/AcademicAgent-Suite/services/original/mineru_worker.sh: line 40: ./magic-pdf: No such file or directory
+[Error] MinerU failed with exit code 127
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:26:42.639804 ====================
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+/home/liangqing/AcademicAgent-Suite/services/original/mineru_worker.sh: line 40: /home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf: No such file or directory
+[Error] MinerU failed with exit code 127
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:36:13.949729 ====================
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+/home/liangqing/AcademicAgent-Suite/services/original/mineru_worker.sh: line 40: /home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf: No such file or directory
+[Error] MinerU failed with exit code 127
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:42:55.497792 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at ./magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:43:13.930156 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at ./magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:44:03.258227 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at ./magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:48:17.779193 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at ./magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:50:24.913901 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at /home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 09:50:52.229506 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Error] magic-pdf binary not found at /home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf
+[Debug] Please check .environments.doc_recognize in model_config.yaml
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:03:25.450935 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+Usage: magic-pdf [OPTIONS]
+Try 'magic-pdf --help' for help.
+
+Error: No such option: --pdf Did you mean --end?
+[Error] MinerU failed with exit code 2
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:08:39.033136 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 10:08:40.412 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+2026-02-20 10:08:40.414 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'cv2'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7f727200c280>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7f7272397e50>
+         │    └ <function Command.invoke at 0x7f727200c160>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7f7272397e50>
+           │   │      │    └ <function cli at 0x7f70b66793f0>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7f7272007490>
+           └ <click.core.Context object at 0x7f7272397e50>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7f70b66793f0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7f70b6678a60>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7f70b66789d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 95, in _do_parse
+    from magic_pdf.operators.models import InferenceResult
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/operators/models.py", line 13, in <module>
+    from magic_pdf.pdf_parse_union_core_v2 import pdf_parse_union
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/pdf_parse_union_core_v2.py", line 10, in <module>
+    import cv2
+
+ModuleNotFoundError: No module named 'cv2'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:16:13.477571 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 10:16:14.810 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+2026-02-20 10:16:14.845 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'openai'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7fd910c58280>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7fd910fdfe50>
+         │    └ <function Command.invoke at 0x7fd910c58160>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7fd910fdfe50>
+           │   │      │    └ <function cli at 0x7fd7552bf250>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7fd910c53490>
+           └ <click.core.Context object at 0x7fd910fdfe50>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7fd7552bf250>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7fd7552bee60>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7fd7552be8c0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7fd7552be830>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 95, in _do_parse
+    from magic_pdf.operators.models import InferenceResult
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/operators/models.py", line 13, in <module>
+    from magic_pdf.pdf_parse_union_core_v2 import pdf_parse_union
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/pdf_parse_union_core_v2.py", line 27, in <module>
+    from magic_pdf.post_proc.llm_aided import llm_aided_formula, llm_aided_text, llm_aided_title
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/post_proc/llm_aided.py", line 5, in <module>
+    from openai import OpenAI
+
+ModuleNotFoundError: No module named 'openai'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:18:52.297841 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 10:18:53.729 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+2026-02-20 10:18:54.019 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'ultralytics'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7f16b7bf8280>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7f16b7f7fe50>
+         │    └ <function Command.invoke at 0x7f16b7bf8160>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7f16b7f7fe50>
+           │   │      │    └ <function cli at 0x7f14fc1cf250>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7f16b7bf3490>
+           └ <click.core.Context object at 0x7f16b7f7fe50>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7f14fc1cf250>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7f14fc1cee60>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7f14fc1ce8c0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7f14fc1ce830>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/tools/common.py", line 95, in _do_parse
+    from magic_pdf.operators.models import InferenceResult
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/operators/models.py", line 13, in <module>
+    from magic_pdf.pdf_parse_union_core_v2 import pdf_parse_union
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/pdf_parse_union_core_v2.py", line 29, in <module>
+    from magic_pdf.model.sub_modules.model_init import AtomModelSingleton
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/model/sub_modules/model_init.py", line 6, in <module>
+    from magic_pdf.model.sub_modules.language_detection.yolov11.YOLOv11 import YOLOv11LangDetModel
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/magic_pdf/model/sub_modules/language_detection/yolov11/YOLOv11.py", line 9, in <module>
+    from ultralytics import YOLO
+
+ModuleNotFoundError: No module named 'ultralytics'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:56:25.953065 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+Usage: magic-pdf [OPTIONS] COMMAND [ARGS]...
+
+Error: No such option: -p
+[Error] MinerU failed with exit code 2
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 10:57:24.564079 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 10:57:25.656 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+2026-02-20 10:57:25.657 | ERROR    | magic_pdf.model.pdf_extract_kit:<module>:24 - No module named 'cv2'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Group cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7f8d0a621120>
+           └ <Group cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7f8d0a7e9f90>
+         │    └ <function Group.invoke at 0x7f8d0a622020>
+         └ <Group cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1873, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x7f8bbd09d550>
+           │               │       │       └ <function Command.invoke at 0x7f8d0a620e00>
+           │               │       └ <Command pdf>
+           │               └ <click.core.Context object at 0x7f8bbd09d550>
+           └ <function Group.invoke.<locals>._process_result at 0x7f8d0a9c84a0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'pdf': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'method': 'ocr', 'model': None, 'inside_model': True,...
+           │   │      │    │           └ <click.core.Context object at 0x7f8bbd09d550>
+           │   │      │    └ <function pdf_command at 0x7f8bbc01bba0>
+           │   │      └ <Command pdf>
+           │   └ <function Context.invoke at 0x7f8d0a620040>
+           └ <click.core.Context object at 0x7f8bbd09d550>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'pdf': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'method': 'ocr', 'model': None, 'inside_model': True,...
+           │         └ ()
+           └ <function pdf_command at 0x7f8bbc01bba0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/cli/magicpdf.py", line 352, in pdf_command
+    parse_doc(pdf)
+    │         └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function pdf_command.<locals>.parse_doc at 0x7f8bbc01b740>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/cli/magicpdf.py", line 330, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7f8bbc01b100>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/cli/magicpdf.py", line 111, in do_parse
+    pipe.pipe_analyze()
+    │    └ <function OCRPipe.pipe_analyze at 0x7f8bbc01a5c0>
+    └ <magic_pdf.pipe.OCRPipe.OCRPipe object at 0x7f8bbc567590>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/pipe/OCRPipe.py", line 19, in pipe_analyze
+    self.model_list = doc_analyze(self.pdf_bytes, ocr=True)
+    │    │            │           │    └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │    │            │           └ <magic_pdf.pipe.OCRPipe.OCRPipe object at 0x7f8bbc567590>
+    │    │            └ <function doc_analyze at 0x7f8c641e5da0>
+    │    └ []
+    └ <magic_pdf.pipe.OCRPipe.OCRPipe object at 0x7f8bbc567590>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 103, in doc_analyze
+    custom_model = model_manager.get_model(ocr, show_log)
+                   │             │         │    └ False
+                   │             │         └ True
+                   │             └ <function ModelSingleton.get_model at 0x7f8c641e5d00>
+                   └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f8bbbfce8d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 63, in get_model
+    self._models[key] = custom_model_init(ocr=ocr, show_log=show_log)
+    │    │       │      │                     │             └ False
+    │    │       │      │                     └ True
+    │    │       │      └ <function custom_model_init at 0x7f8c641e5bc0>
+    │    │       └ (True, False)
+    │    └ {}
+    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f8bbbfce8d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 83, in custom_model_init
+    from magic_pdf.model.pdf_extract_kit import CustomPEKModel
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/pdf_extract_kit.py", line 7, in <module>
+    import cv2
+
+ModuleNotFoundError: No module named 'cv2'
+2026-02-20 10:57:25.683 | ERROR    | magic_pdf.model.pdf_extract_kit:<module>:25 - Required dependency not installed, please install by 
+"pip install magic-pdf[full] detectron2 --extra-index-url https://myhloli.github.io/wheels/"
+[Error] MinerU failed with exit code 1
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:04:37.216838 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+Usage: magic-pdf [OPTIONS]
+Try 'magic-pdf --help' for help.
+
+Error: No such option: --pdf Did you mean --end?
+[Error] MinerU failed with exit code 2
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:09:43.673086 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+Usage: magic-pdf [OPTIONS]
+Try 'magic-pdf --help' for help.
+
+Error: No such option: --pdf Did you mean --end?
+[Error] MinerU failed with exit code 2
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:10:43.686749 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 11:10:45.168 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+[0;93m2026-02-20 11:10:47.434041254 [W:onnxruntime:Default, device_discovery.cc:131 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/pci0000:00/0000:00:01.0/virtio0" because filename ""virtio0"" dit not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+2026-02-20 11:10:47.453 | INFO     | magic_pdf.data.dataset:__init__:157 - lang: None
+2026-02-20 11:10:49.061 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:162 - Batch 1/1: 11 pages/11 pages
+2026-02-20 11:10:49.153 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:may_batch_image_analyze:278 - gpu_memory: 24 GB, batch_ratio: 16
+2026-02-20 11:10:49.155 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:68 - DocAnalysis init, this may take some times, layout_model: layoutlmv3, apply_formula: True, apply_ocr: True, apply_table: False, table_model: structeqtable, lang: None
+2026-02-20 11:10:49.155 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:82 - using device: cuda
+2026-02-20 11:10:49.155 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:86 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+2026-02-20 11:10:49.914 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - [Errno 2] No such file or directory: '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7ff7e4845e40>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7ff628c7a410>
+         │    └ <function Command.invoke at 0x7ff7e4845b20>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7ff628c7a410>
+           │   │      │    └ <function cli at 0x7ff62899c0e0>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7ff7e4844d60>
+           └ <click.core.Context object at 0x7ff628c7a410>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7ff62899c0e0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7ff7e4b7ad40>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7ff628987560>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7ff73c4d9d00>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 156, in _do_parse
+    infer_result = ds.apply(
+                   │  └ <function PymuDocDataset.apply at 0x7ff73d64dda0>
+                   └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7ff628977610>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/data/dataset.py", line 214, in apply
+    return proc(self, *args, **kwargs)
+           │    │      │       └ {'ocr': True, 'lang': None, 'layout_model': None, 'formula_enable': None, 'table_enable': None}
+           │    │      └ ()
+           │    └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7ff628977610>
+           └ <function doc_analyze at 0x7ff628987380>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 163, in doc_analyze
+    result = may_batch_image_analyze(batch_image, ocr, show_log,layout_model, formula_enable, table_enable)
+             │                       │            │    │        │             │               └ None
+             │                       │            │    │        │             └ None
+             │                       │            │    │        └ None
+             │                       │            │    └ False
+             │                       │            └ True
+             │                       └ [(array([[[255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 ...,
+             │                                 [255, 255, 248],
+             │                                 [2...
+             └ <function may_batch_image_analyze at 0x7ff6289874c0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 288, in may_batch_image_analyze
+    results = batch_model(images_with_extra_info)
+              │           └ [(array([[[255, 255, 255],
+              │                     [255, 255, 255],
+              │                     [255, 255, 255],
+              │                     ...,
+              │                     [255, 255, 248],
+              │                     [2...
+              └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7ff1cfcb39d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/batch_analyze.py", line 33, in __call__
+    self.model = self.model_manager.get_model(
+    │            │    │             └ <function ModelSingleton.get_model at 0x7ff6289872e0>
+    │            │    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7ff1d15c3110>
+    │            └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7ff1cfcb39d0>
+    └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7ff1cfcb39d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 46, in get_model
+    self._models[key] = custom_model_init(
+    │    │       │      └ <function custom_model_init at 0x7ff73c501260>
+    │    │       └ (True, False, None, None, None, None)
+    │    └ {}
+    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7ff1d15c3110>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 111, in custom_model_init
+    custom_model = CustomPEKModel(**model_input)
+                   │                └ {'ocr': True, 'show_log': False, 'models_dir': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models', 'device': 'cuda',...
+                   └ <class 'magic_pdf.model.pdf_extract_kit.CustomPEKModel'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/pdf_extract_kit.py", line 93, in __init__
+    self.mfd_model = atom_model_manager.get_atom_model(
+    │                │                  └ <function AtomModelSingleton.get_atom_model at 0x7ff1cfd54b80>
+    │                └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7ff1cfcdc310>
+    └ <magic_pdf.model.pdf_extract_kit.CustomPEKModel object at 0x7ff1d3a41390>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 150, in get_atom_model
+    self._models[key] = atom_model_init(model_name=atom_model_name, **kwargs)
+    │    │       │      │                          │                  └ {'mfd_weights': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt', 'device': 'cuda'}
+    │    │       │      │                          └ 'mfd'
+    │    │       │      └ <function atom_model_init at 0x7ff1cfd54a40>
+    │    │       └ 'mfd'
+    │    └ {}
+    └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7ff1cfcdc310>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 171, in atom_model_init
+    atom_model = mfd_model_init(
+                 └ <function mfd_model_init at 0x7ff1d184b600>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 70, in mfd_model_init
+    mfd_model = YOLOv8MFDModel(weight, device)
+                │              │       └ 'cuda'
+                │              └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+                └ <class 'magic_pdf.model.sub_modules.mfd.yolov8.YOLOv8.YOLOv8MFDModel'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/mfd/yolov8/YOLOv8.py", line 7, in __init__
+    self.mfd_model = YOLO(weight)
+    │                │    └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+    │                └ <class 'ultralytics.models.yolo.model.YOLO'>
+    └ <magic_pdf.model.sub_modules.mfd.yolov8.YOLOv8.YOLOv8MFDModel object at 0x7ff1d3d7a210>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/models/yolo/model.py", line 76, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+                           │           │             └ False
+                           │           └ None
+                           └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/engine/model.py", line 144, in __init__
+    self._load(model, task=task)
+    │    │     │           └ None
+    │    │     └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+    │    └ <function Model._load at 0x7ff1e1adcea0>
+    └ YOLO()
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/engine/model.py", line 283, in _load
+    self.model, self.ckpt = load_checkpoint(weights)
+    │    │      │    │      │               └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+    │    │      │    │      └ <function load_checkpoint at 0x7ff1e1d82f20>
+    │    │      │    └ {}
+    │    │      └ YOLO()
+    │    └ None
+    └ YOLO()
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/nn/tasks.py", line 1507, in load_checkpoint
+    ckpt, weight = torch_safe_load(weight)  # load ckpt
+                   │               └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+                   └ <function torch_safe_load at 0x7ff1e1d82ca0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/nn/tasks.py", line 1455, in torch_safe_load
+    ckpt = torch_load(file, map_location="cpu")
+           │          └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+           └ <function torch_load at 0x7ff1e1f14e00>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/ultralytics/utils/patches.py", line 158, in torch_load
+    return torch.load(*args, **kwargs)
+           │     │     │       └ {'map_location': 'cpu', 'weights_only': False}
+           │     │     └ ('/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt',)
+           │     └ <function load at 0x7ff70a35a020>
+           └ <module 'torch' from '/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/torch/__init__.py'>
+    with _open_file_like(f, "rb") as opened_file:
+         │               └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+         └ <function _open_file_like at 0x7ff70a359120>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/torch/serialization.py", line 768, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           │          │               └ 'rb'
+           │          └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+           └ <class 'torch.serialization._open_file'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/torch/serialization.py", line 749, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+                          │     └ 'rb'
+                          └ '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+
+FileNotFoundError: [Errno 2] No such file or directory: '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/MFD/YOLO/yolo_v8_ft.pt'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:14:25.045556 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 11:14:26.454 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+[0;93m2026-02-20 11:14:28.134562271 [W:onnxruntime:Default, device_discovery.cc:131 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/pci0000:00/0000:00:01.0/virtio0" because filename ""virtio0"" dit not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+2026-02-20 11:14:28.151 | INFO     | magic_pdf.data.dataset:__init__:157 - lang: None
+2026-02-20 11:14:29.789 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:162 - Batch 1/1: 11 pages/11 pages
+2026-02-20 11:14:29.884 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:may_batch_image_analyze:278 - gpu_memory: 24 GB, batch_ratio: 16
+2026-02-20 11:14:29.885 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:68 - DocAnalysis init, this may take some times, layout_model: layoutlmv3, apply_formula: True, apply_ocr: True, apply_table: False, table_model: structeqtable, lang: None
+2026-02-20 11:14:29.886 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:82 - using device: cuda
+2026-02-20 11:14:29.886 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:86 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+2026-02-20 11:14:33.234 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'pycocotools'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7f399a4e1e40>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7f399a8346d0>
+         │    └ <function Command.invoke at 0x7f399a4e1b20>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7f399a8346d0>
+           │   │      │    └ <function cli at 0x7f37de6a80e0>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7f399a4e0d60>
+           └ <click.core.Context object at 0x7f399a8346d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7f37de6a80e0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7f399a816d40>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7f37de693560>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7f38f2181d00>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 156, in _do_parse
+    infer_result = ds.apply(
+                   │  └ <function PymuDocDataset.apply at 0x7f38f3289da0>
+                   └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7f37de699c10>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/data/dataset.py", line 214, in apply
+    return proc(self, *args, **kwargs)
+           │    │      │       └ {'ocr': True, 'lang': None, 'layout_model': None, 'formula_enable': None, 'table_enable': None}
+           │    │      └ ()
+           │    └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7f37de699c10>
+           └ <function doc_analyze at 0x7f37de693380>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 163, in doc_analyze
+    result = may_batch_image_analyze(batch_image, ocr, show_log,layout_model, formula_enable, table_enable)
+             │                       │            │    │        │             │               └ None
+             │                       │            │    │        │             └ None
+             │                       │            │    │        └ None
+             │                       │            │    └ False
+             │                       │            └ True
+             │                       └ [(array([[[255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 ...,
+             │                                 [255, 255, 248],
+             │                                 [2...
+             └ <function may_batch_image_analyze at 0x7f37de6934c0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 288, in may_batch_image_analyze
+    results = batch_model(images_with_extra_info)
+              │           └ [(array([[[255, 255, 255],
+              │                     [255, 255, 255],
+              │                     [255, 255, 255],
+              │                     ...,
+              │                     [255, 255, 248],
+              │                     [2...
+              └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f338595be50>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/batch_analyze.py", line 33, in __call__
+    self.model = self.model_manager.get_model(
+    │            │    │             └ <function ModelSingleton.get_model at 0x7f37de6932e0>
+    │            │    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f33875beb90>
+    │            └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f338595be50>
+    └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f338595be50>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 46, in get_model
+    self._models[key] = custom_model_init(
+    │    │       │      └ <function custom_model_init at 0x7f38f21a9260>
+    │    │       └ (True, False, None, None, None, None)
+    │    └ {}
+    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f33875beb90>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 111, in custom_model_init
+    custom_model = CustomPEKModel(**model_input)
+                   │                └ {'ocr': True, 'show_log': False, 'models_dir': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models', 'device': 'cuda',...
+                   └ <class 'magic_pdf.model.pdf_extract_kit.CustomPEKModel'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/pdf_extract_kit.py", line 118, in __init__
+    self.layout_model = atom_model_manager.get_atom_model(
+    │                   │                  └ <function AtomModelSingleton.get_atom_model at 0x7f33859dcb80>
+    │                   └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7f3387bdcb90>
+    └ <magic_pdf.model.pdf_extract_kit.CustomPEKModel object at 0x7f338595a190>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 150, in get_atom_model
+    self._models[key] = atom_model_init(model_name=atom_model_name, **kwargs)
+    │    │       │      │                          │                  └ {'layout_model_name': 'layoutlmv3', 'layout_weights': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/Layou...
+    │    │       │      │                          └ 'layout'
+    │    │       │      └ <function atom_model_init at 0x7f33859dca40>
+    │    │       └ ('layout', 'layoutlmv3')
+    │    └ {'mfd': <magic_pdf.model.sub_modules.mfd.yolov8.YOLOv8.YOLOv8MFDModel object at 0x7f3387245490>, 'mfr': <magic_pdf.model.sub_...
+    └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7f3387bdcb90>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 157, in atom_model_init
+    atom_model = layout_model_init(
+                 └ <function layout_model_init at 0x7f3387219760>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 80, in layout_model_init
+    from magic_pdf.model.sub_modules.layout.layoutlmv3.model_init import Layoutlmv3_Predictor
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/model_init.py", line 1, in <module>
+    from .visualizer import Visualizer
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/visualizer.py", line 11, in <module>
+    import pycocotools.mask as mask_util
+
+ModuleNotFoundError: No module named 'pycocotools'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:16:19.683294 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 11:16:21.092 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+[0;93m2026-02-20 11:16:23.083311857 [W:onnxruntime:Default, device_discovery.cc:131 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/pci0000:00/0000:00:01.0/virtio0" because filename ""virtio0"" dit not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+2026-02-20 11:16:23.100 | INFO     | magic_pdf.data.dataset:__init__:157 - lang: None
+2026-02-20 11:16:24.664 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:162 - Batch 1/1: 11 pages/11 pages
+2026-02-20 11:16:24.758 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:may_batch_image_analyze:278 - gpu_memory: 24 GB, batch_ratio: 16
+2026-02-20 11:16:24.760 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:68 - DocAnalysis init, this may take some times, layout_model: layoutlmv3, apply_formula: True, apply_ocr: True, apply_table: False, table_model: structeqtable, lang: None
+2026-02-20 11:16:24.760 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:82 - using device: cuda
+2026-02-20 11:16:24.760 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:86 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+2026-02-20 11:16:27.083 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'detectron2'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7f235cb11e40>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7f235ce60bd0>
+         │    └ <function Command.invoke at 0x7f235cb11b20>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7f235ce60bd0>
+           │   │      │    └ <function cli at 0x7f21a0c88180>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7f235cb10d60>
+           └ <click.core.Context object at 0x7f235ce60bd0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7f21a0c88180>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7f235ce4ad40>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7f21a0c77600>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7f22b4799d00>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 156, in _do_parse
+    infer_result = ds.apply(
+                   │  └ <function PymuDocDataset.apply at 0x7f22b591dda0>
+                   └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7f21a1310590>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/data/dataset.py", line 214, in apply
+    return proc(self, *args, **kwargs)
+           │    │      │       └ {'ocr': True, 'lang': None, 'layout_model': None, 'formula_enable': None, 'table_enable': None}
+           │    │      └ ()
+           │    └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7f21a1310590>
+           └ <function doc_analyze at 0x7f21a0c77420>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 163, in doc_analyze
+    result = may_batch_image_analyze(batch_image, ocr, show_log,layout_model, formula_enable, table_enable)
+             │                       │            │    │        │             │               └ None
+             │                       │            │    │        │             └ None
+             │                       │            │    │        └ None
+             │                       │            │    └ False
+             │                       │            └ True
+             │                       └ [(array([[[255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 ...,
+             │                                 [255, 255, 248],
+             │                                 [2...
+             └ <function may_batch_image_analyze at 0x7f21a0c77560>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 288, in may_batch_image_analyze
+    results = batch_model(images_with_extra_info)
+              │           └ [(array([[[255, 255, 255],
+              │                     [255, 255, 255],
+              │                     [255, 255, 255],
+              │                     ...,
+              │                     [255, 255, 248],
+              │                     [2...
+              └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f1d49872350>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/batch_analyze.py", line 33, in __call__
+    self.model = self.model_manager.get_model(
+    │            │    │             └ <function ModelSingleton.get_model at 0x7f21a0c77380>
+    │            │    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f1d4b4d4950>
+    │            └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f1d49872350>
+    └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7f1d49872350>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 46, in get_model
+    self._models[key] = custom_model_init(
+    │    │       │      └ <function custom_model_init at 0x7f22b47c1260>
+    │    │       └ (True, False, None, None, None, None)
+    │    └ {}
+    └ <magic_pdf.model.doc_analyze_by_custom_model.ModelSingleton object at 0x7f1d4b4d4950>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 111, in custom_model_init
+    custom_model = CustomPEKModel(**model_input)
+                   │                └ {'ocr': True, 'show_log': False, 'models_dir': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models', 'device': 'cuda',...
+                   └ <class 'magic_pdf.model.pdf_extract_kit.CustomPEKModel'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/pdf_extract_kit.py", line 118, in __init__
+    self.layout_model = atom_model_manager.get_atom_model(
+    │                   │                  └ <function AtomModelSingleton.get_atom_model at 0x7f1d47ffcc20>
+    │                   └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7f1d47f90c10>
+    └ <magic_pdf.model.pdf_extract_kit.CustomPEKModel object at 0x7f1d47f8b450>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 150, in get_atom_model
+    self._models[key] = atom_model_init(model_name=atom_model_name, **kwargs)
+    │    │       │      │                          │                  └ {'layout_model_name': 'layoutlmv3', 'layout_weights': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/Layou...
+    │    │       │      │                          └ 'layout'
+    │    │       │      └ <function atom_model_init at 0x7f1d47ffcae0>
+    │    │       └ ('layout', 'layoutlmv3')
+    │    └ {'mfd': <magic_pdf.model.sub_modules.mfd.yolov8.YOLOv8.YOLOv8MFDModel object at 0x7f1d47f88b50>, 'mfr': <magic_pdf.model.sub_...
+    └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7f1d47f90c10>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 157, in atom_model_init
+    atom_model = layout_model_init(
+                 └ <function layout_model_init at 0x7f1d49841800>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 80, in layout_model_init
+    from magic_pdf.model.sub_modules.layout.layoutlmv3.model_init import Layoutlmv3_Predictor
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/model_init.py", line 1, in <module>
+    from .visualizer import Visualizer
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/visualizer.py", line 16, in <module>
+    from detectron2.data import MetadataCatalog
+
+ModuleNotFoundError: No module named 'detectron2'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:25:18.444996 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 11:25:19.846 | WARNING  | magic_pdf.libs.config_reader:get_latex_delimiter_config:132 - 'latex-delimiter-config' not found in magic-pdf.json, use 'None' as default
+[0;93m2026-02-20 11:25:21.516671093 [W:onnxruntime:Default, device_discovery.cc:131 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/pci0000:00/0000:00:01.0/virtio0" because filename ""virtio0"" dit not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+2026-02-20 11:25:21.533 | INFO     | magic_pdf.data.dataset:__init__:157 - lang: None
+2026-02-20 11:25:23.092 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:162 - Batch 1/1: 11 pages/11 pages
+2026-02-20 11:25:23.179 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:may_batch_image_analyze:278 - gpu_memory: 24 GB, batch_ratio: 16
+2026-02-20 11:25:23.180 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:68 - DocAnalysis init, this may take some times, layout_model: layoutlmv3, apply_formula: True, apply_ocr: True, apply_table: False, table_model: structeqtable, lang: None
+2026-02-20 11:25:23.180 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:82 - using device: cuda
+2026-02-20 11:25:23.180 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:86 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+2026-02-20 11:25:25.514 | ERROR    | magic_pdf.tools.cli:parse_doc:134 - No module named 'pycocotools'
+Traceback (most recent call last):
+
+  File "/home/liangqing/miniconda3/envs/DocRecognize/bin/magic-pdf", line 6, in <module>
+    sys.exit(cli())
+    │   │    └ <Command cli>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x7fdcb54d9e40>
+           └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7fdaf9dba950>
+         │    └ <function Command.invoke at 0x7fdcb54d9b20>
+         └ <Command cli>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │   │      │    │           └ <click.core.Context object at 0x7fdaf9dba950>
+           │   │      │    └ <function cli at 0x7fdaf968c0e0>
+           │   │      └ <Command cli>
+           │   └ <function Context.invoke at 0x7fdcb54d8d60>
+           └ <click.core.Context object at 0x7fdaf9dba950>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'path': 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf', 'output_dir': '/home/liangqing/AcademicAgent-Suite/s...
+           │         └ ()
+           └ <function cli at 0x7fdaf968c0e0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 155, in cli
+    parse_doc(Path(path))
+    │         │    └ 'storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    │         └ <class 'pathlib.Path'>
+    └ <function cli.<locals>.parse_doc at 0x7fdcb5812d40>
+> File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/cli.py", line 121, in parse_doc
+    do_parse(
+    └ <function do_parse at 0x7fdaf967b560>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 284, in do_parse
+    _do_parse(output_dir, pdf_file_name, pdf_bytes_or_dataset, model_list, parse_method, debug_able, start_page_id=start_page_id, end_page_id=end_page_id, lang=lang, layout_model=layout_model, formula_enable=formula_enable, table_enable=table_enable,  f_draw_span_bbox=f_draw_span_bbox, f_draw_layout_bbox=f_draw_layout_bbox, f_dump_md=f_dump_md, f_dump_middle_json=f_dump_middle_json, f_dump_model_json=f_dump_model_json, f_dump_orig_pdf=f_dump_orig_pdf, f_dump_content_list=f_dump_content_list, f_make_md_mode=f_make_md_mode, f_draw_model_bbox=f_draw_model_bbox, f_draw_line_sort_bbox=f_draw_line_sort_bbox, f_draw_char_bbox=f_draw_char_bbox)
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        │                                       └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 │                                        └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   │                                 └ False
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    │                                   └ 'mm_markdown'
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     │                                  └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             │                                     └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    │                             └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               │                                    └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            │                               └ True
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  │                            └ None
+    │         │           │              │                     │           │             │                         │                          │                 │                  └ None
+    │         │           │              │                     │           │             │                         │                          │                 └ None
+    │         │           │              │                     │           │             │                         │                          └ None
+    │         │           │              │                     │           │             │                         └ 0
+    │         │           │              │                     │           │             └ False
+    │         │           │              │                     │           └ 'ocr'
+    │         │           │              │                     └ []
+    │         │           │              └ b'%PDF-1.3\n%\xc4\xe5\xf2\xe5\xeb\xa7\xf3\xa0\xd0\xc4\xc6\n3 0 obj\n<< /Filter /FlateDecode /Length 57 >>\nstream\nx\x01+T\x0...
+    │         │           └ '工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)'
+    │         └ '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf'
+    └ <function _do_parse at 0x7fdc0d165d00>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/tools/common.py", line 156, in _do_parse
+    infer_result = ds.apply(
+                   │  └ <function PymuDocDataset.apply at 0x7fdc0e26dda0>
+                   └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7fd6a46803d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/data/dataset.py", line 214, in apply
+    return proc(self, *args, **kwargs)
+           │    │      │       └ {'ocr': True, 'lang': None, 'layout_model': None, 'formula_enable': None, 'table_enable': None}
+           │    │      └ ()
+           │    └ <magic_pdf.data.dataset.PymuDocDataset object at 0x7fd6a46803d0>
+           └ <function doc_analyze at 0x7fdaf967b380>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 163, in doc_analyze
+    result = may_batch_image_analyze(batch_image, ocr, show_log,layout_model, formula_enable, table_enable)
+             │                       │            │    │        │             │               └ None
+             │                       │            │    │        │             └ None
+             │                       │            │    │        └ None
+             │                       │            │    └ False
+             │                       │            └ True
+             │                       └ [(array([[[255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 [255, 255, 255],
+             │                                 ...,
+             │                                 [255, 255, 248],
+             │                                 [2...
+             └ <function may_batch_image_analyze at 0x7fdaf967b4c0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 288, in may_batch_image_analyze
+    results = batch_model(images_with_extra_info)
+              │           └ [(array([[[255, 255, 255],
+              │                     [255, 255, 255],
+              │                     [255, 255, 255],
+              │                     ...,
+              │                     [255, 255, 248],
+              │                     [2...
+              └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7fd6a2230390>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/batch_analyze.py", line 33, in __call__
+    self.model = self.model_manager.get_model(
+    │            │    │             └ <function ModelSingleton.get_model at 0x7fdaf967b2e0>
+    │            └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7fd6a2230390>
+    └ <magic_pdf.model.batch_analyze.BatchAnalyze object at 0x7fd6a2230390>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 46, in get_model
+    self._models[key] = custom_model_init(
+    │    │       │      └ <function custom_model_init at 0x7fdc0d18d260>
+    │    │       └ (True, False, None, None, None, None)
+    │    └ {}
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/doc_analyze_by_custom_model.py", line 111, in custom_model_init
+    custom_model = CustomPEKModel(**model_input)
+                   │                └ {'ocr': True, 'show_log': False, 'models_dir': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models', 'device': 'cuda',...
+                   └ <class 'magic_pdf.model.pdf_extract_kit.CustomPEKModel'>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/pdf_extract_kit.py", line 118, in __init__
+    self.layout_model = atom_model_manager.get_atom_model(
+    │                   │                  └ <function AtomModelSingleton.get_atom_model at 0x7fd6a09c4b80>
+    │                   └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7fd6a4bfa2d0>
+    └ <magic_pdf.model.pdf_extract_kit.CustomPEKModel object at 0x7fd6a0940450>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 150, in get_atom_model
+    self._models[key] = atom_model_init(model_name=atom_model_name, **kwargs)
+    │    │       │      │                          │                  └ {'layout_model_name': 'layoutlmv3', 'layout_weights': '/home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/Layou...
+    │    │       │      │                          └ 'layout'
+    │    │       │      └ <function atom_model_init at 0x7fd6a09c4a40>
+    │    │       └ ('layout', 'layoutlmv3')
+    │    └ {'mfd': <magic_pdf.model.sub_modules.mfd.yolov8.YOLOv8.YOLOv8MFDModel object at 0x7fd6a4866990>, 'mfr': <magic_pdf.model.sub_...
+    └ <magic_pdf.model.sub_modules.model_init.AtomModelSingleton object at 0x7fd6a4bfa2d0>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 157, in atom_model_init
+    atom_model = layout_model_init(
+                 └ <function layout_model_init at 0x7fd6a2201760>
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/model_init.py", line 80, in layout_model_init
+    from magic_pdf.model.sub_modules.layout.layoutlmv3.model_init import Layoutlmv3_Predictor
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/model_init.py", line 1, in <module>
+    from .visualizer import Visualizer
+  File "/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.11/site-packages/magic_pdf/model/sub_modules/layout/layoutlmv3/visualizer.py", line 11, in <module>
+    import pycocotools.mask as mask_util
+
+ModuleNotFoundError: No module named 'pycocotools'
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 11:59:18.292094 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Output: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+Usage: magic-pdf [OPTIONS] COMMAND [ARGS]...
+
+Error: No such option: -p
+[Error] MinerU failed with exit code 2
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:00:05.060653 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:00:05.924 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:00:12.188 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:00:12.188 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:00:12.188 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:00:26 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:00:26 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:00:27.095 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:00:27.095 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:custom_model_init:92 - model init cost: 21.171366214752197
+2026-02-20 12:00:29.495 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.93
+
+0: 1888x1248 31 embeddings, 2 isolateds, 101.8ms
+Speed: 15.4ms preprocess, 101.8ms inference, 1.1ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:00:34.262 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 2.06
+2026-02-20 12:00:40.598 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.34
+2026-02-20 12:00:41.139 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.54
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 11.7ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:00:42.620 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.39
+2026-02-20 12:00:48.340 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.72
+2026-02-20 12:00:48.655 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.9ms
+Speed: 10.5ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:00:50.941 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.2
+2026-02-20 12:00:55.320 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.38
+2026-02-20 12:00:55.629 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 11.8ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:00:58.828 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 3.09
+2026-02-20 12:01:05.213 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.38
+2026-02-20 12:01:05.722 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.51
+
+0: 1888x1248 52 embeddings, 8 isolateds, 25.0ms
+Speed: 15.7ms preprocess, 25.0ms inference, 1.3ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:01:08.712 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.81
+2026-02-20 12:01:16.104 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.39
+2026-02-20 12:01:16.588 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.48
+
+0: 1888x1248 53 embeddings, 7 isolateds, 25.0ms
+Speed: 12.0ms preprocess, 25.0ms inference, 1.2ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:01:18.372 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.61
+2026-02-20 12:01:24.838 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.47
+2026-02-20 12:01:25.307 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.47
+
+0: 1888x1248 47 embeddings, 5 isolateds, 25.0ms
+Speed: 11.8ms preprocess, 25.0ms inference, 1.3ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:01:30.427 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 4.97
+2026-02-20 12:01:35.381 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.95
+2026-02-20 12:01:35.842 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.46
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.9ms
+Speed: 11.6ms preprocess, 24.9ms inference, 1.3ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:01:42.985 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 6.97
+2026-02-20 12:01:48.753 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.77
+2026-02-20 12:01:49.260 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.51
+
+0: 1888x1248 40 embeddings, 7 isolateds, 24.8ms
+Speed: 11.7ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:01:52.114 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.71
+2026-02-20 12:01:58.044 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.53
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.8ms
+Speed: 11.0ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:02:03.264 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.12
+2026-02-20 12:02:10.682 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.42
+2026-02-20 12:02:11.177 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.8ms
+Speed: 9.5ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:02:12.477 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.21
+2026-02-20 12:02:39.208 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 26.73
+2026-02-20 12:02:39.209 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 130.64271473884583
+2026-02-20 12:02:39.589 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:02:39.660 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:02:39.725 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.07
+2026-02-20 12:02:39.731 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:02:39.740 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:02:39.766 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:02:39.789 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:02:39.805 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:02:39.827 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:02:39.841 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-20 12:02:39.851 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:02:39.906 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:02:39.906 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:02:39.916 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:02:39.916 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:02:39.923 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:02:39.923 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:02:39.956 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:02:39.956 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:02:39.956 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:02:40.388 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:02:40.465 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:02:40.466 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:05:07.388543 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:05:08.265 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:05:12.278 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:05:12.278 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:05:12.278 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:05:24 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:05:24 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:05:25.080 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:05:25.080 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:custom_model_init:92 - model init cost: 16.814379930496216
+2026-02-20 12:05:27.011 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.54
+
+0: 1888x1248 31 embeddings, 2 isolateds, 103.3ms
+Speed: 11.5ms preprocess, 103.3ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:05:31.671 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 1.98
+2026-02-20 12:05:37.147 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.48
+2026-02-20 12:05:37.594 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.45
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:05:39.096 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.41
+2026-02-20 12:05:44.171 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.08
+2026-02-20 12:05:44.474 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.8ms
+Speed: 9.1ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:05:46.683 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.13
+2026-02-20 12:05:50.768 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.08
+2026-02-20 12:05:51.067 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 8.9ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:05:53.642 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.47
+2026-02-20 12:06:23.312 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 29.67
+2026-02-20 12:06:23.776 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.46
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:06:26.666 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.73
+2026-02-20 12:06:34.570 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.9
+2026-02-20 12:06:35.068 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 53 embeddings, 7 isolateds, 24.9ms
+Speed: 12.1ms preprocess, 24.9ms inference, 1.2ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:06:36.906 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.67
+2026-02-20 12:06:43.802 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.9
+2026-02-20 12:06:44.273 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.47
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 11.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:06:49.379 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 4.96
+2026-02-20 12:06:54.401 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.02
+2026-02-20 12:06:54.714 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.8ms
+Speed: 11.6ms preprocess, 24.8ms inference, 1.1ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:07:01.881 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 6.99
+2026-02-20 12:07:07.554 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.67
+2026-02-20 12:07:08.070 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.52
+
+0: 1888x1248 40 embeddings, 7 isolateds, 24.8ms
+Speed: 11.1ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:07:10.894 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.68
+2026-02-20 12:07:15.911 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.02
+2026-02-20 12:07:16.463 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.55
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.9ms
+Speed: 12.2ms preprocess, 24.9ms inference, 1.2ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:07:21.677 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.11
+2026-02-20 12:07:28.654 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.98
+2026-02-20 12:07:29.156 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.8ms
+Speed: 9.5ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:07:30.429 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.18
+2026-02-20 12:07:52.980 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 22.55
+2026-02-20 12:07:52.981 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 146.51106333732605
+2026-02-20 12:07:53.349 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:07:53.419 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:07:53.484 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.07
+2026-02-20 12:07:53.490 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:07:53.499 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:07:53.525 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:07:53.549 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:07:53.567 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:07:53.590 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:07:53.606 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.02
+2026-02-20 12:07:53.616 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:07:53.671 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:07:53.671 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:07:53.682 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:07:53.682 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:07:53.690 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:07:53.690 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:07:53.727 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:07:53.727 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:07:53.727 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:07:54.166 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:07:54.246 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:07:54.247 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:09:41.065405 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:09:42.044 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:09:46.154 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:09:46.154 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:09:46.154 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:09:58 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:09:58 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:09:59.119 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:09:59.119 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:custom_model_init:92 - model init cost: 17.075308561325073
+2026-02-20 12:10:01.037 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.53
+
+0: 1888x1248 31 embeddings, 2 isolateds, 101.4ms
+Speed: 11.6ms preprocess, 101.4ms inference, 1.1ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:05.655 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 2.01
+2026-02-20 12:10:11.795 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.14
+2026-02-20 12:10:12.312 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.52
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:13.762 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.36
+2026-02-20 12:10:20.048 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.29
+2026-02-20 12:10:20.586 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.54
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.8ms
+Speed: 11.5ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:22.986 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.32
+2026-02-20 12:10:28.390 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.4
+2026-02-20 12:10:28.697 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 26 embeddings, 6 isolateds, 26.3ms
+Speed: 10.3ms preprocess, 26.3ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:31.364 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.56
+2026-02-20 12:10:38.655 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.29
+2026-02-20 12:10:39.157 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.8ms
+Speed: 11.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:42.031 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.71
+2026-02-20 12:10:49.665 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.63
+2026-02-20 12:10:50.146 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.48
+
+0: 1888x1248 53 embeddings, 7 isolateds, 24.8ms
+Speed: 11.5ms preprocess, 24.8ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:10:51.975 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.66
+2026-02-20 12:10:59.050 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.07
+2026-02-20 12:10:59.506 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.46
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:11:04.669 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 5.01
+2026-02-20 12:11:10.504 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.83
+2026-02-20 12:11:10.801 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.8ms
+Speed: 11.1ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:11:17.953 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 6.98
+2026-02-20 12:11:25.305 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.35
+2026-02-20 12:11:25.811 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.51
+
+0: 1888x1248 40 embeddings, 7 isolateds, 25.0ms
+Speed: 12.2ms preprocess, 25.0ms inference, 1.2ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:11:28.654 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.7
+2026-02-20 12:11:34.164 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.51
+2026-02-20 12:11:34.691 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.53
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.8ms
+Speed: 11.7ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:11:39.957 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.16
+2026-02-20 12:11:47.410 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.45
+2026-02-20 12:11:48.000 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.59
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.9ms
+Speed: 11.0ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:11:49.366 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.27
+2026-02-20 12:12:05.539 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 16.17
+2026-02-20 12:12:05.539 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 125.03041529655457
+2026-02-20 12:12:05.915 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:12:05.985 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:12:06.050 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.07
+2026-02-20 12:12:06.057 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:12:06.066 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:12:06.092 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:12:06.114 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:12:06.130 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:12:06.153 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:12:06.167 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-20 12:12:06.176 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:12:06.231 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:12:06.231 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:12:06.241 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:12:06.241 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:12:06.248 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:12:06.248 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:12:06.281 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:12:06.282 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:12:06.282 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:12:06.710 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:12:06.788 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:12:06.789 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:19:37.542706 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:19:38.452 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:19:42.658 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:19:42.658 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:19:42.658 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:19:55 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:19:55 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:19:56.430 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:19:56.430 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:custom_model_init:92 - model init cost: 17.97757053375244
+2026-02-20 12:19:58.353 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.54
+
+0: 1888x1248 31 embeddings, 2 isolateds, 101.1ms
+Speed: 11.5ms preprocess, 101.1ms inference, 1.1ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:03.143 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 2.09
+2026-02-20 12:20:09.092 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.95
+2026-02-20 12:20:09.615 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.52
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.9ms
+Speed: 11.4ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:11.225 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.52
+2026-02-20 12:20:16.807 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.58
+2026-02-20 12:20:17.109 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 11 embeddings, 9 isolateds, 26.3ms
+Speed: 9.4ms preprocess, 26.3ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:19.485 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.29
+2026-02-20 12:20:23.610 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.12
+2026-02-20 12:20:24.169 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.56
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:27.195 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.92
+2026-02-20 12:20:33.759 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.56
+2026-02-20 12:20:34.264 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:37.281 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.85
+2026-02-20 12:20:45.361 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.08
+2026-02-20 12:20:45.845 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.48
+
+0: 1888x1248 53 embeddings, 7 isolateds, 25.0ms
+Speed: 11.6ms preprocess, 25.0ms inference, 1.2ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:20:47.736 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.72
+2026-02-20 12:20:54.595 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.86
+2026-02-20 12:20:54.990 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.39
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 9.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:21:00.277 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 5.14
+2026-02-20 12:21:04.859 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.58
+2026-02-20 12:21:05.246 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.39
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.8ms
+Speed: 9.2ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:21:12.563 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 7.15
+2026-02-20 12:21:18.194 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.63
+
+0: 1888x1248 40 embeddings, 7 isolateds, 24.8ms
+Speed: 11.2ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:21:21.725 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.88
+2026-02-20 12:21:26.807 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.08
+2026-02-20 12:21:27.342 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.53
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.9ms
+Speed: 10.6ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:21:32.884 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.44
+2026-02-20 12:21:39.838 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.95
+2026-02-20 12:21:40.322 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.48
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.8ms
+Speed: 9.2ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:21:41.707 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.3
+2026-02-20 12:21:50.368 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.66
+2026-02-20 12:21:50.368 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 112.55169939994812
+2026-02-20 12:21:50.741 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:21:50.811 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:21:50.876 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.07
+2026-02-20 12:21:50.882 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:21:50.892 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:21:50.917 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:21:50.940 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:21:50.956 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:21:50.978 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:21:50.992 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-20 12:21:51.002 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:21:51.054 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:21:51.055 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:21:51.064 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:21:51.064 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:21:51.071 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:21:51.071 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:21:51.104 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:21:51.104 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:21:51.104 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:21:51.513 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:21:51.590 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:21:51.591 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:27:48.693715 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:27:49.576 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:27:53.836 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:27:53.836 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:27:53.836 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:28:07 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:28:07 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:28:08.169 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:28:08.169 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:custom_model_init:92 - model init cost: 18.59221076965332
+2026-02-20 12:28:10.191 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.57
+
+0: 1888x1248 31 embeddings, 2 isolateds, 102.1ms
+Speed: 13.0ms preprocess, 102.1ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:28:14.969 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 2.14
+2026-02-20 12:28:21.464 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.49
+2026-02-20 12:28:21.983 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.52
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 11.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:28:23.523 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.45
+2026-02-20 12:28:29.403 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.88
+2026-02-20 12:28:29.696 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.29
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.8ms
+Speed: 9.0ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:28:31.943 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.17
+2026-02-20 12:28:36.595 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.65
+2026-02-20 12:28:37.052 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.46
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 9.2ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:28:39.709 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.55
+2026-02-20 12:28:46.836 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.13
+2026-02-20 12:28:47.258 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.42
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:28:50.179 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.76
+2026-02-20 12:28:58.317 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.14
+2026-02-20 12:28:58.602 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.28
+
+0: 1888x1248 53 embeddings, 7 isolateds, 24.8ms
+Speed: 9.2ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:00.353 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.59
+2026-02-20 12:29:07.290 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.94
+2026-02-20 12:29:07.604 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 11.4ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:13.436 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 5.68
+2026-02-20 12:29:18.622 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.19
+2026-02-20 12:29:18.923 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 52 embeddings, 9 isolateds, 26.3ms
+Speed: 11.2ms preprocess, 26.3ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:26.606 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 7.51
+2026-02-20 12:29:32.816 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.21
+2026-02-20 12:29:33.121 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.3
+
+0: 1888x1248 40 embeddings, 7 isolateds, 26.3ms
+Speed: 11.1ms preprocess, 26.3ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:36.076 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.81
+2026-02-20 12:29:41.509 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.43
+2026-02-20 12:29:41.815 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.9ms
+Speed: 11.6ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:47.074 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.16
+2026-02-20 12:29:54.664 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.59
+2026-02-20 12:29:55.269 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.6
+
+0: 1888x1248 20 embeddings, 5 isolateds, 25.0ms
+Speed: 12.3ms preprocess, 25.0ms inference, 1.3ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:29:56.629 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.26
+2026-02-20 12:30:04.879 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.25
+2026-02-20 12:30:04.880 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 115.25996398925781
+2026-02-20 12:30:05.253 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:30:05.322 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:30:05.386 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.06
+2026-02-20 12:30:05.392 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:30:05.401 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:30:05.427 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:30:05.450 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:30:05.465 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:30:05.487 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:30:05.501 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-20 12:30:05.511 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:30:05.564 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:30:05.564 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:30:05.573 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:30:05.573 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:30:05.580 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:30:05.580 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:30:05.613 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:30:05.613 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:30:05.613 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:30:06.027 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:30:06.103 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:30:06.104 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.
+
+==================== Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start: 2026-02-20 12:34:26.949221 ====================
+--- Expert: DocParser (MinerU) Single Worker Mode ---
+[Status] Config deployed to /home/liangqing/magic-pdf.json
+[Task] Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+[Path] Source: storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-20 12:34:27.881 | WARNING  | magic_pdf.cli.magicpdf:get_model_json:312 - not found json storage/raw/pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).json existed
+/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/unimernet/processors/formula_processor_helper/weather.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2026-02-20 12:34:32.031 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:99 - DocAnalysis init, this may take some times. apply_layout: True, apply_formula: True, apply_ocr: True
+2026-02-20 12:34:32.031 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:107 - using device: cuda
+2026-02-20 12:34:32.031 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:109 - using models_dir: /home/liangqing/AcademicAgent-Suite/models/miner_u/models
+CustomVisionEncoderDecoderModel init
+CustomMBartForCausalLM init
+CustomMBartDecoder init
+-------------------------------  ---------------------------------------------------------------------------------------------------
+sys.platform                     linux
+numpy                            1.26.4
+detectron2                       0.6 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/detectron2
+CUDA compiler                    CUDA 12.1
+detectron2 arch flags            8.9
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          2.3.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            NVIDIA GeForce RTX 4090 D (arch=8.9)
+Driver version                   580.126.09
+CUDA_HOME                        /usr/local/cuda-12.1
+Pillow                           12.0.0
+torchvision                      0.18.1+cu121 @/home/liangqing/miniconda3/envs/DocRecognize/lib/python3.10/site-packages/torchvision
+torchvision arch flags           5.0, 6.0, 7.0, 7.5, 8.0, 8.6, 9.0
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.6.0
+-------------------------------  ---------------------------------------------------------------------------------------------------
+
+
+[02/20 12:34:44 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+[02/20 12:34:44 fvcore.common.checkpoint]: [Checkpointer] Loading from /home/liangqing/AcademicAgent-Suite/models/miner_u/models/Layout/model_final.pth ...
+2026-02-20 12:34:45.111 | INFO     | magic_pdf.model.pdf_extract_kit:__init__:132 - DocAnalysis init done!
+2026-02-20 12:34:47.039 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.53
+
+0: 1888x1248 31 embeddings, 2 isolateds, 100.6ms
+Speed: 11.5ms preprocess, 100.6ms inference, 1.1ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:34:51.677 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 33, mfr time: 1.95
+2026-02-20 12:34:58.421 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.74
+2026-02-20 12:34:58.943 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.52
+
+0: 1888x1248 19 embeddings, 6 isolateds, 24.8ms
+Speed: 11.7ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:00.522 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.49
+2026-02-20 12:35:05.770 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.25
+2026-02-20 12:35:06.085 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.31
+
+0: 1888x1248 11 embeddings, 9 isolateds, 24.8ms
+Speed: 11.5ms preprocess, 24.8ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:08.436 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 20, mfr time: 2.27
+2026-02-20 12:35:12.903 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.47
+2026-02-20 12:35:13.456 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.55
+
+0: 1888x1248 26 embeddings, 6 isolateds, 24.8ms
+Speed: 11.3ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:16.168 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 32, mfr time: 2.61
+2026-02-20 12:35:22.593 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 6.42
+2026-02-20 12:35:23.096 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 52 embeddings, 8 isolateds, 24.9ms
+Speed: 11.5ms preprocess, 24.9ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:26.068 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 2.8
+2026-02-20 12:35:33.493 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.42
+2026-02-20 12:35:33.995 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.5
+
+0: 1888x1248 53 embeddings, 7 isolateds, 24.8ms
+Speed: 11.9ms preprocess, 24.8ms inference, 1.0ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:35.943 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 60, mfr time: 1.76
+2026-02-20 12:35:43.118 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.17
+2026-02-20 12:35:43.575 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.46
+
+0: 1888x1248 47 embeddings, 5 isolateds, 24.8ms
+Speed: 10.7ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:35:48.781 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 52, mfr time: 5.06
+2026-02-20 12:35:53.655 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 4.87
+2026-02-20 12:35:53.947 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.29
+
+0: 1888x1248 52 embeddings, 9 isolateds, 24.9ms
+Speed: 11.3ms preprocess, 24.9ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:36:01.035 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 61, mfr time: 6.92
+2026-02-20 12:36:06.844 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.81
+2026-02-20 12:36:07.272 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.43
+
+0: 1888x1248 40 embeddings, 7 isolateds, 24.8ms
+Speed: 9.6ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:36:10.115 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 47, mfr time: 2.71
+2026-02-20 12:36:15.294 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 5.18
+2026-02-20 12:36:15.733 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.44
+
+0: 1888x1248 24 embeddings, 6 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:36:20.855 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 30, mfr time: 5.02
+2026-02-20 12:36:28.324 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 7.47
+2026-02-20 12:36:28.812 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:143 - layout detection cost: 0.49
+
+0: 1888x1248 20 embeddings, 5 isolateds, 24.8ms
+Speed: 9.3ms preprocess, 24.8ms inference, 0.9ms postprocess per image at shape (1, 3, 1888, 1248)
+2026-02-20 12:36:30.101 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:173 - formula nums: 25, mfr time: 1.2
+2026-02-20 12:36:38.840 | INFO     | magic_pdf.model.pdf_extract_kit:__call__:250 - ocr cost: 8.74
+2026-02-20 12:36:38.840 | INFO     | magic_pdf.model.doc_analyze_by_custom_model:doc_analyze:118 - doc analyze cost: 112.32930660247803
+2026-02-20 12:36:39.210 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 0, last_page_cost_time: 0.0
+2026-02-20 12:36:39.279 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 1, last_page_cost_time: 0.07
+2026-02-20 12:36:39.344 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 2, last_page_cost_time: 0.06
+2026-02-20 12:36:39.349 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 3, last_page_cost_time: 0.01
+2026-02-20 12:36:39.359 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 4, last_page_cost_time: 0.01
+2026-02-20 12:36:39.384 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 5, last_page_cost_time: 0.03
+2026-02-20 12:36:39.407 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 6, last_page_cost_time: 0.02
+2026-02-20 12:36:39.423 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 7, last_page_cost_time: 0.02
+2026-02-20 12:36:39.446 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 8, last_page_cost_time: 0.02
+2026-02-20 12:36:39.460 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 9, last_page_cost_time: 0.01
+2026-02-20 12:36:39.469 | INFO     | magic_pdf.pdf_parse_union_core:pdf_parse_union:221 - page_id: 10, last_page_cost_time: 0.01
+2026-02-20 12:36:39.522 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(10, 11)]， [[10]]
+2026-02-20 12:36:39.522 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第10到第11行是列表
+2026-02-20 12:36:39.532 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(2, 4)]， [[2, 3]]
+2026-02-20 12:36:39.532 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第2到第4行是列表
+2026-02-20 12:36:39.539 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(11, 12)]， [[11]]
+2026-02-20 12:36:39.539 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第11到第12行是列表
+2026-02-20 12:36:39.572 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:140 - 发现了列表，列表行数：[(1, 2)]， [[1]]
+2026-02-20 12:36:39.572 | INFO     | magic_pdf.para.para_split_v2:__detect_list_lines:153 - 列表行的第1到第2行是列表
+2026-02-20 12:36:39.572 | INFO     | magic_pdf.para.para_split_v2:para_split:764 - 连接了第8页和第9页的段落
+2026-02-20 12:36:39.982 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_markdown:31 - ocr_pipe mk mm_markdown finished
+2026-02-20 12:36:40.058 | INFO     | magic_pdf.pipe.OCRPipe:pipe_mk_uni_format:26 - ocr_pipe mk content list finished
+2026-02-20 12:36:40.059 | INFO     | magic_pdf.cli.magicpdf:do_parse:165 - local output dir is '/home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr', you can found the result in it.
+[Success] Asset 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf processed.
+[Status] Cleanup: Removed /home/liangqing/magic-pdf.json from home.

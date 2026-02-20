@@ -1,16 +1,15 @@
 paths:
   base_dir: "/home/liangqing/AcademicAgent-Suite"
-  raw_storage: "/home/liangqing/AcademicAgent-Suite/storage/raw_files"
+  raw_storage: "/home/liangqing/AcademicAgent-Suite/storage/raw"
   processed_storage: "/home/liangqing/AcademicAgent-Suite/storage/processed"
 
 environments:
-  doc_parser: "/home/liangqing/miniconda3/envs/DocParserCore/bin/python"
-  video_slicer: "/home/liangqing/miniconda3/envs/VideoSemanticSlicer/bin/python"
-  audio_pro: "/home/liangqing/miniconda3/envs/AudioTranscriptionExpert/bin/python"
-  reasoning_eye: "/home/liangqing/miniconda3/envs/VisualReasoningEye/bin/python"
-  sandbox: "/home/liangqing/miniconda3/envs/ScientificSandbox/bin/python"
-  data_layer: "/home/liangqing/miniconda3/envs/DataStreamOrchestrator/bin/python"
-  brain: "/home/liangqing/miniconda3/envs/AgentLogicOrchestrator/bin/python"
+  doc_recognize: "/home/liangqing/miniconda3/envs/DocRecognize/bin/python"
+  video_recognize: "/home/liangqing/miniconda3/envs/VideoRecognize/bin/python"
+  visual_inference: "/home/liangqing/miniconda3/envs/VisualInference/bin/python"
+  sandbox_inference: "/home/liangqing/miniconda3/envs/SandboxInference/bin/python"
+  data_stream: "/home/liangqing/miniconda3/envs/DataStream/bin/python"
+  agent_logic: "/home/liangqing/miniconda3/envs/AgentLogic/bin/python"
   
 model_paths:
   whisper: "/home/liangqing/AcademicAgent-Suite/models/whisper_v3"

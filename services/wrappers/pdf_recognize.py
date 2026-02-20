@@ -2,15 +2,14 @@ import sys
 import json
 import subprocess
 import os
-import logging
 from datetime import datetime
 from pathlib import Path
 
 # 假设 assets_manager.py 在 ../../core/ 下
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
-from core.assets_manager import AcademicAsset, AssetStatus
+from core.assets_manager import AcademicAsset
 
-def run_pdf_recognize(asset: AcademicAsset):
+def run_pdf_recognize(asset: AcademicAsset,timeout=1200):
     """
     核心重构：接受 AcademicAsset 实例，返回处理结果
     """
@@ -22,7 +21,7 @@ def run_pdf_recognize(asset: AcademicAsset):
     LOG_DIR = PROJECT_ROOT / "logs"
     LOG_DIR.mkdir(exist_ok=True)
     
-    log_file_path = LOG_DIR / f"pdf_{asset.asset_id}.log"
+    log_file_path = LOG_DIR / "pdf_recognize.log"
 
     if not SHELL_SCRIPT.exists():
         return {
@@ -96,12 +95,19 @@ def run_pdf_recognize(asset: AcademicAsset):
                 bufsize=1
             )
             
-            for line in process.stdout:
-                if not any(kw in line for kw in exclude_keywords):
-                    log_file.write(line)
-                    log_file.flush()
-            
-            process.wait()
+            try:
+                # 实时读取日志，避免缓冲区满导致阻塞
+                for line in process.stdout:
+                    if not any(kw in line for kw in exclude_keywords):
+                        log_file.write(line)
+                        log_file.flush()
+                
+                # 设置等待超时
+                process.wait(timeout=timeout)
+                
+            except subprocess.TimeoutExpired:
+                process.kill() # 超时强制杀掉进程
+                return {"status": "error", "message": f"MinerU task timeout after {timeout}s", "asset_id": asset.asset_id}
 
         if process.returncode == 0:
             # 根据 worker 逻辑，输出在 processed_storage/magic-pdf/{asset_id}
@@ -110,7 +116,7 @@ def run_pdf_recognize(asset: AcademicAsset):
             return {
                 "status": "success",
                 "asset_id": asset.asset_id,
-                "processed_path": f"magic-pdf/{asset_id}", # 相对路径或绝对路径
+                "processed_path": f"magic-pdf/{asset.asset_id}", # 相对路径或绝对路径
                 "message": "MinerU task completed"
             }
         else:
@@ -124,10 +130,10 @@ def run_pdf_recognize(asset: AcademicAsset):
         return {"status": "error", "message": str(e), "asset_id": asset.asset_id}
 
 if __name__ == "__main__":
-    # 供测试或外部进程通过 JSON 字符串传递资产对象
     try:
         if len(sys.argv) > 1:
             asset_data = json.loads(sys.argv[1])
+            # 移除 data['asset_id'] 这种硬编码提取，改用类加载
             asset_obj = AcademicAsset.from_dict(asset_data)
             result = run_pdf_recognize(asset_obj)
             print(json.dumps(result))

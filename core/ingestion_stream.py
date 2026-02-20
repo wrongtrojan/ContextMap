@@ -6,7 +6,7 @@ import httpx
 import time
 from core.tools_manager import ToolsManager
 from core.system_state import SystemStateManager,SystemStatus
-from core.prompt_manager import PromptManager
+from core.prompts_manager import PromptManager
 from dotenv import load_dotenv
 
 logger = logging.getLogger("IngestionStream")

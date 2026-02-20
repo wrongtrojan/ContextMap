@@ -1,0 +1,136 @@
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 08:58:19.719064 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 08:58:19,973 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:12:40.174805 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:12:40,402 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:26:42.329422 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:26:42,560 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:36:13.589955 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:36:13,868 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:42:45.178003 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:42:45,414 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:43:22.009187 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:43:22,222 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:44:02.955998 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:44:03,176 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-20 09:48:17.472805 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-20 09:48:17,696 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 503, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 971, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.10/subprocess.py", line 1863, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1

@@ -5,13 +5,13 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-def run_visual_inference(params):
+def run_visual_inference(params,timeout=600):
     SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
     PROJECT_ROOT = Path(SCRIPT_DIR).resolve().parent.parent
     LOG_DIR = PROJECT_ROOT / "logs"
     LOG_DIR.mkdir(exist_ok=True)
     
-    log_file_path = LOG_DIR / "resoning_eye.log"
+    log_file_path = LOG_DIR / "visual_inference.log"
     logic_script = os.path.join(SCRIPT_DIR, "qwen_inference.py")
 
     image_path = params.get("image", "")
@@ -37,21 +37,20 @@ def run_visual_inference(params):
             
             capture_mode = False
             
-            for line in iter(process.stdout.readline, ""):
-                log_f.write(line)
-                log_f.flush() 
+            try:
+                # 使用 iter 配合 readline 循环
+                for line in iter(process.stdout.readline, ""):
+                    log_f.write(line)
+                    log_f.flush() 
+                    if "--- RESULT_START ---" in line: capture_mode = True
+                    elif "--- RESULT_END ---" in line: capture_mode = False
+                    if capture_mode and "--- RESULT_START ---" not in line:
+                        final_json_raw += line
                 
-                if "--- RESULT_START ---" in line:
-                    capture_mode = True
-                    continue
-                elif "--- RESULT_END ---" in line:
-                    capture_mode = False
-                    continue
-                
-                if capture_mode:
-                    final_json_raw += line
-            
-            process.wait()
+                process.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                return {"status": "error", "message": f"Inference timeout after {timeout}s"}
             log_f.write(f"{'='*20} Task Finished with exit code: {process.returncode} {'='*20}\n")
 
         if process.returncode == 0:
