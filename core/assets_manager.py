@@ -194,7 +194,7 @@ class GlobalAssetManager:
         ]
 
         for current_step, next_step in steps:
-            asset_dict["status"] = current_step.value
+            asset_dict["status"] = next_step.value
             self.save_state()
 
             res = {"status": "error", "message": "Unknown step"}

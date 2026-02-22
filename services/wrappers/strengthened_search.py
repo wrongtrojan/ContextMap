@@ -3,7 +3,7 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
-from search_worker import AcademicSearchWorker
+from original.search_worker import AcademicSearchWorker
 
 def main():
     # Setup Paths and Logging

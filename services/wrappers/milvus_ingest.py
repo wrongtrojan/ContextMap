@@ -12,13 +12,12 @@ from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Colle
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 from core.assets_manager import AcademicAsset, AssetType
 
-# --- 日志重定向逻辑 ---
+# --- 日志配置 (去除表情符号) ---
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 log_file_path = LOG_DIR / "milvus_ingest.log"
 
-# 配置日志：同时输出到控制台和文件，使用 UTF-8 编码防止中文乱码
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - [MilvusIngest] - %(levelname)s - %(message)s',
@@ -37,7 +36,6 @@ class MilvusIngestor:
         with open(self.project_root / milvus_cfg_path, 'r', encoding='utf-8') as f:
             self.db_cfg = yaml.safe_load(f)
 
-        # MinIO 初始化 (保留原始连接细节)
         self.minio_client = Minio(
             "localhost:9000",
             access_key="minioadmin",  
@@ -50,127 +48,186 @@ class MilvusIngestor:
 
     def _setup_minio(self):
         if not self.minio_client.bucket_exists(self.bucket_name):
-            logger.info(f"Creating MinIO bucket: {self.bucket_name}")
             self.minio_client.make_bucket(self.bucket_name)
+            policy = {
+                "Version": "2012-10-17",
+                "Statement": [{
+                    "Effect": "Allow",
+                    "Principal": {"AWS": ["*"]},
+                    "Action": ["s3:GetBucketLocation", "s3:ListBucket", "s3:GetObject"],
+                    "Resource": [f"arn:aws:s3:::{self.bucket_name}", f"arn:aws:s3:::{self.bucket_name}/*"]
+                }]
+            }
+            self.minio_client.set_bucket_policy(self.bucket_name, json.dumps(policy))
+            logger.info(f"MinIO Bucket {self.bucket_name} initialized")
 
     def _setup_milvus(self):
-        """根据 milvus_config.yaml 重新对齐 Schema"""
         conn = self.db_cfg['connection']
-        logger.info(f"Connecting to Milvus at {conn['host']}:{conn['port']}...")
         connections.connect("default", host=conn['host'], port=conn['port'])
         
-        col_cfg = self.db_cfg['collection']
-        sch_cfg = self.db_cfg['schema']
-
-        if not utility.has_collection(col_cfg['name']):
+        c = self.db_cfg['collection']
+        s = self.db_cfg['schema']
+        
+        if not utility.has_collection(c['name']):
             fields = [
-                FieldSchema(name=sch_cfg['pk'], dtype=DataType.INT64, is_primary=True, auto_id=True),
-                FieldSchema(name=sch_cfg['asset_name'], dtype=DataType.VARCHAR, max_length=200),
-                FieldSchema(name=sch_cfg['modality'], dtype=DataType.VARCHAR, max_length=50),
-                FieldSchema(name=sch_cfg['content_type'], dtype=DataType.VARCHAR, max_length=50),
-                FieldSchema(name=sch_cfg['content_ref'], dtype=DataType.VARCHAR, max_length=1000),
-                FieldSchema(name=sch_cfg['timestamp'], dtype=DataType.DOUBLE),
-                FieldSchema(name=sch_cfg['coordinates'], dtype=DataType.VARCHAR, max_length=500),
-                FieldSchema(name=sch_cfg['vec'], dtype=DataType.FLOAT_VECTOR, dim=col_cfg['dim'])
+                FieldSchema(name=s['pk'], dtype=DataType.INT64, is_primary=True, auto_id=True),
+                FieldSchema(name="asset_name", dtype=DataType.VARCHAR, max_length=500),
+                FieldSchema(name="modality", dtype=DataType.VARCHAR, max_length=50),      
+                FieldSchema(name="content_type", dtype=DataType.VARCHAR, max_length=50),  
+                FieldSchema(name="content_ref", dtype=DataType.VARCHAR, max_length=1000), 
+                FieldSchema(name="timestamp", dtype=DataType.DOUBLE),               
+                FieldSchema(name="coordinates", dtype=DataType.VARCHAR, max_length=500),    
+                FieldSchema(name=s['vec'], dtype=DataType.FLOAT_VECTOR, dim=c['dim'])
             ]
-            schema = CollectionSchema(fields, "Academic Multimodal Asset Collection")
-            self.collection = Collection(col_cfg['name'], schema)
-            
-            index_params = {
-                "metric_type": col_cfg['metric_type'],
-                "index_type": col_cfg['index_type'],
-                "params": {"nlist": col_cfg['nlist']}
-            }
-            self.collection.create_index(field_name=sch_cfg['vec'], index_params=index_params)
-            logger.info(f"Collection {col_cfg['name']} created and indexed.")
+            schema = CollectionSchema(fields, "Unified Academic Assets with MinIO URLs")
+            self.collection = Collection(c['name'], schema)
+            index_params = {"metric_type": c['metric_type'], "index_type": c['index_type'], "params": {"nlist": c['nlist']}}
+            self.collection.create_index(field_name=s['vec'], index_params=index_params)
         else:
-            self.collection = Collection(col_cfg['name'])
+            self.collection = Collection(c['name'])
         
         self.collection.load()
+        logger.info(f"Milvus Collection {c['name']} loaded")
 
-    def _upload_to_minio(self, local_path: Path, object_name: str):
+    def _upload_file(self, local_path, remote_path):
+        p = Path(local_path)
+        if not p.exists() or p.stat().st_size == 0:
+            return None
         try:
-            self.minio_client.fput_object(self.bucket_name, object_name, str(local_path))
-            return f"minio://{self.bucket_name}/{object_name}"
+            self.minio_client.fput_object(self.bucket_name, remote_path, str(p))
+            return f"http://127.0.0.1:9000/{self.bucket_name}/{remote_path}" 
         except Exception as e:
-            logger.error(f"MinIO Upload Error for {local_path}: {e}")
-            return str(local_path)
+            logger.error(f"MinIO upload fail: {e}")
+            return None
 
     def ingest_asset(self, asset: AcademicAsset):
-        """插入逻辑细节 (完全保留 PDF/Video 的差异化处理)"""
-        processed_root = Path(self.model_cfg['paths']['processed_storage'])
-        subfolder = "magic-pdf" if asset.asset_type == AssetType.PDF else "video"
-        asset_dir = processed_root / subfolder / asset.asset_id
+        """统一入口"""
+        logger.info(f"Processing Asset: {asset.asset_id} ({asset.asset_type.value})")
         
-        clip_json = asset_dir / "clip_features.json"
-        if not clip_json.exists():
-            raise FileNotFoundError(f"CLIP features not found for {asset.asset_id}")
+        if asset.asset_type == AssetType.PDF:
+            data = self._process_pdf(asset)
+        elif asset.asset_type == AssetType.VIDEO:
+            data = self._process_video(asset)
+        else:
+            return {"status": "error", "message": "unsupported type"}
 
-        logger.info(f"Starting ingestion for asset: {asset.asset_id}")
-        with open(clip_json, 'r', encoding='utf-8') as f:
-            features = json.load(f)
+        if data and data[0]: # names 列表不为空
+            self.collection.insert(data)
+            self.collection.flush()
+            logger.info(f"DONE: {asset.asset_id} ingestion complete, {len(data[0])} records.")
+            return len(data[0])
+        return 0
+
+    def _process_pdf(self, asset: AcademicAsset):
+        """完全参照成功版本的 PDF 逻辑"""
+        clean_id = asset.asset_id.replace(".pdf", "")
+        doc_dir = Path(self.model_cfg['paths']['processed_storage']) / "magic-pdf" / clean_id
+        feature_path = doc_dir / "clip_features.json"
+        
+        if not feature_path.exists():
+            logger.error(f"Feature file missing: {feature_path}")
+            return None
+
+        with open(feature_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        img_dir = None
+        for sub in ["auto", "ocr"]:
+            if (doc_dir / sub / "images").exists():
+                img_dir = doc_dir / sub / "images"
+                break
 
         names, modalities, types, refs, timestamps, coords, vecs = [], [], [], [], [], [], []
 
-        for item in features:
-            # 处理视觉特征
-            if "img_vector" in item or item.get("type") == "visual":
-                vec = item.get("img_vector") or item.get("vector")
-                if vec:
-                    img_name = item.get("frame_name") or item.get("content")
-                    if asset.asset_type == AssetType.VIDEO:
-                        img_path = asset_dir / "frames" / img_name
-                    else:
-                        middle_json_list = list(asset_dir.glob("**/auto/middle.json"))
-                        img_path = middle_json_list[0].parent / img_name if middle_json_list else asset_dir / img_name
-                    
-                    remote_ref = self._upload_to_minio(img_path, f"{asset.asset_id}/{Path(img_name).name}") if img_path.exists() else img_name
-                    
-                    names.append(asset.asset_id)
-                    modalities.append(asset.asset_type.value)
-                    types.append("visual")
-                    refs.append(remote_ref)
-                    timestamps.append(item.get("timestamp", item.get("page", 0.0)))
-                    coords.append(json.dumps(item.get("bbox", [])))
-                    vecs.append(vec)
+        # 1. 处理图像 (参照 data.get("images"))
+        for img_name, img_info in data.get("images", {}).items():
+            actual_vec = img_info.get("embedding") or img_info.get("img_vector")
+            if not actual_vec: continue
 
-            # 处理文本特征
-            if "text_vector" in item or item.get("type") == "text":
-                vec = item.get("text_vector") or item.get("vector")
-                if vec:
-                    names.append(asset.asset_id)
-                    modalities.append(asset.asset_type.value)
-                    types.append("text")
-                    refs.append(item.get("content") or "")
-                    timestamps.append(item.get("timestamp", item.get("page", 0.0)))
-                    coords.append(json.dumps(item.get("bbox", [])))
-                    vecs.append(vec)
+            remote_url = img_name
+            if img_dir:
+                remote_url = self._upload_file(img_dir / img_name, f"pdf/{clean_id}/{img_name}")
+            
+            names.append(asset.asset_id)
+            modalities.append("pdf")
+            types.append("image")
+            refs.append(remote_url if remote_url else img_name)
+            timestamps.append(float(img_info.get("page_idx", 0) + 1))
+            coords.append(json.dumps(img_info.get("bbox", [])))
+            vecs.append(actual_vec)
 
-        if names:
-            self.collection.insert([names, modalities, types, refs, timestamps, coords, vecs])
-            self.collection.flush()
-            logger.info(f"Successfully inserted {len(names)} vectors for {asset.asset_id}")
-            return len(names)
-        return 0
+        # 2. 处理文本 (参照 data.get("text_chunks"))
+        for chunk in data.get("text_chunks", []):
+            actual_vec = chunk.get("embedding") or chunk.get("text_vector")
+            if not actual_vec: continue
+
+            names.append(asset.asset_id)
+            modalities.append("pdf")
+            types.append("text")
+            refs.append(chunk.get("text_slice", "")[:1000])
+            vecs.append(actual_vec)
+            timestamps.append(float(chunk.get("page_idx", 0) + 1))
+            coords.append(json.dumps(chunk.get("bbox", [])))
+
+        return [names, modalities, types, refs, timestamps, coords, vecs]
+
+    def _process_video(self, asset: AcademicAsset):
+        """完全参照成功版本的 Video 逻辑"""
+        v_dir = Path(self.model_cfg['paths']['processed_storage']) / "video" / asset.asset_id
+        feature_path = v_dir / "clip_features.json"
+        frames_dir = v_dir / "frames"
+
+        if not feature_path.exists():
+            logger.error(f"Feature file missing: {feature_path}")
+            return None
+
+        with open(feature_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        names, modalities, types, refs, timestamps, vecs = [], [], [], [], [], []
+        # 注意：视频的 alignments 是列表结构
+        alignments = data.get("alignments", []) if isinstance(data, dict) else data
+
+        for item in alignments:
+            # 视觉部分
+            if item.get("img_vector"):
+                img_path = frames_dir / item['frame_name']
+                remote_url = self._upload_file(img_path, f"video/{asset.asset_id}/{item['frame_name']}")
+                
+                names.append(asset.asset_id)
+                modalities.append("video")
+                types.append("image_frame")
+                refs.append(remote_url if remote_url else item['frame_name'])
+                timestamps.append(item['timestamp'])
+                vecs.append(item['img_vector'])
+
+            # 文本部分
+            if item.get("text_vector"):
+                names.append(asset.asset_id)
+                modalities.append("video")
+                types.append("transcript_context")
+                refs.append(item.get('context_text', '')[:500])
+                timestamps.append(item['timestamp'])
+                vecs.append(item['text_vector'])
+
+        coords = ["null"] * len(names)
+        return [names, modalities, types, refs, timestamps, coords, vecs]
 
 def run_milvus_ingest(asset: AcademicAsset):
-    """新的统一入口"""
-    logger.info(f"\n{'='*20} Milvus Ingest Start: {datetime.now()} {'='*20}")
+    logger.info(f"--- Ingest Start: {datetime.now()} ---")
     try:
         ingestor = MilvusIngestor()
         count = ingestor.ingest_asset(asset)
         return {"status": "success", "asset_id": asset.asset_id, "vector_inserted": count}
     except Exception as e:
-        logger.error(f"Ingestion critical error for {asset.asset_id}: {str(e)}", exc_info=True)
+        logger.error(f"Ingest Error: {str(e)}", exc_info=True)
         return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         try:
             asset_data = json.loads(sys.argv[1])
-            # 强制规范化：将字典转换为对象
             asset_obj = AcademicAsset.from_dict(asset_data)
             print(json.dumps(run_milvus_ingest(asset_obj)))
         except Exception as e:
-            logger.error(f"Entry point error: {e}")
             print(json.dumps({"status": "error", "message": str(e)}))

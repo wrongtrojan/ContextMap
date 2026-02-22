@@ -146,7 +146,6 @@ class CLIPWorker:
         with open(middle_json, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        results = []
         # 兼容两种 key 名
         pages = data.get("pdf_info") or data.get("pdf_intermediate_dict") or []
 
@@ -203,7 +202,7 @@ class CLIPWorker:
                                 "bbox": block_bbox 
                             })
 
-        output_path = base_dir / "multimodal_features.json"
+        output_path = base_dir / "clip_features.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(doc_results, f, ensure_ascii=False, indent=4)
         return len(doc_results["text_chunks"]) + len(doc_results["images"])

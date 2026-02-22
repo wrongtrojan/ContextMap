@@ -12,8 +12,6 @@ from datetime import datetime
 # 加载环境变量
 dotenv.load_dotenv()
 
-# 注入项目根目录以加载 core 模块
-# 假设脚本位于 services/workers/ 或类似深度
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
@@ -49,12 +47,12 @@ class StructureGenerator:
             self.config = yaml.safe_load(f)
             
         # Initialize Prompt Manager
-        self.prompt_manager = PromptManager(str(self.project_root / "core/prompts"))
+        self.prompt_manager = PromptManager()
         
         # API Configuration
         llm_cfg = self.config.get("llm", {})
         self.api_url = llm_cfg.get("api_url", "https://api.deepseek.com/v1/chat/completions")
-        self.api_key = os.getenv("DEEPSEEK_API_KEY") or llm_cfg.get("api_key")
+        self.api_key = os.getenv("DEEPSEEK_API_KEY")
 
     def _extract_context(self, asset: AcademicAsset) -> str:
         """Extract text content from processed files as LLM context"""
@@ -63,19 +61,17 @@ class StructureGenerator:
         try:
             if asset.asset_type == AssetType.PDF:
                 # Logic for MinerU: magic-pdf/{id}/.../middle.json
-                base_path = processed_root / "magic-pdf" / asset.asset_id
-                middle_files = list(base_path.glob("**/auto/middle.json"))
-                if not middle_files:
+                clean_id=asset.asset_id.replace(".pdf", "")  # Sanitize ID for filesystem
+                base_path = processed_root / "magic-pdf" / clean_id
+                middle_files = base_path/"ocr"/f"{clean_id}_middle.json"
+                if not middle_files.exists():
                     raise FileNotFoundError(f"Missing processed PDF content (middle.json) for {asset.asset_id}")
                 
-                with open(middle_files[0], 'r', encoding='utf-8') as f:
+                with open(middle_files, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                    full_text = []
-                    for page in data.get("pdf_intermediate_dict", []):
-                        for block in page.get("middle_blocks", []):
-                            if block.get("type") in ["text", "title"]:
-                                full_text.append(block.get("text", ""))
-                    return "\n".join(full_text)[:10000] 
+                
+                content_to_send = data.get("pdf_info", data)
+                return json.dumps(content_to_send, ensure_ascii=False)[:15000] 
 
             elif asset.asset_type == AssetType.VIDEO:
                 # Logic for Whisper: video/{id}/transcript.json
@@ -127,10 +123,13 @@ class StructureGenerator:
                 outline_content = json.loads(res_data['choices'][0]['message']['content'])
                 
                 # Determine save path
-                output_subfolder = "magic-pdf" if asset.asset_type == AssetType.PDF else "video"
-                save_dir = Path(self.config['paths']['processed_storage']) / output_subfolder / asset.asset_id
+                processed_root = Path(self.config['paths']['processed_storage'])
+                if asset.asset_type == AssetType.PDF:
+                    clean_id = asset.asset_id.replace(".pdf", "")
+                    save_dir = processed_root / "magic-pdf" / clean_id
+                else:
+                    save_dir = processed_root / "video" / asset.asset_id
                 save_dir.mkdir(parents=True, exist_ok=True)
-                
                 save_path = save_dir / "summary_outline.json"
                 
                 result_payload = {
