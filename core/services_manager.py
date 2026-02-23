@@ -47,6 +47,14 @@ class ServicesManager:
         if not script_path.exists():
             return {"status": "error", "message": f"Wrapper script not found: {script_name}"}
 
+        current_env = os.environ.copy()
+        
+        venv_bin = str(Path(python_exe).parent)
+        
+        current_env["PATH"] = f"{venv_bin}{os.pathsep}{current_env.get('PATH', '')}"
+        
+        current_env["PYTHONUNBUFFERED"] = "1"
+        
         # 准备参数
         input_data = {}
         if asset:
@@ -64,7 +72,8 @@ class ServicesManager:
                 python_exe, "-u", str(script_path), input_str,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
-                cwd=str(self.project_root)
+                cwd=str(self.project_root),
+                env=current_env
             )
 
             # 等待任务完成并设置超时

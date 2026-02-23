@@ -4,12 +4,12 @@ paths:
   processed_storage: "/home/liangqing/AcademicAgent-Suite/storage/processed"
 
 environments:
-  doc_recognize: "/home/liangqing/miniconda3/envs/DocRecognize/bin/python"
+  doc_recognize: "/home/liangqing/AcademicAgent-Suite/envs/DocRecognize/bin/python"
   video_recognize: "/home/liangqing/miniconda3/envs/VideoRecognize/bin/python"
-  visual_inference: "/home/liangqing/miniconda3/envs/VisualInference/bin/python"
-  sandbox_inference: "/home/liangqing/miniconda3/envs/SandboxInference/bin/python"
-  data_stream: "/home/liangqing/miniconda3/envs/DataStream/bin/python"
-  agent_logic: "/home/liangqing/miniconda3/envs/AgentLogic/bin/python"
+  visual_inference: "/home/liangqing/AcademicAgent-Suite/envs/VisualInference/bin/python"
+  sandbox_inference: "/home/liangqing/AcademicAgent-Suite/envs/SandboxInference/bin/python"
+  data_stream: "/home/liangqing/AcademicAgent-Suite/envs/DataStream/bin/python"
+  agent_logic: "/home/liangqing/AcademicAgent-Suite/envs/AgentLogic/bin/python"
   
 model_paths:
   whisper: "/home/liangqing/AcademicAgent-Suite/models/whisper_v3"

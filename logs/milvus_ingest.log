@@ -1,0 +1,44 @@
+2026-02-23 08:52:46,183 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 08:52:46.183420 ---
+2026-02-23 08:52:46,204 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 08:52:46,204 - [MilvusIngest] - INFO - Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf (pdf)
+2026-02-23 08:52:49,319 - [MilvusIngest] - INFO - DONE: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf ingestion complete, 184 records.
+2026-02-23 09:27:10,064 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 09:27:10.064919 ---
+2026-02-23 09:27:10,086 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 09:27:10,087 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 09:27:13,368 - [MilvusIngest] - INFO - DONE: 高阶常系数齐次线性微分方程求解方法.mp4 ingestion complete, 108 records.
+2026-02-23 09:34:30,317 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 09:34:30.317652 ---
+2026-02-23 09:34:30,341 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 09:34:30,341 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 09:34:33,633 - [MilvusIngest] - INFO - DONE: 高阶常系数齐次线性微分方程求解方法.mp4 ingestion complete, 108 records.
+2026-02-23 09:40:52,836 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 09:40:52.836762 ---
+2026-02-23 09:40:52,857 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 09:40:52,857 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 09:40:56,163 - [MilvusIngest] - INFO - DONE: 高阶常系数齐次线性微分方程求解方法.mp4 ingestion complete, 108 records.
+2026-02-23 10:16:53,900 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 10:16:53.900956 ---
+2026-02-23 10:16:53,921 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 10:16:53,922 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 10:16:53,971 - [MilvusIngest] - ERROR - Ingest Error: 'context'
+2026-02-23 10:16:53,971 - [MilvusIngest] - DEBUG - Traceback (most recent call last):
+  File "/home/liangqing/AcademicAgent-Suite/services/wrappers/milvus_ingest.py", line 214, in run_milvus_ingest
+    count = ingestor.ingest_asset(asset)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liangqing/AcademicAgent-Suite/services/wrappers/milvus_ingest.py", line 111, in ingest_asset
+    data = self._process_video(asset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/liangqing/AcademicAgent-Suite/services/wrappers/milvus_ingest.py", line 203, in _process_video
+    refs.append(item['context'][:500])
+                ~~~~^^^^^^^^^^^
+KeyError: 'context'
+
+2026-02-23 10:24:03,167 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 10:24:03.167122 ---
+2026-02-23 10:24:03,187 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 10:24:03,187 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 10:24:06,988 - [MilvusIngest] - INFO - DONE: 高阶常系数齐次线性微分方程求解方法.mp4 ingestion complete, 108 records.
+2026-02-23 13:05:12,534 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 13:05:12.534396 ---
+2026-02-23 13:05:12,558 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 13:05:12,558 - [MilvusIngest] - INFO - Processing Asset: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf (pdf)
+2026-02-23 13:05:15,673 - [MilvusIngest] - INFO - DONE: 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf ingestion complete, 184 records.
+2026-02-23 13:18:56,578 - [MilvusIngest] - INFO - --- Ingest Start: 2026-02-23 13:18:56.578778 ---
+2026-02-23 13:18:56,599 - [MilvusIngest] - INFO - Milvus Collection academic_multimodal_assets loaded
+2026-02-23 13:18:56,599 - [MilvusIngest] - INFO - Processing Asset: 高阶常系数齐次线性微分方程求解方法.mp4 (video)
+2026-02-23 13:18:59,885 - [MilvusIngest] - INFO - DONE: 高阶常系数齐次线性微分方程求解方法.mp4 ingestion complete, 108 records.

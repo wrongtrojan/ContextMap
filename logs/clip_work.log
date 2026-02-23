@@ -1,0 +1,32 @@
+2026-02-23 08:52:24,014 - [CLIPWork] - INFO - ==================== CLIP Task 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start ====================
+2026-02-23 08:52:24,015 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 08:52:25,164 - [CLIPWork] - INFO - Found middle.json at: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)_middle.json
+2026-02-23 08:52:26,736 - [CLIPWork] - INFO - SUCCESS: Generated 184 vectors for 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-23 09:26:36,503 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 09:26:36,505 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 09:26:37,602 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 09:26:40,542 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 09:33:58,870 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 09:33:58,871 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 09:33:59,901 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 09:34:02,670 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 09:40:20,340 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 09:40:20,342 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 09:40:21,360 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 09:40:24,070 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 10:16:23,139 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 10:16:23,141 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 10:16:24,194 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 10:16:26,978 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 10:23:26,262 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 10:23:26,263 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 10:23:27,351 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 10:23:30,387 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 13:04:50,986 - [CLIPWork] - INFO - ==================== CLIP Task 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf Start ====================
+2026-02-23 13:04:50,988 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 13:04:53,779 - [CLIPWork] - INFO - Found middle.json at: /home/liangqing/AcademicAgent-Suite/storage/processed/magic-pdf/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)/ocr/工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2)_middle.json
+2026-02-23 13:04:55,644 - [CLIPWork] - INFO - SUCCESS: Generated 184 vectors for 工科数学分析基础第三版 上册 (王锦森, 马知恩) (Z-Library)(2).pdf
+2026-02-23 13:18:19,552 - [CLIPWork] - INFO - ==================== CLIP Task 高阶常系数齐次线性微分方程求解方法.mp4 Start ====================
+2026-02-23 13:18:19,553 - [CLIPWork] - INFO - Loading CLIP model on cuda...
+2026-02-23 13:18:20,807 - [CLIPWork] - INFO - Processing Video asset: 高阶常系数齐次线性微分方程求解方法.mp4
+2026-02-23 13:18:25,080 - [CLIPWork] - INFO - SUCCESS: Generated 54 vectors for 高阶常系数齐次线性微分方程求解方法.mp4

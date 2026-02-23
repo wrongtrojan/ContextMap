@@ -2,7 +2,7 @@ import os
 import sys
 import json
 import yaml
-import logging
+import traceback
 from pathlib import Path
 from datetime import datetime
 from minio import Minio
@@ -12,21 +12,23 @@ from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Colle
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 from core.assets_manager import AcademicAsset, AssetType
 
-# --- 日志配置 (去除表情符号) ---
+# --- 基础日志函数 ---
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 log_file_path = LOG_DIR / "milvus_ingest.log"
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - [MilvusIngest] - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file_path, encoding='utf-8', mode='a'),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
-logger = logging.getLogger("MilvusIngest")
+def log_message(level, msg):
+    """最基础的日志重定向：同时打印到控制台并追加到文件"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]
+    formatted_msg = f"{timestamp} - [MilvusIngest] - {level} - {msg}"
+    
+    # 输出到控制台
+    print(formatted_msg)
+    
+    # 追加到文件
+    with open(log_file_path, "a", encoding="utf-8") as f:
+        f.write(formatted_msg + "\n")
 
 class MilvusIngestor:
     def __init__(self, global_cfg_path="configs/model_config.yaml", milvus_cfg_path="configs/milvus_config.yaml"):
@@ -59,7 +61,7 @@ class MilvusIngestor:
                 }]
             }
             self.minio_client.set_bucket_policy(self.bucket_name, json.dumps(policy))
-            logger.info(f"MinIO Bucket {self.bucket_name} initialized")
+            log_message("INFO", f"MinIO Bucket {self.bucket_name} initialized")
 
     def _setup_milvus(self):
         conn = self.db_cfg['connection']
@@ -87,7 +89,7 @@ class MilvusIngestor:
             self.collection = Collection(c['name'])
         
         self.collection.load()
-        logger.info(f"Milvus Collection {c['name']} loaded")
+        log_message("INFO", f"Milvus Collection {c['name']} loaded")
 
     def _upload_file(self, local_path, remote_path):
         p = Path(local_path)
@@ -97,12 +99,11 @@ class MilvusIngestor:
             self.minio_client.fput_object(self.bucket_name, remote_path, str(p))
             return f"http://127.0.0.1:9000/{self.bucket_name}/{remote_path}" 
         except Exception as e:
-            logger.error(f"MinIO upload fail: {e}")
+            log_message("ERROR", f"MinIO upload fail: {e}")
             return None
 
     def ingest_asset(self, asset: AcademicAsset):
-        """统一入口"""
-        logger.info(f"Processing Asset: {asset.asset_id} ({asset.asset_type.value})")
+        log_message("INFO", f"Processing Asset: {asset.asset_id} ({asset.asset_type.value})")
         
         if asset.asset_type == AssetType.PDF:
             data = self._process_pdf(asset)
@@ -111,21 +112,20 @@ class MilvusIngestor:
         else:
             return {"status": "error", "message": "unsupported type"}
 
-        if data and data[0]: # names 列表不为空
+        if data and data[0]:
             self.collection.insert(data)
             self.collection.flush()
-            logger.info(f"DONE: {asset.asset_id} ingestion complete, {len(data[0])} records.")
+            log_message("INFO", f"DONE: {asset.asset_id} ingestion complete, {len(data[0])} records.")
             return len(data[0])
         return 0
 
     def _process_pdf(self, asset: AcademicAsset):
-        """完全参照成功版本的 PDF 逻辑"""
         clean_id = asset.asset_id.replace(".pdf", "")
         doc_dir = Path(self.model_cfg['paths']['processed_storage']) / "magic-pdf" / clean_id
         feature_path = doc_dir / "clip_features.json"
         
         if not feature_path.exists():
-            logger.error(f"Feature file missing: {feature_path}")
+            log_message("ERROR", f"Feature file missing: {feature_path}")
             return None
 
         with open(feature_path, 'r', encoding='utf-8') as f:
@@ -139,7 +139,6 @@ class MilvusIngestor:
 
         names, modalities, types, refs, timestamps, coords, vecs = [], [], [], [], [], [], []
 
-        # 1. 处理图像 (参照 data.get("images"))
         for img_name, img_info in data.get("images", {}).items():
             actual_vec = img_info.get("embedding") or img_info.get("img_vector")
             if not actual_vec: continue
@@ -156,7 +155,6 @@ class MilvusIngestor:
             coords.append(json.dumps(img_info.get("bbox", [])))
             vecs.append(actual_vec)
 
-        # 2. 处理文本 (参照 data.get("text_chunks"))
         for chunk in data.get("text_chunks", []):
             actual_vec = chunk.get("embedding") or chunk.get("text_vector")
             if not actual_vec: continue
@@ -172,24 +170,21 @@ class MilvusIngestor:
         return [names, modalities, types, refs, timestamps, coords, vecs]
 
     def _process_video(self, asset: AcademicAsset):
-        """完全参照成功版本的 Video 逻辑"""
         v_dir = Path(self.model_cfg['paths']['processed_storage']) / "video" / asset.asset_id
         feature_path = v_dir / "clip_features.json"
         frames_dir = v_dir / "frames"
 
         if not feature_path.exists():
-            logger.error(f"Feature file missing: {feature_path}")
+            log_message("ERROR", f"Feature file missing: {feature_path}")
             return None
 
         with open(feature_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
         names, modalities, types, refs, timestamps, vecs = [], [], [], [], [], []
-        # 注意：视频的 alignments 是列表结构
         alignments = data.get("alignments", []) if isinstance(data, dict) else data
 
         for item in alignments:
-            # 视觉部分
             if item.get("img_vector"):
                 img_path = frames_dir / item['frame_name']
                 remote_url = self._upload_file(img_path, f"video/{asset.asset_id}/{item['frame_name']}")
@@ -201,12 +196,11 @@ class MilvusIngestor:
                 timestamps.append(item['timestamp'])
                 vecs.append(item['img_vector'])
 
-            # 文本部分
             if item.get("text_vector"):
                 names.append(asset.asset_id)
                 modalities.append("video")
                 types.append("transcript_context")
-                refs.append(item.get('context_text', '')[:500])
+                refs.append(item['content'][:500])
                 timestamps.append(item['timestamp'])
                 vecs.append(item['text_vector'])
 
@@ -214,13 +208,14 @@ class MilvusIngestor:
         return [names, modalities, types, refs, timestamps, coords, vecs]
 
 def run_milvus_ingest(asset: AcademicAsset):
-    logger.info(f"--- Ingest Start: {datetime.now()} ---")
+    log_message("INFO", f"--- Ingest Start: {datetime.now()} ---")
     try:
         ingestor = MilvusIngestor()
         count = ingestor.ingest_asset(asset)
         return {"status": "success", "asset_id": asset.asset_id, "vector_inserted": count}
     except Exception as e:
-        logger.error(f"Ingest Error: {str(e)}", exc_info=True)
+        log_message("ERROR", f"Ingest Error: {str(e)}")
+        log_message("DEBUG", traceback.format_exc())
         return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
@@ -230,4 +225,5 @@ if __name__ == "__main__":
             asset_obj = AcademicAsset.from_dict(asset_data)
             print(json.dumps(run_milvus_ingest(asset_obj)))
         except Exception as e:
+            log_message("ERROR", f"Entry point error: {e}")
             print(json.dumps({"status": "error", "message": str(e)}))

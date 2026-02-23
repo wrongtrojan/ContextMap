@@ -25,9 +25,6 @@ def run_video_recognize(asset: AcademicAsset,timeout=1800):
     log_file_path = LOG_DIR / "video_recognize.log"
     
     python_exe = sys.executable
-    env = os.environ.copy()
-    conda_bin_dir = str(Path(python_exe).parent)
-    env["PATH"] = conda_bin_dir + os.pathsep + env.get("PATH", "")
 
     try:
         with open(log_file_path, "a", encoding="utf-8") as log_file:

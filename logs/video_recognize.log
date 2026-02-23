@@ -1,0 +1,333 @@
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 08:53:29.193102 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 08:53:29,580 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 08:55:15.891536 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 08:55:16,077 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:09:08.623226 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:09:08,836 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:14:56.678301 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:14:56,868 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:18:03.531769 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:18:03,721 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:21:51.840425 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:21:52,030 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 108, in <module>
+[CV]     worker.process_asset(args.asset_id, args.asset_raw_path)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 50, in process_asset
+[CV]     subprocess.run(cmd, capture_output=True, check=True)
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 505, in run
+[CV]     with Popen(*popenargs, **kwargs) as process:
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 951, in __init__
+[CV]     self._execute_child(args, executable, preexec_fn, close_fds,
+[CV]   File "/home/liangqing/miniconda3/envs/VideoRecognize/lib/python3.9/subprocess.py", line 1837, in _execute_child
+[CV]     raise child_exception_type(errno_num, err_msg, err_filename)
+[CV] FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:24:45.200749 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:24:45,394 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 09:25:05,347 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 09:25:05,371 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 09:26:02,037 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 09:26:02,037 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 09:26:05,839 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 09:26:08,700 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 09:26:09,398 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 09:26:10,394 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 09:26:10,679 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 09:26:15,151 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 09:26:18,406 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 09:26:19,558 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 09:26:20,917 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 09:26:23,169 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 09:26:24,398 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 09:26:27,012 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 09:26:28,240 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 09:26:29,428 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 09:26:30,687 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 09:26:33,034 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 09:26:33,040 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:32:08.993131 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:32:09,182 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 09:32:31,525 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 09:32:31,543 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 09:33:26,946 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 09:33:26,946 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 09:33:29,625 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 09:33:31,853 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 09:33:32,523 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 09:33:33,471 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 09:33:33,737 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 09:33:38,085 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 09:33:41,335 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 09:33:42,476 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 09:33:43,833 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 09:33:46,099 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 09:33:47,333 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 09:33:49,946 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 09:33:51,174 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 09:33:52,364 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 09:33:53,623 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 09:33:55,969 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 09:33:55,976 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 09:38:33.876481 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 09:38:34,064 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 09:38:53,831 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 09:38:53,851 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 09:39:48,521 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 09:39:48,521 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 09:39:51,443 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 09:39:53,593 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 09:39:54,271 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 09:39:55,217 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 09:39:55,496 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 09:39:59,816 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 09:40:03,036 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 09:40:04,159 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 09:40:05,495 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 09:40:07,709 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 09:40:08,923 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 09:40:11,517 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 09:40:12,723 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 09:40:13,896 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 09:40:15,142 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 09:40:17,471 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 09:40:17,478 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 10:14:31.626293 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 10:14:31,829 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 10:14:53,795 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 10:14:53,814 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 10:15:49,752 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 10:15:49,752 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 10:15:52,528 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 10:15:55,438 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 10:15:56,143 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 10:15:57,104 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 10:15:57,393 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 10:16:01,747 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 10:16:05,093 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 10:16:06,238 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 10:16:07,610 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 10:16:09,880 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 10:16:11,111 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 10:16:13,723 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 10:16:14,953 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 10:16:16,151 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 10:16:17,415 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 10:16:19,763 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 10:16:19,770 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 10:21:39.744061 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 10:21:39,965 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 10:21:58,952 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 10:21:58,972 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 10:22:53,686 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 10:22:53,686 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 10:22:56,572 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 10:22:58,976 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 10:22:59,653 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 10:23:00,645 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 10:23:01,009 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 10:23:05,350 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 10:23:08,600 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 10:23:09,740 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 10:23:11,100 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 10:23:13,360 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 10:23:14,605 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 10:23:17,223 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 10:23:18,454 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 10:23:19,646 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 10:23:20,908 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 10:23:23,259 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 10:23:23,265 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 12:55:19.976180 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] ['/home/liangqing/AcademicAgent-Suite/services/original', '/home/conda/feedstock_root/build_artifacts/libopencv_1733788128347/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib/python3.9/site-packages/cv2/python-3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python39.zip', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/lib-dynload', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages']
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 1, in <module>
+[CV]     import cv2
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 153, in bootstrap
+[CV]     native_module = importlib.import_module("cv2")
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/importlib/__init__.py", line 127, in import_module
+[CV]     return _bootstrap._gcd_import(name[level:], package, level)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 76, in bootstrap
+[CV]     raise ImportError('ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.')
+[CV] ImportError: ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 13:07:12.182481 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] ['/home/liangqing/AcademicAgent-Suite/services/original', '/home/conda/feedstock_root/build_artifacts/libopencv_1733788128347/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib/python3.9/site-packages/cv2/python-3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python39.zip', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/lib-dynload', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages']
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 1, in <module>
+[CV]     import cv2
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 153, in bootstrap
+[CV]     native_module = importlib.import_module("cv2")
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/importlib/__init__.py", line 127, in import_module
+[CV]     return _bootstrap._gcd_import(name[level:], package, level)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 76, in bootstrap
+[CV]     raise ImportError('ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.')
+[CV] ImportError: ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 13:08:34.444588 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] ['/home/liangqing/AcademicAgent-Suite/services/original', '/home/conda/feedstock_root/build_artifacts/libopencv_1733788128347/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib/python3.9/site-packages/cv2/python-3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python39.zip', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/lib-dynload', '/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages']
+[CV] Traceback (most recent call last):
+[CV]   File "/home/liangqing/AcademicAgent-Suite/services/original/opencv_worker.py", line 1, in <module>
+[CV]     import cv2
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 153, in bootstrap
+[CV]     native_module = importlib.import_module("cv2")
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/importlib/__init__.py", line 127, in import_module
+[CV]     return _bootstrap._gcd_import(name[level:], package, level)
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 181, in <module>
+[CV]     bootstrap()
+[CV]   File "/home/liangqing/AcademicAgent-Suite/envs/VideoRecognize/lib/python3.9/site-packages/cv2/__init__.py", line 76, in bootstrap
+[CV]     raise ImportError('ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.')
+[CV] ImportError: ERROR: recursion is detected during loading of "cv2" binary extensions. Check OpenCV installation.
+[CRITICAL ERROR] OpenCVWorker failed with code 1
+
+==================== Video Task 高阶常系数齐次线性微分方程求解方法.mp4 Start: 2026-02-23 13:16:36.443451 ====================
+[STAGE 1] Running OpenCVWorker...
+[CV] 2026-02-23 13:16:36,812 - [OpenCV-Worker] - INFO - Standardizing video to H.264: 高阶常系数齐次线性微分方程求解方法.mp4
+[CV] 2026-02-23 13:16:59,079 - [OpenCV-Worker] - INFO - FFmpeg standardization complete.
+[CV] 2026-02-23 13:16:59,100 - [OpenCV-Worker] - INFO - Starting semantic slicing. Duration: 571.60s, Threshold: 0.03
+[CV] 2026-02-23 13:17:45,285 - [OpenCV-Worker] - WARNING - Low density (17/38). Running uniform fallback.
+[CV] 2026-02-23 13:17:45,285 - [OpenCV-Worker] - INFO - Triggering fallback: Uniformly sampling 38 frames.
+[CV] SUCCESS|FRAME_COUNT:38|STANDARD_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/高阶常系数齐次线性微分方程求解方法.mp4.standard.mp4
+[STAGE 2] Running WhisperWorker...
+[WS] 2026-02-23 13:17:48,918 - [Whisper-Worker] - INFO - Loading Whisper model from: /home/liangqing/AcademicAgent-Suite/models/whisper_v3
+[WS] 2026-02-23 13:17:51,915 - [Whisper-Worker] - INFO - --- [START] Transcribing asset: 高阶常系数齐次线性微分方程求解方法.mp4 ---
+[WS] 2026-02-23 13:17:52,599 - [Whisper-Worker] - INFO - Processing audio with duration 09:31.675
+[WS] 2026-02-23 13:17:53,596 - [Whisper-Worker] - INFO - VAD filter removed 00:20.848 of audio
+[WS] 2026-02-23 13:17:53,873 - [Whisper-Worker] - INFO - Detected language: zh | Duration: 571.68s
+[WS] 2026-02-23 13:17:58,274 - [Whisper-Worker] - INFO - Progress: 114.0s transcribed...
+[WS] 2026-02-23 13:18:01,520 - [Whisper-Worker] - INFO - Progress: 182.5s transcribed...
+[WS] 2026-02-23 13:18:02,661 - [Whisper-Worker] - INFO - Progress: 224.6s transcribed...
+[WS] 2026-02-23 13:18:04,015 - [Whisper-Worker] - INFO - Progress: 265.8s transcribed...
+[WS] 2026-02-23 13:18:06,265 - [Whisper-Worker] - INFO - Progress: 307.5s transcribed...
+[WS] 2026-02-23 13:18:07,493 - [Whisper-Worker] - INFO - Progress: 354.6s transcribed...
+[WS] 2026-02-23 13:18:10,098 - [Whisper-Worker] - INFO - Progress: 403.7s transcribed...
+[WS] 2026-02-23 13:18:11,323 - [Whisper-Worker] - INFO - Progress: 436.3s transcribed...
+[WS] 2026-02-23 13:18:12,510 - [Whisper-Worker] - INFO - Progress: 473.7s transcribed...
+[WS] 2026-02-23 13:18:13,766 - [Whisper-Worker] - INFO - Progress: 512.9s transcribed...
+[WS] 2026-02-23 13:18:16,110 - [Whisper-Worker] - INFO - Progress: 554.9s transcribed...
+[WS] 2026-02-23 13:18:16,117 - [Whisper-Worker] - INFO - --- [DONE] Transcript saved to: transcript.json ---
+[WS] SUCCESS|TRANSCRIPT_PATH:/home/liangqing/AcademicAgent-Suite/storage/processed/video/高阶常系数齐次线性微分方程求解方法.mp4/transcript.json
+==================== Task 高阶常系数齐次线性微分方程求解方法.mp4 Completed ====================

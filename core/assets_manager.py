@@ -112,18 +112,23 @@ class GlobalAssetManager:
         async with self._lock:
             if asset_id in self.assets_map:
                 self.assets_map[asset_id]["status"] = AssetStatus.RAW.value
-                await self.pending_queue.put(asset_id)
                 self.save_state()
                 logger.info(f"Asset {asset_id} moved to RAW and queued.")
 
     async def start_queue_processing(self):
+        count = 0
+        for aid, a_data in self.assets_map.items():
+            if a_data["status"] == AssetStatus.RAW.value:
+                # 检查是否已经在队列中（避免重复触发）
+                await self.pending_queue.put(aid)
+                count += 1
         if not self.is_worker_running:
             logger.info("Starting Asset Queue Worker...")
             self.is_worker_running = True
             self._worker_task = asyncio.create_task(self._queue_worker())
             self._worker_task.add_done_callback(self._on_worker_done)
-            return {"status": "success", "message": "Queue processor started"}
-        return {"status": "success", "message": "Queue processor is already running"}
+            return {"status": "success", "message": f"Processor started. {count} assets queued."}
+        return {"status": "success", "message": f"Worker already running. {count} new assets added to queue."}
 
     def _on_worker_done(self, task):
         self.is_worker_running = False
