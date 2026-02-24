@@ -1,13 +1,15 @@
 import sys
 import json
-import os
 from datetime import datetime
 from pathlib import Path
-from original.search_worker import AcademicSearchWorker
+PROJECT_ROOT = str(Path(__file__).resolve().parent.parent.parent)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+from services.original.search_worker import AcademicSearchWorker
 
 def main():
     # Setup Paths and Logging
-    PROJECT_ROOT = Path(__file__).resolve().parent.parent
+    PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
     LOG_DIR = PROJECT_ROOT / "logs"
     LOG_DIR.mkdir(exist_ok=True)
     log_file_path = LOG_DIR / "strengthened_search.log"

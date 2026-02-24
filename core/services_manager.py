@@ -136,12 +136,14 @@ class ServicesManager:
         """DeepSeek 结构化输出"""
         return await self._dispatch_async("agent_logic", "structure_generate.py", asset=asset)
 
-    async def call_visual_expert(self, image_path: str, prompt: str):
+    async def call_visual_expert(self,  params: dict):
         """Qwen-VL 视觉推理"""
-        params = {"image": image_path, "prompt": prompt}
         return await self._dispatch_async("visual_inference", "visual_inference.py", params=params)
     
-    async def call_sandbox_expert(self, image_path: str, prompt: str):
+    async def call_sandbox_expert(self, params: dict):
         """沙盒推理"""
-        params = {"image": image_path, "prompt": prompt}
         return await self._dispatch_async("sandbox_inference", "sandbox_inference.py", params=params)
+    
+    async def start_academic_search(self, params: dict):
+        """学术搜索"""
+        return await self._dispatch_async("data_stream", "strengthened_search.py", params=params)

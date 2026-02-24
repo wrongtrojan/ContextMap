@@ -12,7 +12,7 @@ logger = logging.getLogger("SearchWorker")
 
 class AcademicSearchWorker:
     def __init__(self, config_path="configs/model_config.yaml", milvus_config="configs/milvus_config.yaml"):
-        self.project_root = Path(__file__).resolve().parent.parent
+        self.project_root = Path(__file__).resolve().parent.parent.parent
         
         with open(self.project_root / config_path, 'r', encoding='utf-8') as f:
             self.model_cfg = yaml.safe_load(f)

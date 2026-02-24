@@ -4,6 +4,7 @@
 
 ### 待审计信息
 * **用户问题**: "{{ query }}"
+* **当前重试次数**: {{ retry_count }}
 * **当前检索结果**:
 {% for doc in docs %}
 [材料 {{ loop.index }}] 来源: {{ doc.metadata.asset_id }}, 页码/时间: {{ doc.metadata.timestamp }}

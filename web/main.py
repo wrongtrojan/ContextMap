@@ -13,7 +13,7 @@ from core.assets_manager import GlobalAssetManager
 from web.api.v1.upload import router as upload_router
 from web.api.v1.assets import router as assets_router
 from web.api.v1.status import router as status_router
-# from web.api.v1.chat import router as chat_router
+from web.api.v1.chats import router as chats_router
 
 # 标准化日志配置
 logging.basicConfig(
@@ -73,7 +73,7 @@ app.include_router(assets_router, prefix="/api/v1/assets", tags=["Assets"])
 # 状态监控 API
 app.include_router(status_router, prefix="/api/v1/status", tags=["Status"])
 # # 聊天推理 API
-# app.include_router(chat_router, prefix="/api/v1/chat", tags=["Chat"])
+app.include_router(chats_router, prefix="/api/v1/chats", tags=["Chats"])
 
 @app.get("/")
 async def root():

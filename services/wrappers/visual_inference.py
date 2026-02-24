@@ -12,7 +12,7 @@ def run_visual_inference(params,timeout=600):
     LOG_DIR.mkdir(exist_ok=True)
     
     log_file_path = LOG_DIR / "visual_inference.log"
-    logic_script = os.path.join(SCRIPT_DIR, "qwen_inference.py")
+    logic_script = PROJECT_ROOT / "services" / "original" / "qwenvl_worker.py"
 
     image_path = params.get("image", "")
     if not os.path.exists(image_path):

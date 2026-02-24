@@ -425,3 +425,4 @@ class ReasoningStream:
             # Absolute Safety: return to IDLE regardless of success or crash
             self.state_manager.release_lock()
             logger.info(f"🔓 [Stream] Lock released for thread {thread_id}")
+            

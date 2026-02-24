@@ -140,6 +140,9 @@ class GlobalAssetManager:
     def get_asset_status(self, asset_id: str) -> Optional[dict]:
         return self.assets_map.get(asset_id)
 
+    def get_all_assets(self) -> Dict[str, dict]:
+        return self.assets_map
+    
     def get_global_status(self) -> dict:
         has_uploading = any(a["status"] == AssetStatus.UPLOADING.value for a in self.assets_map.values())
         state = GlobalStatus.WAITING.value

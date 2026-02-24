@@ -4,11 +4,11 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-try:
-    from original.sandbox_worker import run_calculation
-except ImportError:
-    sys.path.append(os.path.dirname(__file__))
-    from original.sandbox_worker import run_calculation
+
+PROJECT_ROOT = str(Path(__file__).resolve().parent.parent.parent)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+    from services.original.sandbox_worker import run_calculation
 
 def main():
     CURRENT_DIR = Path(__file__).resolve().parent
