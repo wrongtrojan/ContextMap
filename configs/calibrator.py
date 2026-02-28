@@ -31,9 +31,9 @@ def calibrate_project_configs():
 
             # 内部辅助函数：智能替换旧的前缀
             def update_prefix(old_path):
-                if isinstance(old_path, str) and "AcademicAgent-Suite" in old_path:
+                if isinstance(old_path, str) and "ContextMap" in old_path:
                     # 提取项目名称之后的部分 (e.g., envs/DocRecognize/bin/python)
-                    relative_part = old_path.split("AcademicAgent-Suite")[-1].lstrip("/")
+                    relative_part = old_path.split("ContextMap")[-1].lstrip("/")
                     return str(project_root / relative_part)
                 return old_path
 

@@ -45,7 +45,7 @@ async def lifespan(app: FastAPI):
 
 # 初始化 FastAPI
 app = FastAPI(
-    title="AcademicAgent-Suite API",
+    title="ContextMap API",
     description="后端 API：支持多模态资产处理、状态机管理及推理。",
     version="1.1.0",
     lifespan=lifespan
@@ -82,3 +82,4 @@ async def root():
         "api_v1": "/api/v1",
         "docs": "/docs"
     }
+    

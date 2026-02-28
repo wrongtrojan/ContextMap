@@ -8,6 +8,7 @@ from huggingface_hub import hf_hub_download, logging
 logging.set_verbosity_info()
 
 # --- Configuration ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ID = "wrongtrojan/AcademicAgent-Suite"
 TOKEN = None  
 
@@ -32,14 +33,13 @@ def download_and_extract():
                 filename=file_name,
                 repo_type="dataset",
                 token=TOKEN,
-                local_dir="./"
+                local_dir=BASE_DIR
             )
             print(f"Status: Download of {file_name} completed successfully.")
 
             # Step 2: Extract
-            extract_dir = file_name.replace(".tar.gz", "")
-            # 确保使用绝对路径以防 unpack 过程中的路径偏移
-            abs_extract_dir = os.path.abspath(extract_dir)
+            folder_name = file_name.replace(".tar.gz", "")
+            abs_extract_dir = os.path.join(BASE_DIR, folder_name)
             
             if not os.path.exists(abs_extract_dir):
                 os.makedirs(abs_extract_dir)
@@ -52,7 +52,7 @@ def download_and_extract():
             # --- 新增 Step 2.5: Conda Unpack ---
             unpack_script = os.path.join(abs_extract_dir, "bin", "conda-unpack")
             if os.path.exists(unpack_script):
-                print(f"Task Started: Running conda-unpack for {extract_dir}...")
+                print(f"Task Started: Running conda-unpack for {folder_name}...")
                 try:
                     # 使用 subprocess 执行脚本，确保在环境目录下运行
                     result = subprocess.run(
@@ -68,7 +68,7 @@ def download_and_extract():
                 except Exception as unpack_e:
                     print(f"Warning: Failed to execute conda-unpack: {unpack_e}")
             else:
-                print(f"Notice: No conda-unpack script found in {extract_dir}/bin, skipping.")
+                print(f"Notice: No conda-unpack script found in {folder_name}/bin, skipping.")
 
             # Step 3: Cleanup
             if os.path.exists(downloaded_path):

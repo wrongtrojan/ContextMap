@@ -82,7 +82,7 @@ export default function ScaffoldingPage() {
       const res = await fetch(`${API_ENDPOINTS.PREVIEW}?asset_id=${encodeURIComponent(assetId)}`);
       const data = await res.json();
       if (data.raw_path) {
-        // 拼接完整地址：http://localhost:8001/raw/video/xxx.mp4
+        // 拼接完整地址：http://localhost:8000/raw/video/xxx.mp4
         setPreviewData({
           url: `${BASE_URL}${data.raw_path}`,
           type: data.type
