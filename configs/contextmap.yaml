@@ -1,0 +1,183 @@
+postgres:
+  host: localhost
+  port: 5432
+  database: contextmap
+  user: contextmap
+  password: contextmap
+  pool_size: 5
+  max_overflow: 10
+
+minio:
+  endpoint: localhost:9000
+  access_key: contextmap
+  secret_key: contextmap123
+  secure: false
+  bucket: academic-assets
+  keys:
+    pdf_image: "pdf/{asset_uuid}/{filename}"
+    video_frame: "video/{asset_uuid}/{filename}"
+
+embedding:
+  model_dir: models/bge-m3
+  modelscope_repo: BAAI/bge-m3
+  dim: 1024
+  batch_size: 16
+  normalize: true
+  device: cpu
+
+parse:
+  pdf:
+    mineru:
+      lang: ch
+      backend: pipeline
+      parse_method: auto
+  video:
+    slicer:
+      frame_diff_threshold: 0.03
+      sample_rate: 2
+      min_interval: 10
+    ffmpeg:
+      preset: fast
+      crf: 23
+
+whisper:
+  model_dir: models/whisper_v3
+  modelscope_repo: Systran/faster-whisper-large-v3
+  language: zh
+  beam_size: 5
+  initial_prompt: "这是一段学术讲解。请使用简体中文转录，确保专业术语（如算法、模型、参数等）准确。"
+
+outline:
+  llm:
+    model: deepseek-v4-flash
+    api_url: https://api.deepseek.com/v1/chat/completions
+    api_key_env: DEEPSEEK_API_KEY
+    timeout_sec: 120
+  context:
+    max_chars: 50000
+    min_middle_lines: 5
+    pdf_include_table_captions: true
+  graph:
+    max_repair_retries: 2
+  persist:
+    export_json: false
+    export_filename: summary_outline.json
+  prompts:
+    version: "2026-07-26"
+
+pipeline:
+  max_concurrent_parse: 2
+  max_concurrent_whisper: 1
+  max_concurrent_outline: 3
+  max_concurrent_ingest: 2
+  max_concurrent_kg: 1
+  auto_start_on_upload: true
+
+kg:
+  enabled: false   # AutoRE LoRA 权重不可用，暂跳过 KG 抽取
+  chunk_max_tokens: 512
+  fail_open: true
+  autore:
+    base_modelscope_repo: AI-ModelScope/Mistral-7B-v0.1
+    adapter_repo: dante123/AutoRE
+    model_dir: models/autore
+    hf_endpoint: https://hf-mirror.com
+    auto_download: true
+    device: cuda
+    load_in_4bit: true
+    max_new_tokens: 256
+    open_domain: true
+  age:
+    graph_name: contextmap
+    entity_merge_normalize: true
+  extract:
+    content_types: [text, transcript]
+
+retrieval:
+  top_k_default: 8
+  candidate_multiplier: 5
+  llm:
+    inherit: outline
+  prompts:
+    version: "2026-07-26"
+  channels:
+    vector: { enabled: true, weight: 0.85 }
+    keyword: { enabled: true, weight: 1.0 }
+    graph: { enabled: false, weight: 0.6, fail_open: true, depth: 2, entity_limit: 50 }  # set true when kg.enabled
+  fusion:
+    method: rrf
+    rrf_k: 60
+    score_blend: 0.4
+    min_vector_score: 0.55
+    min_keyword_score: 0.15
+    min_graph_score: 0.20
+    intersection_multiplier: 1.5
+    intersection_min_keyword: 0.5
+    intersection_min_vector: 0.65
+    single_vector_discount: 0.7
+    high_vector_score: 0.78
+  dedup:
+    text_normalize: true
+    time_window_sec: 30
+    mmr_enabled: false
+    protect_keyword_top_n: 3
+    protect_keyword_min_score: 0.5
+    mmr_lambda: 0.7
+    mmr_pool_multiplier: 5
+  preferences:
+    asset_name_boost: 0.12
+    modality_boost: 0.08
+    timestamp_boost: 0.15
+    content_substring_boost: 0.06
+    pdf_title_boost: 0.05
+    video_transcript_boost: 0.03
+  filters:
+    asset_status: ready
+  keyword:
+    segment_chinese: true
+    fts_config: simple
+  expand_media:
+    window_sec: 2.0
+
+evaluate:
+  reranker:
+    model_dir: models/bge-reranker-v2-m3
+    modelscope_repo: BAAI/bge-reranker-v2-m3
+    batch_size: 16
+    device: cpu
+  thresholds:
+    proceed_rerank: 0.55
+    min_coverage: 0.60
+    min_keep_score: 0.35
+    audit_on_borderline: true
+    borderline_low: 0.40
+    borderline_high: 0.55
+  keep_top_k: 8
+  llm:
+    inherit: outline
+
+infer:
+  sandbox:
+    enabled: true
+    conda_python: null
+    timeout_sec: 30
+  visual:
+    enabled: true
+    model_dir: models/qwen2-vl-7b-instruct
+    modelscope_repo: qwen/Qwen2-VL-7B-Instruct
+    timeout_sec: 120
+    max_images: 4
+    device: cuda
+  route:
+    sandbox_keywords: ["计算", "求解", "验证", "equation", "prove"]
+    visual_content_types: [frame, image, table]
+    visual_min_rerank: 0.45
+
+chat:
+  research:
+    max_retries: 2
+    merge_evidence_on_refetch: true
+  expand_media:
+    window_sec: 2.0
+  llm:
+    inherit: outline
