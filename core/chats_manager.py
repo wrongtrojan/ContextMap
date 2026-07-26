@@ -1,359 +1,460 @@
-import logging
-import os
-import json
-import httpx
-import uuid
-from pathlib import Path
+"""
+Chat session orchestration: LangGraph turn pipeline + PostgreSQL + SSE event bus.
+
+Usage:
+  manager = get_chats_manager()
+  session = await manager.create_session()
+  turn_seq = await manager.start_turn(session.id, "user question")
+"""
+
+from __future__ import annotations
+
 import asyncio
-from enum import Enum
-from typing import List, Dict, Optional, Any, Union
-from datetime import datetime
-from pydantic import BaseModel
-from dotenv import load_dotenv
+import logging
+import uuid
+from collections import defaultdict
+from collections.abc import AsyncIterator
+from typing import Any
 
-load_dotenv()
+from sqlalchemy.ext.asyncio import AsyncSession
 
-# 内部组件
-from core.services_manager import ServicesManager
-from core.prompts_manager import PromptManager
+from core.chats.config import load_chat_config
+from core.chats.llm import stream_chat_completion
+from core.chats_graph import ChatTurnState, build_chat_graph, build_synthesize_prompt
+from database.enums import ChatStatus, ChatTurnEventType, MessageRole
+from database.repositories import (
+    ChatEvidenceRepo,
+    ChatMessageRepo,
+    ChatSessionRepo,
+    ChatTurnEventRepo,
+)
+from database.schemas import ChatMessageRead, ChatSessionCreate, ChatSessionRead
+from database.session import get_session
 
-# --- 枚举定义 ---
-class ChatStatus(Enum):
-    PREPARING = "Preparing"     # 结构化需求
-    RESEARCHING = "Researching" # 搜索中
-    EVALUATING = "Evaluating"   # 质量评估
-    STRENGTHENING = "Strengthening" # 沙盒/视觉增强
-    FINALIZING = "Finalizing"   # 组织答案
-    IDLE = "Idle"               # 会话挂起/完成
-    FAILED = "Failed"           # 发生错误
+logger = logging.getLogger("ChatsManager")
 
-class GlobalChatStatus(Enum):
-    QUERYING = "Querying"       # 至少有一个会话正在活跃
-    WAITING = "Waiting"         # 无活跃会话
+_STEP_STATUS: dict[str, ChatStatus] = {
+    "prepare": ChatStatus.PREPARING,
+    "research_search": ChatStatus.RESEARCHING,
+    "apply_refetch": ChatStatus.RESEARCHING,
+    "research_evaluate": ChatStatus.EVALUATING,
+    "expand_media": ChatStatus.STRENGTHENING,
+    "infer": ChatStatus.STRENGTHENING,
+    "synthesize": ChatStatus.FINALIZING,
+}
 
-# --- 数据模型 ---
-class ChatMessage(BaseModel):
-    role: str
-    message: str
-    timestamp: str = datetime.now().isoformat()
 
-class ChatSession:
-    def __init__(self, chat_id: str, chat_name: str):
-        self.chat_id = chat_id
-        self.chat_name = chat_name
-        self.status = ChatStatus.IDLE
-        self.messages: List[ChatMessage] = []
-        self.evidence: List[Dict] = []
-        self.retry_count = 0
-        self.start_time = datetime.now().isoformat()
-        self.last_update = datetime.now().isoformat()
+class ChatEventBus:
+    def __init__(self) -> None:
+        self._subscribers: dict[str, list[asyncio.Queue[dict[str, Any]]]] = defaultdict(list)
+        self._lock = asyncio.Lock()
 
-    # --- 新增：从字典恢复会话对象 ---
-    @classmethod
-    def from_dict(cls, data: Dict):
-        session = cls(data['chat_id'], data['chat_name'])
-        session.status = ChatStatus(data['status'])
-        session.retry_count = data.get('retry_count', 0)
-        session.start_time = data.get('uptime', datetime.now().isoformat())
-        session.last_update = data.get('last_active', datetime.now().isoformat())
-        # 恢复消息列表
-        if 'messages' in data: # 假设你在 to_dict 里补齐了 messages
-             session.messages = [ChatMessage(**m) for m in data['messages']]
-        # 恢复证据
-        session.evidence = data.get('evidence', [])
-        return session
-
-    def update_status(self, new_status: ChatStatus):
-        self.status = new_status
-        self.last_update = datetime.now().isoformat()
-
-    def to_dict(self):
-        # 补全了 messages 和 evidence 的导出，确保持久化完整
-        return {
-            "chat_id": self.chat_id,
-            "chat_name": self.chat_name,
-            "status": self.status.value,
-            "messages": [m.model_dump() for m in self.messages], 
-            "evidence": self.evidence,
-            "messages_count": len(self.messages),
-            "evidence_count": len(self.evidence),
-            "retry_count": self.retry_count,
-            "uptime": self.start_time,
-            "last_active": self.last_update
-        }
-
-# --- 核心管理器 ---
-class ChatsManager:
-    _instance = None
-    _lock = asyncio.Lock()
-
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super(ChatsManager, cls).__new__(cls)
-        return cls._instance
-    
-    def __init__(self):
-        if hasattr(self, "_initialized"): return
-        self.services = ServicesManager()
-        self.prompt_manager = PromptManager()
-        
-        # 活跃会话存储
-        self.active_chats: Dict[str, ChatSession] = {}
-        self.running_tasks: Dict[str, asyncio.Task] = {}
-        
-        # LLM 配置
-        self.api_key = os.getenv("DEEPSEEK_API_KEY")
-        self.base_url = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
-        
-        # 路径配置
-        self.storage_dir = Path("./storage/chats")
-        self.storage_dir.mkdir(parents=True, exist_ok=True)
-        
-        # --- 关键新增：启动时加载本地数据 ---
-        self._load_local_sessions()
-        
-        self.logger = logging.getLogger("ChatsManager")
-        logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] [%(name)s] - %(message)s')
-        self._initialized = True
-        
-    def _log(self, chat_id: str, level: str, msg: str):
-        extra = f"[{chat_id}]"
-        if level == "info": self.logger.info(f"{extra} - {msg}")
-        elif level == "error": self.logger.error(f"{extra} - {msg}")
-        elif level == "warn": self.logger.warning(f"{extra} - {msg}")
-
-    # --- 核心方法 ---
-
-    async def _direct_llm_call(self, prompt_or_messages: Union[str, List[Dict]], json_mode: bool = True, stream: bool = False) -> Any:
-        """支持流式的 LLM 调用"""
-        headers = {"Authorization": f"Bearer {self.api_key}"}
-        if isinstance(prompt_or_messages, str):
-            messages = [{"role": "user", "content": prompt_or_messages}]
-        else:
-            messages = prompt_or_messages
-        payload = {
-            "model": "deepseek-chat",
-            "messages": messages,
-            "stream": stream # 新增流式开关
-        }
-        if json_mode:
-            payload["response_format"] = {"type": "json_object"}
-        
-        # 增加超时设置
-        timeout = httpx.Timeout(180.0, connect=10.0)
-        client = httpx.AsyncClient(timeout=timeout)
-        
-        if not stream:
-            async with client:
-                response = await client.post(f"{self.base_url}/chat/completions", headers=headers, json=payload)
-                response.raise_for_status()
-                content = response.json()['choices'][0]['message']['content']
-                if json_mode:
-                    clean_content = content.replace("```json", "").replace("```", "").strip()
-                    return json.loads(clean_content)
-                return content
-        else:
-            # 流式返回模式 (注意：流式通常不建议配合 json_mode 使用)
-            async def gen():
-                full_content = []
+    async def publish(self, session_id: str, event: dict[str, Any]) -> None:
+        async with self._lock:
+            dead: list[asyncio.Queue[dict[str, Any]]] = []
+            for queue in self._subscribers.get(session_id, []):
                 try:
-                    async with client.stream("POST", f"{self.base_url}/chat/completions", headers=headers, json=payload) as r:
-                        r.raise_for_status()
-                        async for line in r.aiter_lines():
-                            if not line or line == "data: [DONE]": continue
-                            if line.startswith("data: "):
-                                data = json.loads(line[6:])
-                                delta = data['choices'][0]['delta'].get('content', '')
-                                if delta:
-                                    full_content.append(delta)
-                                    yield delta
-                finally:
-                    await client.aclose()
-            return gen()
-    
-    def _load_local_sessions(self):
-        """扫描 storage 目录，恢复所有历史会话到内存"""
-        count = 0
-        for file_path in self.storage_dir.glob("*.json"):
-            try:
-                with open(file_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    session = ChatSession.from_dict(data)
-                    # 重启后状态统一设为 IDLE，防止卡在 Researching
-                    if session.status != ChatStatus.FAILED:
-                        session.status = ChatStatus.IDLE
-                    self.active_chats[session.chat_id] = session
-                    count += 1
-            except Exception as e:
-                print(f"Error loading session {file_path}: {e}")
-        if count > 0:
-            print(f"成功从本地加载了 {count} 个历史会话")
+                    queue.put_nowait(event)
+                except asyncio.QueueFull:
+                    dead.append(queue)
+            for queue in dead:
+                self._subscribers[session_id].remove(queue)
 
-    def save_session(self, chat_id: str):
-        session = self.active_chats.get(chat_id)
-        if not session: return
-        storage_path = self.storage_dir / f"{chat_id}.json"
-        with open(storage_path, "w", encoding="utf-8") as f:
-            json.dump(session.to_dict(), f, ensure_ascii=False, indent=2)
+    def subscribe(self, session_id: str, *, maxsize: int = 512) -> asyncio.Queue[dict[str, Any]]:
+        queue: asyncio.Queue[dict[str, Any]] = asyncio.Queue(maxsize=maxsize)
+        self._subscribers[session_id].append(queue)
+        return queue
 
-    # --- API 视察接口 ---
+    def unsubscribe(self, session_id: str, queue: asyncio.Queue[dict[str, Any]]) -> None:
+        subs = self._subscribers.get(session_id, [])
+        if queue in subs:
+            subs.remove(queue)
 
-    def get_overall_status(self) -> dict:
-        is_querying = any(c.status != ChatStatus.IDLE for c in self.active_chats.values())
+
+class ChatsManager:
+    _instance: ChatsManager | None = None
+
+    def __new__(cls) -> ChatsManager:
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self) -> None:
+        if hasattr(self, "_initialized"):
+            return
+        self._event_bus = ChatEventBus()
+        self._active_turns: set[uuid.UUID] = set()
+        self._turn_tasks: dict[uuid.UUID, asyncio.Task[None]] = {}
+        self.turn_db: AsyncSession | None = None
+        self._turn_session_id: uuid.UUID | None = None
+        self._turn_seq: int = 0
+        self._assistant_message_id: uuid.UUID | None = None
+        self._initialized = True
+
+    @property
+    def event_bus(self) -> ChatEventBus:
+        return self._event_bus
+
+    def _external_id(self) -> str:
+        return f"CH-{uuid.uuid4().hex[:8].upper()}"
+
+    async def create_session(self, *, chat_name: str = "New Academic Chat") -> ChatSessionRead:
+        async with get_session() as session:
+            repo = ChatSessionRepo(session)
+            return await repo.create(
+                ChatSessionCreate(external_id=self._external_id(), chat_name=chat_name)
+            )
+
+    async def get_session_detail(self, session_id: uuid.UUID) -> dict[str, Any] | None:
+        async with get_session() as session:
+            session_repo = ChatSessionRepo(session)
+            message_repo = ChatMessageRepo(session)
+            evidence_repo = ChatEvidenceRepo(session)
+            event_repo = ChatTurnEventRepo(session)
+
+            chat_session = await session_repo.get_by_id(session_id)
+            if chat_session is None:
+                return None
+
+            events = await event_repo.list_recent(session_id, limit=30)
+            latest_step = events[0].step_name if events else None
+
+            return {
+                "session_id": str(chat_session.id),
+                "external_id": chat_session.external_id,
+                "chat_name": chat_session.chat_name,
+                "status": chat_session.status.value,
+                "retry_count": chat_session.retry_count,
+                "current_step": latest_step,
+                "messages": [
+                    {
+                        "id": str(item.id),
+                        "role": item.role.value,
+                        "content": item.content,
+                        "seq": item.seq,
+                        "created_at": item.created_at.isoformat(),
+                    }
+                    for item in await message_repo.list_by_session(session_id)
+                ],
+                "evidences": [
+                    {
+                        "id": str(item.id),
+                        "message_id": str(item.message_id) if item.message_id else None,
+                        "content_unit_id": str(item.content_unit_id) if item.content_unit_id else None,
+                        "content": item.content,
+                        "score": item.score,
+                        "rank": item.rank,
+                        "source": item.source,
+                        "metadata": item.metadata,
+                    }
+                    for item in await evidence_repo.list_by_session(session_id)
+                ],
+                "events": [
+                    {
+                        "type": item.event_type.value,
+                        "step": item.step_name,
+                        "turn_seq": item.turn_seq,
+                        "from_status": item.from_status.value if item.from_status else None,
+                        "to_status": item.to_status.value if item.to_status else None,
+                        "detail": item.detail,
+                        "created_at": item.created_at.isoformat(),
+                    }
+                    for item in reversed(events)
+                ],
+            }
+
+    async def list_sessions(self) -> list[dict[str, Any]]:
+        async with get_session() as session:
+            repo = ChatSessionRepo(session)
+            rows = await repo.list_all()
+            return [
+                {
+                    "session_id": str(item.id),
+                    "external_id": item.external_id,
+                    "chat_name": item.chat_name,
+                    "status": item.status.value,
+                    "updated_at": item.updated_at.isoformat(),
+                }
+                for item in rows
+            ]
+
+    def get_global_status(self) -> dict[str, Any]:
         return {
-            "chats_number": len(self.active_chats),
-            "chats_status": GlobalChatStatus.QUERYING.value if is_querying else GlobalChatStatus.WAITING.value,
-            "timestamp": datetime.now().isoformat()
+            "active_turns": len(self._active_turns),
+            "running_tasks": len(self._turn_tasks),
         }
 
-    def get_all_chats(self) -> Dict[str, dict]:
-        return {cid: session.to_dict() for cid, session in self.active_chats.items()}
-    
-    def get_chat_details(self, chat_id: str) -> Optional[dict]:
-        session = self.active_chats.get(chat_id)
-        return session.to_dict() if session else None
+    async def start_turn(self, session_id: uuid.UUID, user_message: str) -> int:
+        if session_id in self._active_turns:
+            raise RuntimeError("A turn is already running for this session")
 
-    # --- 核心推理流 (直连版) ---
+        async with get_session() as session:
+            session_repo = ChatSessionRepo(session)
+            message_repo = ChatMessageRepo(session)
+            chat_session = await session_repo.get_by_id(session_id)
+            if chat_session is None:
+                raise ValueError(f"Session not found: {session_id}")
 
-    async def create_empty_chat(self) -> str:
-        """[修改点] 无需参数创建 chat_id"""
-        chat_id = f"CH-{uuid.uuid4().hex[:8].upper()}"
-        # 初始名字设为 New Chat，后续根据第一条消息自动重命名
-        self.active_chats[chat_id] = ChatSession(chat_id, "New Academic Chat")
-        self.save_session(chat_id)
-        return chat_id
+            await message_repo.append_user(session_id, user_message)
+            turn_seq = await message_repo.count_turns(session_id)
 
-    async def execute_reasoning_flow(self, chat_id: str, user_message: str):
-        if chat_id not in self.active_chats:
-            raise ValueError("Session not found")
-        
-        session = self.active_chats[chat_id]
-        
-        # 1. 追加新消息到历史
-        history_context = [{"role": m.role, "content": m.message} for m in session.messages[-6:]]
-        
-        # 记录当前用户消息
-        session.messages.append(ChatMessage(role="user", message=user_message))
-        if len(session.messages) <= 1:
-            session.chat_name = f"Chat-{user_message[:12]}"
+            messages = await message_repo.list_by_session(session_id)
+            if len(messages) == 1:
+                name = f"Chat-{user_message[:24].strip() or 'New'}"
+                await session_repo.update_chat_name(session_id, name)
 
-        # 用于搜索阶段的 Query（结合最近几轮对话防止指代不明）
-        search_context_str = "\n".join([f"{m['role']}: {m['content']}" for m in history_context] + [f"user: {user_message}"])
-        
+        self._active_turns.add(session_id)
+        task = asyncio.create_task(self._run_turn_graph(session_id, turn_seq, user_message))
+        self._turn_tasks[session_id] = task
+        task.add_done_callback(lambda _: self._turn_tasks.pop(session_id, None))
+        return turn_seq
+
+    async def _run_turn_graph(self, session_id: uuid.UUID, turn_seq: int, user_message: str) -> None:
+        self._assistant_message_id = None
         try:
-            # 1. Preparing: 结构化需求 (直连)
-            session.update_status(ChatStatus.PREPARING)
-            self.save_session(chat_id) # 状态变更即持久化
-            
-            prep_prompt = self.prompt_manager.render("query_refiner", query=search_context_str)
-            # search_needs 已经是符合 {search_params: ..., preferences: ...} 结构的字典
-            search_needs = await self._direct_llm_call(prep_prompt)
+            async with get_session() as db:
+                self.turn_db = db
+                self._turn_session_id = session_id
+                self._turn_seq = turn_seq
 
-            # 2 & 3. Researching & Evaluating: 搜索循环 (逻辑决策直连)
-            session.update_status(ChatStatus.RESEARCHING)
-            session.retry_count = 0
-            while session.retry_count < 2:
-                self._log(chat_id, "info", f"Phase 2: Searching (Attempt {session.retry_count+1})...")
-                
-                search_response = await self.services.start_academic_search(search_needs)
-                
-                # 解析返回结果 (strengthened_search 返回 {"status": "success", "results": [...]})
-                if search_response.get("status") == "success":
-                    search_results = search_response.get("results", [])
-                else:
-                    self._log(chat_id, "error", f"Search failed: {search_response.get('message')}")
-                
-                # 确保结果是列表才进行 extend
-                if isinstance(search_results, list):
-                    session.evidence = search_results + session.evidence
-                
-                # Evaluating: 判断信息充足性 (直连)
-                session.update_status(ChatStatus.EVALUATING)
-                eval_prompt = self.prompt_manager.render(
-                    "evidence_evaluator", 
-                    query=search_context_str, 
-                    docs=session.evidence,
-                    retry_count=session.retry_count # 传入重试次数辅助 LLM 决策
+                message_repo = ChatMessageRepo(db)
+                messages = await message_repo.list_by_session(session_id)
+                conversation_context = self._build_conversation_context(messages, user_message)
+
+                graph = build_chat_graph(self)
+                state: ChatTurnState = {
+                    "session_id": str(session_id),
+                    "turn_seq": turn_seq,
+                    "user_query": user_message,
+                    "conversation_context": conversation_context,
+                }
+                result = await graph.ainvoke(state)
+
+                if result.get("error"):
+                    await self._emit(
+                        session_id,
+                        ChatTurnEventType.ERROR,
+                        turn_seq,
+                        detail={"message": str(result["error"])},
+                    )
+                    await ChatSessionRepo(db).update_status(session_id, ChatStatus.FAILED)
+                    await self._publish_bus("error", {"message": str(result["error"])})
+                    return
+
+                answer = result.get("answer") or ""
+                assistant_id = result.get("assistant_message_id") or self._assistant_message_id
+                if assistant_id and answer:
+                    await ChatMessageRepo(db).update_content(uuid.UUID(str(assistant_id)), answer)
+
+                await ChatSessionRepo(db).update_status(session_id, ChatStatus.IDLE)
+                await ChatSessionRepo(db).update_retry_count(
+                    session_id, int(result.get("retry_index") or 0)
                 )
-                eval_report = await self._direct_llm_call(eval_prompt)
-
-                if eval_report.get("action") == "proceed":
-                    self._log(chat_id, "info", "Evidence confirmed by LLM.")
-                    break
-                
-                session.retry_count += 1
-                session.update_status(ChatStatus.RESEARCHING)
-
-            # 4. Strengthening: 意图检查与专家调用 (决策直连)
-            session.update_status(ChatStatus.STRENGTHENING)
-            self._log(chat_id, "info", "Phase 4: Strengthening via Experts...")
-            intent_prompt = self.prompt_manager.render("intent_check", query=search_context_str, docs=session.evidence)
-            intent = await self._direct_llm_call(intent_prompt)
-            print(f"Intent Check Result: {intent}") # 调试输出
-            vlm_res, sandbox_res = "N/A", "N/A"
-            if intent.get("need_vision") and session.evidence:
-                # 寻找第一个视频证据来获取帧路径
-                video_doc = next((d for d in session.evidence if d.get("metadata", {}).get("modality") == "video"), None)
-                if video_doc:
-                    meta = video_doc.get("metadata", {})
-                    asset_name = meta.get("asset_name")
-                    ts = meta.get("timestamp", 0)
-                    
-                    # 构造对齐存储结构的路径
-                    frame_path = f"storage/processed/video/{asset_name}/frames/time_{ts}.jpg"
-                    
-                    # 获取策略指令
-                    strategy_key = intent.get("vision_strategy", "scene_description")
-                    # 注意：这里假设 chats_manager 能访问到 strategies 配置，或者通过 prompt_manager 处理
-                    vlm_instruction = f"Strategy: {strategy_key}. Context: {search_context_str}" 
-
-                    vlm_params = {
-                        "image": frame_path,
-                        "prompt": vlm_instruction
-                    }
-                    self._log(chat_id, "info", f"Calling Vision Expert for frame at {ts}s")
-                    vlm_output = await self.services.call_visual_expert(params=vlm_params)
-                    vlm_res = vlm_output.get("response", "Vision parse failed.")
-
-            if intent.get("need_sandbox"):
-                self._log(chat_id, "info", "Calling Sandbox for logic verification...")
-                # 1. 提取公式与准备代码 (直连)
-                combined_evidence = " ".join([str(d.get("content", "")) for d in session.evidence])
-                sb_prep_prompt = self.prompt_manager.render("sandbox_prep", context=combined_evidence)
-                sb_instructions = await self._direct_llm_call(sb_prep_prompt)
-                
-                # 2. 调用沙箱专家 (传递准备好的指令字典)
-                if sb_instructions.get("expression") != "empty":
-                    sandbox_output = await self.services.call_sandbox_expert(params=sb_instructions)
-                    sandbox_res = f"Verified Result: {sandbox_output.get('result', 'Calculation failed')}"
-                else:
-                    sandbox_res = "No complex formulas to verify."
-
-            # 5. Finalizing: 最终合成 (生成直连)
-            session.update_status(ChatStatus.FINALIZING)
-            self._log(chat_id, "info", "Phase 5: Synthesizing final answer...")
-            
-            # 渲染最终提示词，注意 docs 此时已包含所有搜索到的 evidence
-            final_prompt = self.prompt_manager.render(
-                "synthesizer", 
-                query=user_message, 
-                docs=session.evidence, 
-                vlm_feedback=vlm_res, 
-                math_res=sandbox_res
+                await self._emit(
+                    session_id,
+                    ChatTurnEventType.COMPLETED,
+                    turn_seq,
+                    message_id=uuid.UUID(str(assistant_id)) if assistant_id else None,
+                    detail={"answer_length": len(answer)},
+                )
+                await self._publish_bus(
+                    "completed",
+                    {
+                        "session_id": str(session_id),
+                        "turn_seq": turn_seq,
+                        "message_id": str(assistant_id) if assistant_id else None,
+                    },
+                )
+        except Exception as exc:
+            logger.exception("Chat turn failed for %s", session_id)
+            async with get_session() as db:
+                await ChatSessionRepo(db).update_status(session_id, ChatStatus.FAILED)
+            await self._emit(
+                session_id,
+                ChatTurnEventType.ERROR,
+                turn_seq,
+                detail={"message": str(exc)},
             )
-            full_messages = history_context + [{"role": "user", "content": final_prompt}]
-            response_gen = await self._direct_llm_call(full_messages, json_mode=False, stream=True)
-            full_answer = ""
-            async for token in response_gen:
-                full_answer += token
-                yield token # 向外部 API 层吐出流式 Token
-            
-            session.messages.append(ChatMessage(role="assistant", message=str(full_answer)))
-            session.update_status(ChatStatus.IDLE)
-
-        except Exception as e:
-            session.update_status(ChatStatus.FAILED)
-            self._log(chat_id, "error", f"Flow Error: {str(e)}")
-            yield f"Error encountered: {str(e)}"
+            await self._publish_bus("error", {"message": str(exc)})
         finally:
-            self.save_session(chat_id)
+            self.turn_db = None
+            self._turn_session_id = None
+            self._assistant_message_id = None
+            self._active_turns.discard(session_id)
+
+    def _build_conversation_context(self, messages: list[ChatMessageRead], user_message: str) -> str:
+        cfg = load_chat_config()
+        window = int(cfg.get("context_window_messages", 6))
+        recent = messages[-window:] if window > 0 else messages
+        lines = [f"{item.role.value}: {item.content}" for item in recent if item.content]
+        if not lines or lines[-1] != f"user: {user_message}":
+            lines.append(f"user: {user_message}")
+        return "\n".join(lines)
+
+    async def on_step_start(self, step: str) -> None:
+        if self._turn_session_id is None:
+            return
+        to_status = _STEP_STATUS.get(step)
+        if to_status and self.turn_db is not None:
+            session_repo = ChatSessionRepo(self.turn_db)
+            current = await session_repo.get_by_id(self._turn_session_id)
+            from_status = current.status if current else None
+            await session_repo.update_status(self._turn_session_id, to_status)
+            await self._emit(
+                self._turn_session_id,
+                ChatTurnEventType.STEP_START,
+                self._turn_seq,
+                step_name=step,
+                from_status=from_status,
+                to_status=to_status,
+            )
+            await self._publish_bus(
+                "step_start",
+                {
+                    "session_id": str(self._turn_session_id),
+                    "turn_seq": self._turn_seq,
+                    "step": step,
+                    "status": to_status.value,
+                },
+            )
+            await self._publish_bus("state_change", {"status": to_status.value})
+
+    async def emit_evaluation(self, report: Any) -> None:
+        if self._turn_session_id is None:
+            return
+        payload = report.to_dict()
+        await self._emit(
+            self._turn_session_id,
+            ChatTurnEventType.EVALUATION,
+            self._turn_seq,
+            step_name="research_evaluate",
+            detail=payload,
+        )
+        await self._publish_bus("evaluation", payload)
+
+    async def emit_refetch(self, hint: Any) -> None:
+        if self._turn_session_id is None:
+            return
+        detail = hint if isinstance(hint, dict) else (hint.to_dict() if hint else {})
+        await self._emit(
+            self._turn_session_id,
+            ChatTurnEventType.REFETCH,
+            self._turn_seq,
+            step_name="apply_refetch",
+            detail={"refetch_hint": detail},
+        )
+        await self._publish_bus("refetch", {"refetch_hint": detail})
+
+    async def emit_research_debug(self, debug: dict[str, Any]) -> None:
+        if self._turn_session_id is None:
+            return
+        await self._emit(
+            self._turn_session_id,
+            ChatTurnEventType.STEP_COMPLETE,
+            self._turn_seq,
+            step_name="research_search",
+            detail={"debug": debug},
+        )
+
+    async def emit_infer_results(self, results: list[dict[str, Any]]) -> None:
+        if self._turn_session_id is None:
+            return
+        await self._emit(
+            self._turn_session_id,
+            ChatTurnEventType.INFER_RESULT,
+            self._turn_seq,
+            step_name="infer",
+            detail={"results": results},
+        )
+        for item in results:
+            await self._publish_bus(
+                "infer_result",
+                {"kind": item.get("kind"), "summary": str(item.get("content") or "")[:500]},
+            )
+
+    async def ensure_assistant_placeholder(self) -> str:
+        if self._assistant_message_id is not None:
+            return str(self._assistant_message_id)
+        assert self.turn_db is not None and self._turn_session_id is not None
+        msg = await ChatMessageRepo(self.turn_db).append_assistant(self._turn_session_id, "")
+        self._assistant_message_id = msg.id
+        return str(msg.id)
+
+    async def persist_evidence(
+        self,
+        evidence: list[dict[str, Any]],
+        *,
+        assistant_message_id: str,
+    ) -> None:
+        if self.turn_db is None or self._turn_session_id is None:
+            return
+        await ChatEvidenceRepo(self.turn_db).replace_for_turn(
+            self._turn_session_id,
+            uuid.UUID(assistant_message_id),
+            evidence,
+        )
+        top_items = evidence[:8]
+        await self._emit(
+            self._turn_session_id,
+            ChatTurnEventType.EVIDENCE_SNAPSHOT,
+            self._turn_seq,
+            message_id=uuid.UUID(assistant_message_id),
+            step_name="expand_media",
+            detail={"count": len(evidence), "top_items": top_items},
+        )
+        await self._publish_bus(
+            "evidence_snapshot",
+            {"count": len(evidence), "top_items": top_items},
+        )
+
+    async def stream_synthesize(self, state: ChatTurnState) -> str:
+        prompt = build_synthesize_prompt(state)
+        parts: list[str] = []
+        async for token in stream_chat_completion(prompt):
+            parts.append(token)
+            if self._turn_session_id is not None:
+                await self._emit(
+                    self._turn_session_id,
+                    ChatTurnEventType.TOKEN,
+                    self._turn_seq,
+                    step_name="synthesize",
+                    detail={"content": token},
+                )
+                await self._publish_bus("token", {"content": token})
+        return "".join(parts)
+
+    async def _emit(
+        self,
+        session_id: uuid.UUID,
+        event_type: ChatTurnEventType,
+        turn_seq: int,
+        *,
+        message_id: uuid.UUID | None = None,
+        step_name: str | None = None,
+        from_status: ChatStatus | None = None,
+        to_status: ChatStatus | None = None,
+        detail: dict[str, Any] | None = None,
+    ) -> None:
+        if self.turn_db is not None:
+            await ChatTurnEventRepo(self.turn_db).append(
+                session_id,
+                event_type,
+                turn_seq,
+                message_id=message_id,
+                step_name=step_name,
+                from_status=from_status,
+                to_status=to_status,
+                detail=detail or {},
+            )
+
+    async def _publish_bus(self, event_type: str, payload: dict[str, Any]) -> None:
+        if self._turn_session_id is None:
+            return
+        await self._event_bus.publish(
+            str(self._turn_session_id),
+            {"type": event_type, **payload},
+        )
+
+
+def get_chats_manager() -> ChatsManager:
+    return ChatsManager()
