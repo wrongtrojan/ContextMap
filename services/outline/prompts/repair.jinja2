@@ -1,0 +1,21 @@
+你之前生成的 JSON 大纲未通过 schema 校验。请根据错误信息修复 JSON，不要添加 Context 中不存在的内容。
+
+### 校验错误:
+{% for error in errors %}
+- {{ error }}
+{% endfor %}
+
+### 素材类型:
+{{ modality }}
+
+### 原始 Context:
+<Context>
+{{ raw_context }}
+</Context>
+
+### 待修复 JSON:
+```json
+{{ draft_json }}
+```
+
+请直接输出修复后的完整 JSON 对象，格式与之前要求一致（包含 title 和 outline 字段）。
