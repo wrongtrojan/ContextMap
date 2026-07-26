@@ -1,75 +1,53 @@
-version: '3.5'
+version: "3.8"
 
 services:
-  etcd:
-    container_name: milvus-etcd
-    image: quay.io/coreos/etcd:v3.5.5
+  postgres:
+    container_name: contextmap-postgres
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     environment:
-      - ETCD_AUTO_COMPACTION_RETENTION_RENDER_BY_HOUR=1
-      - ETCD_AUTO_COMPACTION_RETENTION=1
+      POSTGRES_USER: contextmap
+      POSTGRES_PASSWORD: contextmap
+      POSTGRES_DB: contextmap
+    ports:
+      - "5432:5432"
     volumes:
-      - ../storage/db_data/etcd:/etcd
-    command: etcd -advertise-client-urls http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+      - ../storage/db_data/postgres:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD", "etcdctl", "endpoint", "health"]
-      interval: 30s
-      timeout: 20s
-      retries: 3
+      test: ["CMD-SHELL", "pg_isready -U contextmap -d contextmap"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   minio:
-    container_name: milvus-minio
+    container_name: contextmap-minio
     image: minio/minio:RELEASE.2023-03-20T20-16-18Z
     environment:
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin
+      MINIO_ROOT_USER: contextmap
+      MINIO_ROOT_PASSWORD: contextmap123
     volumes:
       - ../storage/db_data/minio:/data
     command: server /data --console-address ":9001"
     ports:
-      - "9001:9001"
       - "9000:9000"
+      - "9001:9001"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 30s
-      timeout: 20s
-      retries: 3
-
-  milvus:
-    container_name: milvus-standalone
-    image: milvusdb/milvus:v2.4.0
-    command: ["milvus", "run", "standalone"]
-    environment:
-      ETCD_ENDPOINTS: etcd:2379
-      MINIO_ADDRESS: minio:9000
-    volumes:
-      - ../storage/db_data/milvus:/var/lib/milvus
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
-      interval: 30s
-      timeout: 20s
-      retries: 3
-    ports:
-      - "19530:19530"
-      - "9091:9091"
-    depends_on:
-      - "etcd"
-      - "minio"
-
-  redis:
-    container_name: redis-cache
-    image: redis/redis-stack-server:latest 
-    ports:
-      - "6379:6379"
-    volumes:
-      - ../storage/db_data/redis:/data
-    environment:
-      - REDIS_ARGS=--save 60 1 
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  adminer:
+    container_name: contextmap-adminer
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 networks:
   default:
-    name: milvus_network
+    name: contextmap_network

@@ -1,0 +1,43 @@
+# secrets & local env
+.env
+.env.local
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# model weights (download locally; see models/autore/autore_manifest.json)
+models/whisper_v3/
+models/bge-m3/
+models/autore/base/
+models/autore/fact/
+models/autore/relation/
+models/autore/subject/
+models/clip/
+models/dinov2/
+models/qwen2_vl/
+
+# local data volumes & processed assets
+storage/db_data/
+storage/assets/
+
+# logs
+logs/
+*.log
+
+# frontend build artifacts (keep source)
+web/frontend/node_modules/
+web/frontend/.next/

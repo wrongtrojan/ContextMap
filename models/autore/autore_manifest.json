@@ -1,0 +1,10 @@
+{
+  "base_model": "mistralai/Mistral-7B-v0.1",
+  "adapter_repo": "dante123/AutoRE",
+  "base_path": "/home/liangqing/ContextMap/models/autore/base/Mistral-7B-v0.1",
+  "adapters": {
+    "relation": "/home/liangqing/ContextMap/models/autore/relation",
+    "head": "/home/liangqing/ContextMap/models/autore/subject",
+    "fact": "/home/liangqing/ContextMap/models/autore/fact"
+  }
+}
