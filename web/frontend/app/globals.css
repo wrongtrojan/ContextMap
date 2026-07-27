@@ -16,6 +16,20 @@
   --color-dracula-yellow: #f1fa8c;
 }
 
+:root {
+  --wb-activitybar-bg: #21222c;
+  --wb-sidebar-bg: #282a36;
+  --wb-editor-bg: #1e1f29;
+  --wb-tabbar-bg: #21222c;
+  --wb-tab-active: #282a36;
+  --wb-statusbar-bg: #21222c;
+  --wb-chatpanel-bg: #282a36;
+  --wb-header-h: 2rem;
+  --wb-header-px: 0.75rem;
+  --wb-header-text: 10px;
+  --wb-accent-bar-w: 2px;
+}
+
 /* 确保基础背景色 */
 @layer base {
   body {
@@ -69,4 +83,107 @@
 
 .prose p {
   transition: all 0.2s ease-out;
+}
+
+.chat-prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+  margin: 0.5rem 0;
+}
+
+.chat-prose .katex {
+  font-size: 1em;
+}
+
+.chat-prose p {
+  margin-top: 0.35em;
+  margin-bottom: 0.35em;
+}
+
+.chat-prose .chat-table-wrap {
+  max-width: 100%;
+}
+
+.chat-prose .chat-table th,
+.chat-prose .chat-table td {
+  word-break: break-word;
+}
+
+.chat-prose img {
+  display: block;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.chat-prose ul,
+.chat-prose ol {
+  margin: 0.4em 0;
+  padding-left: 1.25rem;
+}
+
+.chat-prose li {
+  margin: 0.15em 0;
+}
+
+.chat-prose h1,
+.chat-prose h2,
+.chat-prose h3,
+.chat-prose h4 {
+  color: var(--color-dracula-fg);
+  font-weight: 600;
+  margin-top: 0.85em;
+  margin-bottom: 0.35em;
+}
+
+.chat-prose h3 {
+  font-size: 0.95rem;
+}
+
+.chat-prose h4 {
+  font-size: 0.9rem;
+}
+
+.chat-prose hr {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--color-dracula-comment) 40%, transparent);
+  margin: 0.75em 0;
+}
+
+.chat-prose blockquote {
+  border-left: 3px solid var(--color-dracula-purple);
+  margin: 0.5em 0;
+  padding-left: 0.75em;
+  color: var(--color-dracula-comment);
+}
+
+/* react-resizable-panels separators — wider hit target, visible sash */
+.panel-resize-handle {
+  position: relative;
+  flex: 0 0 6px !important;
+  background: color-mix(in srgb, var(--color-dracula-comment) 35%, transparent);
+  transition: background 0.15s ease;
+  z-index: 20;
+}
+
+.panel-resize-handle::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+}
+
+.panel-resize-handle:hover,
+.panel-resize-handle[data-separator][data-active],
+.panel-resize-handle[data-separator]:active {
+  background: var(--color-dracula-purple);
+}
+
+.panel-resize-handle-h {
+  cursor: col-resize;
+  width: 6px !important;
+}
+
+.panel-resize-handle-v {
+  cursor: row-resize;
+  height: 6px !important;
 }

@@ -1,18 +1,30 @@
-export const BASE_URL = "http://localhost:8000"; 
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || "http://localhost:8000";
 
-export const API_ENDPOINTS = {
-  // 1. 资产上传与同步
-  UPLOAD: `${BASE_URL}/api/v1/upload/file`,
-  SYNC: `${BASE_URL}/api/v1/assets/sync`,
-  
-  // 2. 状态查询 (支持 single_asset?asset_id=xxx)
-  STATUS: `${BASE_URL}/api/v1/status/single_asset`,
-  
-  // 3. 内容获取
-  STRUCTURE: `${BASE_URL}/api/v1/assets/structure`,
-  PREVIEW: `${BASE_URL}/api/v1/assets/preview`,
-  
-  // 4. 对话相关
-  CHAT_CREATE: `${BASE_URL}/api/v1/chats/create`,
-  CHAT_STREAM: `${BASE_URL}/api/v1/chats/stream`,
-};
+export const API = {
+  upload: `${BASE_URL}/api/v1/upload/file`,
+  assets: {
+    preview: `${BASE_URL}/api/v1/assets/preview`,
+    structure: `${BASE_URL}/api/v1/assets/structure`,
+    stream: `${BASE_URL}/api/v1/assets/stream`,
+    retry: (assetId: string) => `${BASE_URL}/api/v1/assets/${assetId}/retry`,
+    delete: (assetId: string) => `${BASE_URL}/api/v1/assets/${assetId}`,
+  },
+  chats: {
+    sessions: `${BASE_URL}/api/v1/chats/sessions`,
+    turns: (sessionId: string) => `${BASE_URL}/api/v1/chats/sessions/${sessionId}/turns`,
+    deleteSession: (sessionId: string) => `${BASE_URL}/api/v1/chats/sessions/${sessionId}`,
+    stream: `${BASE_URL}/api/v1/chats/stream`,
+  },
+  status: {
+    singleAsset: `${BASE_URL}/api/v1/status/single_asset`,
+    globalAssets: `${BASE_URL}/api/v1/status/global_assets`,
+    singleChat: `${BASE_URL}/api/v1/status/single_chat`,
+    globalChats: `${BASE_URL}/api/v1/status/global_chats`,
+  },
+  settings: {
+    get: `${BASE_URL}/api/v1/settings`,
+    save: `${BASE_URL}/api/v1/settings/save`,
+  },
+  root: `${BASE_URL}/`,
+} as const;

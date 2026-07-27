@@ -1,29 +1,30 @@
-// --- 资产状态枚举 (严格对应后端 AssetStatus) ---
-export type AssetStatus = 
-  | 'Uploading'    // 点击上传中
-  | 'Raw'          // 已落盘，待解析
-  | 'recognizing'  // 正在识别 (PDF OCR/视频语音)
-  | 'Cliping'      // 正在分段
-  | 'Structuring'  // 正在生成结构化大纲
-  | 'Ingesting'    // 正在注入数据库
-  | 'Ready'        // 完成
-  | 'Failed';      // 失败
+export type AssetModality = "pdf" | "video" | "audio";
 
-// --- 对话推理状态枚举 (严格对应后端 ChatStatus) ---
-export type ChatStatus = 
-  | 'Preparing' 
-  | 'Researching' 
-  | 'Evaluating' 
-  | 'Strengthening' 
-  | 'Finalizing' 
-  | 'Idle' 
-  | 'Failed';
+export type AssetStatus =
+  | "uploading"
+  | "raw"
+  | "recognizing"
+  | "embedding"
+  | "structuring"
+  | "kg_extracting"
+  | "ingesting"
+  | "ready"
+  | "failed";
 
-// --- 基础数据结构 ---
+export type ChatStatus =
+  | "idle"
+  | "preparing"
+  | "researching"
+  | "evaluating"
+  | "strengthening"
+  | "finalizing"
+  | "failed";
+
+export type MessageRole = "user" | "assistant" | "system";
 
 export interface OutlineSubPoint {
   heading: string;
-  anchor: number; // 视频是秒数，PDF是页码
+  anchor: number;
   summary: string;
 }
 
@@ -31,69 +32,121 @@ export interface OutlineItem {
   heading: string;
   anchor: number;
   summary: string;
-  sub_points: OutlineSubPoint[];
+  sub_points?: OutlineSubPoint[];
 }
 
 export interface Asset {
   id: string;
   name: string;
-  type: 'pdf' | 'video';
+  modality: AssetModality;
   status: AssetStatus;
-  created_at: string;
-  asset_processed_path?: string;
-  // 以下为前端 UI 辅助字段
-  progress?: number; 
-  outline?: OutlineItem[]; 
+  kg_status?: string;
+  triple_count?: number;
+  raw_path?: string;
+  processed_path?: string;
+  error_message?: string;
+  retry_count?: number;
+  current_step?: string | null;
 }
 
 export interface ChatMessage {
-  role: 'user' | 'assistant' | 'system';
-  message: string;
-  timestamp: string;
+  id?: string;
+  role: MessageRole;
+  content: string;
+  seq?: number;
+  created_at?: string;
+  streaming?: boolean;
 }
 
 export interface Evidence {
+  id?: string;
+  message_id?: string | null;
   content: string;
-  score: number;
+  score?: number;
+  rank?: number;
   metadata: {
-    asset_name: string;
-    modality: 'pdf' | 'video';
-    page_label?: number;      // PDF 页码
-    timestamp?: number;        // 视频秒数
-    bbox?: string;             // 重点：后端返回的 "[ymin, xmin, ymax, xmax]" 字符串
+    asset_id?: string;
+    asset_name?: string;
+    modality?: AssetModality;
+    type?: string;
+    page_label?: number;
+    timestamp?: number;
+    bbox?: string | number[];
+    image_filename?: string;
+    processed_path?: string;
   };
 }
 
-export interface ChatSession {
-  chat_id: string;
+export interface TurnEvent {
+  type: string;
+  step?: string | null;
+  turn_seq?: number;
+  detail?: Record<string, unknown>;
+  created_at?: string;
+}
+
+export interface ChatSessionSummary {
+  session_id: string;
+  external_id?: string;
   chat_name: string;
   status: ChatStatus;
+  updated_at?: string;
+}
+
+export interface ChatSessionDetail extends ChatSessionSummary {
+  retry_count?: number;
+  current_step?: string | null;
   messages: ChatMessage[];
-  evidence: Evidence[]; // 存储后端返回的搜索证据
-  last_active: string;
+  evidences: Evidence[];
+  events: TurnEvent[];
 }
 
-// --- API 响应类型定义 ---
-
-export interface SingleAssetResponse {
-  status: 'success' | 'error';
-  data: {
-    asset_id: string;
-    asset_type: 'pdf' | 'video';
-    status: AssetStatus;
-    asset_raw_path: string;
-    asset_processed_path: string;
-    created_at: string;
-    retry_count: number;
-  } | Record<string, any>; // 模式A返回Map，模式B返回对象
+export interface PreviewData {
+  url: string;
+  modality: AssetModality;
+  assetId: string;
 }
 
-export interface StructureResponse {
-  status: 'success' | 'processing';
-  data?: {
-    title: string;
-    outline: OutlineItem[];
-  };
-  current_step?: string;
+export type ActivityView = "explorer" | "kg" | "settings";
+
+export type EditorTabKind = "asset" | "kg" | "settings";
+
+export const KG_TAB_ID = "__kg__";
+export const SETTINGS_TAB_ID = "__settings__";
+
+export interface EditorTab {
+  assetId: string;
+  name: string;
+  kind: EditorTabKind;
+  modality?: AssetModality;
+}
+
+export interface JumpTarget {
+  assetId: string;
+  anchor: number;
+  bbox?: string;
+  assetName?: string;
+}
+
+export type SidebarView = "explorer" | "outline" | "chat";
+
+export interface ApiResponse<T> {
+  status: "success" | "error" | "processing";
+  data?: T;
   message?: string;
+  current_step?: string;
+}
+
+export interface AssetStatusPayload {
+  asset_id: string;
+  name: string;
+  modality: AssetModality;
+  status: AssetStatus;
+  kg_status?: string;
+  triple_count?: number;
+  raw_path?: string;
+  processed_path?: string;
+  error_message?: string;
+  retry_count?: number;
+  current_step?: string | null;
 }
