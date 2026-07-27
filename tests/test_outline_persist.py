@@ -13,6 +13,7 @@ from database.enums import AssetModality, AssetStatus
 from database.repositories import AssetRepo, OutlineRepo
 from database.schemas import AssetCreate
 from database.session import get_session
+from paths import PROJECT_ROOT
 from services.outline.persist import (
     export_outline_json,
     load_outline_json_fallback,
@@ -20,12 +21,7 @@ from services.outline.persist import (
     should_export_json,
 )
 from tests.helpers.assets import resolve_asset_for_processed_dir
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_DIR = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-)
+from tests.helpers.corpus_paths import AUTORE_DIR
 
 
 def test_should_export_json_cli_overrides_config() -> None:
@@ -88,29 +84,33 @@ async def test_persist_outline_writes_pg_row(tmp_path: Path) -> None:
         )
         asset_id = created.id
 
-    tree = [{"heading": "Section", "summary": "text", "anchor": 1, "sub_points": []}]
-    fp = {"prompt_version": "2026-07-26", "loader_version": "2026-07-26"}
+    try:
+        tree = [{"heading": "Section", "summary": "text", "anchor": 1, "sub_points": []}]
+        fp = {"prompt_version": "2026-07-26", "loader_version": "2026-07-26"}
 
-    async with get_session() as session:
-        outline = await persist_outline(
-            session,
-            asset_id=asset_id,
-            title="Persisted",
-            tree=tree,
-            model_id="deepseek-chat",
-            outline_fingerprint=fp,
-        )
-        assert outline.title == "Persisted"
-        assert len(outline.tree) == 1
+        async with get_session() as session:
+            outline = await persist_outline(
+                session,
+                asset_id=asset_id,
+                title="Persisted",
+                tree=tree,
+                model_id="deepseek-chat",
+                outline_fingerprint=fp,
+            )
+            assert outline.title == "Persisted"
+            assert len(outline.tree) == 1
 
-    async with get_session() as session:
-        asset = await AssetRepo(session).get_by_id(asset_id)
-        stored = await OutlineRepo(session).get_by_asset(asset_id)
-        assert asset is not None
-        assert asset.metadata.get("ingest_fingerprint") is not None
-        assert asset.metadata.get("outline_fingerprint") == fp
-        assert stored is not None
-        assert stored.title == "Persisted"
+        async with get_session() as session:
+            asset = await AssetRepo(session).get_by_id(asset_id)
+            stored = await OutlineRepo(session).get_by_asset(asset_id)
+            assert asset is not None
+            assert asset.metadata.get("ingest_fingerprint") is not None
+            assert asset.metadata.get("outline_fingerprint") == fp
+            assert stored is not None
+            assert stored.title == "Persisted"
+    finally:
+        async with get_session() as session:
+            await AssetRepo(session).delete(asset_id)
 
 
 @pytest.mark.skipif(not AUTORE_DIR.exists(), reason="AutoRE sample not present")
@@ -119,42 +119,48 @@ async def test_generate_outline_export_json_optional() -> None:
     from services.outline.generate_outline import generate_outline_for_processed_dir
 
     export_file = AUTORE_DIR / "summary_outline.json"
+    created_export = False
     if export_file.exists():
         export_file.unlink()
 
-    async with get_session() as session:
-        asset_id = await resolve_asset_for_processed_dir(
-            session,
-            AUTORE_DIR,
-            project_root=PROJECT_ROOT,
-        )
-    assert asset_id is not None
+    try:
+        async with get_session() as session:
+            asset_id = await resolve_asset_for_processed_dir(
+                session,
+                AUTORE_DIR,
+                project_root=PROJECT_ROOT,
+            )
+        assert asset_id is not None
 
-    mock_graph_result = {
-        "valid": True,
-        "failed": False,
-        "title": "Export Test",
-        "tree": [{"heading": "H", "summary": "S", "anchor": 1, "sub_points": []}],
-        "repair_count": 0,
-    }
+        mock_graph_result = {
+            "valid": True,
+            "failed": False,
+            "title": "Export Test",
+            "tree": [{"heading": "H", "summary": "S", "anchor": 1, "sub_points": []}],
+            "repair_count": 0,
+        }
 
-    with patch("services.outline.generate_outline.get_outline_graph") as mock_graph:
-        mock_graph.return_value.ainvoke = AsyncMock(return_value=mock_graph_result)
-        without_export = await generate_outline_for_processed_dir(
-            AUTORE_DIR,
-            force=True,
-            export_json=False,
-            asset_id=asset_id,
-        )
-        assert without_export["action"] == "generated"
-        assert "export_path" not in without_export
-        assert not export_file.exists()
+        with patch("services.outline.generate_outline.get_outline_graph") as mock_graph:
+            mock_graph.return_value.ainvoke = AsyncMock(return_value=mock_graph_result)
+            without_export = await generate_outline_for_processed_dir(
+                AUTORE_DIR,
+                force=True,
+                export_json=False,
+                asset_id=asset_id,
+            )
+            assert without_export["action"] == "generated"
+            assert "export_path" not in without_export
+            assert not export_file.exists()
 
-        with_export = await generate_outline_for_processed_dir(
-            AUTORE_DIR,
-            force=True,
-            export_json=True,
-            asset_id=asset_id,
-        )
-        assert with_export.get("export_path") == str(export_file)
-        assert export_file.is_file()
+            with_export = await generate_outline_for_processed_dir(
+                AUTORE_DIR,
+                force=True,
+                export_json=True,
+                asset_id=asset_id,
+            )
+            assert with_export.get("export_path") == str(export_file)
+            assert export_file.is_file()
+            created_export = True
+    finally:
+        if created_export and export_file.exists():
+            export_file.unlink()

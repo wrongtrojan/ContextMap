@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 import uuid
 
 import pytest
@@ -12,18 +11,13 @@ from database.repositories import AssetRepo, ContentUnitRepo
 from database.schemas import AssetCreate, ContentUnitCreate
 from database.session import get_session
 from services.retrieval.search import hybrid_search
-
-
-def _fake_vector(seed: float) -> list[float]:
-    values = [math.sin(seed * (index + 1)) for index in range(1024)]
-    norm = math.sqrt(sum(value * value for value in values))
-    return [value / norm for value in values]
+from tests.helpers.mock_vectors import fake_vector
 
 
 @pytest.mark.asyncio
 async def test_hybrid_search_vector_and_keyword():
-    target_vector = _fake_vector(5.0)
-    other_vector = _fake_vector(88.0)
+    target_vector = fake_vector(5.0)
+    other_vector = fake_vector(88.0)
 
     async with get_session() as session:
         asset_repo = AssetRepo(session)

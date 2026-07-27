@@ -37,7 +37,7 @@ def resolve_api_key(llm_cfg: dict[str, Any]) -> str:
     if from_env:
         return from_env.strip()
     raise RuntimeError(
-        f"LLM API key not set: set env {env_name} in .env (see .env.example)"
+        f"LLM API key not set: configure via Settings UI or set {env_name} in storage/local/secrets.env"
     )
 
 

@@ -13,6 +13,7 @@ After wiping Postgres (storage/db_data/postgres), run --scan to re-ingest all as
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import sys
 import uuid
@@ -66,17 +67,29 @@ def _detect_modality(processed_dir: Path, meta: dict[str, Any]) -> AssetModality
 def _raw_path(meta: dict[str, Any], processed_dir: Path, modality: AssetModality) -> str:
     fingerprint = meta.get("fingerprint") or {}
     source = fingerprint.get("source_pdf") or fingerprint.get("source_name")
+    modality_dir = {
+        AssetModality.PDF: "pdf",
+        AssetModality.VIDEO: "video",
+        AssetModality.AUDIO: "audio",
+    }[modality]
+    raw_root = PROJECT_ROOT / "storage" / "assets" / "raw" / modality_dir
+
     if source:
         source_path = Path(source)
         if source_path.is_absolute():
             return relative_path(source_path, PROJECT_ROOT)
-        return source
+        as_posix = source_path.as_posix()
+        if as_posix.startswith("storage/assets/raw/"):
+            return as_posix
+        # Bare filename from Whisper/MinerU fingerprint → keep modality folder.
+        return relative_path(raw_root / source_path.name, PROJECT_ROOT)
+
     if modality == AssetModality.PDF:
-        pdf_name = fingerprint.get("pdf_name") or processed_dir.name
-        return relative_path(PROJECT_ROOT / "storage" / "assets" / "raw" / "pdf" / pdf_name, PROJECT_ROOT)
-    raw_dir = "video" if modality == AssetModality.VIDEO else "audio"
+        pdf_name = fingerprint.get("pdf_name") or f"{processed_dir.name}.pdf"
+        return relative_path(raw_root / Path(pdf_name).name, PROJECT_ROOT)
+
     source_name = fingerprint.get("source_name") or processed_dir.name
-    return relative_path(PROJECT_ROOT / "storage" / "assets" / "raw" / raw_dir / source_name, PROJECT_ROOT)
+    return relative_path(raw_root / Path(source_name).name, PROJECT_ROOT)
 
 
 def _load_units(
@@ -498,7 +511,7 @@ async def ingest_processed_dir(
     resolved_asset_id: uuid.UUID | None = asset_id or (existing.id if existing is not None else None)
     try:
         if not skip_embed:
-            _apply_embeddings(units)
+            await asyncio.to_thread(_apply_embeddings, units)
 
         async with get_session() as session:
             unit_repo = ContentUnitRepo(session)
@@ -534,7 +547,11 @@ async def ingest_processed_dir(
         minio_uploaded = 0
         minio_failures: list[str] = []
         if not skip_minio and minio_units:
-            minio_uploaded, minio_failures = _apply_minio_uploads(minio_units, minio_cfg=minio_cfg)
+            minio_uploaded, minio_failures = await asyncio.to_thread(
+                _apply_minio_uploads,
+                minio_units,
+                minio_cfg=minio_cfg,
+            )
             coverage["minio_uploaded"] = minio_uploaded
             coverage["minio_failures"] = minio_failures
             if minio_failures:

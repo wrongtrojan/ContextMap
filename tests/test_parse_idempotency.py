@@ -20,12 +20,7 @@ from services.parse.parse_pdf import (
     evaluate_skip,
     parse_one,
 )
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_DIR = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-)
+from tests.helpers.corpus_paths import AUTORE_DIR
 
 
 def test_evaluate_skip_cache_hit_on_processed_sample() -> None:

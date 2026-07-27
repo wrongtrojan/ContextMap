@@ -79,8 +79,14 @@ class ContentUnitRepo:
         self,
         updates: list[tuple[uuid.UUID, str, dict[str, Any] | None]],
     ) -> None:
+        if not updates:
+            return
+        unit_ids = [unit_id for unit_id, _, _ in updates]
+        stmt = select(ContentUnit).where(ContentUnit.id.in_(unit_ids))
+        result = await self.session.execute(stmt)
+        by_id = {unit.id: unit for unit in result.scalars().all()}
         for unit_id, content_ref, metadata in updates:
-            unit = await self.session.get(ContentUnit, unit_id)
+            unit = by_id.get(unit_id)
             if unit is None:
                 continue
             unit.content_ref = content_ref

@@ -1,18 +1,14 @@
 """Tests for outline context loaders."""
 
 import json
-from pathlib import Path
 
 import pytest
 
+from paths import PROJECT_ROOT
+from services.outline.loaders import load_audio_context, load_video_context
 from services.outline.loaders.pdf_context import load_pdf_context
-from services.outline.loaders.video_context import load_video_context
+from tests.helpers.corpus_paths import AUTORE_DIR, find_audio_processed_dir
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_DIR = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-)
 VIDEO_DIR = PROJECT_ROOT / "storage/assets/processed/video/【CSAPP-深入理解计算机系统】2-1.信息的存储(上)"
 
 
@@ -35,14 +31,8 @@ def test_video_context_has_timestamps() -> None:
     assert result.max_anchor > 0
 
 
-def _find_processed_audio_dir() -> Path | None:
-    audio_root = PROJECT_ROOT / "storage/assets/processed/audio"
-    if not audio_root.is_dir():
-        return None
-    for path in sorted(audio_root.iterdir()):
-        if path.is_dir() and any(path.glob("*_middle.json")):
-            return path
-    return None
+def _find_processed_audio_dir():
+    return find_audio_processed_dir()
 
 
 AUDIO_DIR = _find_processed_audio_dir() or PROJECT_ROOT / "storage/assets/processed/audio/_missing"
@@ -50,8 +40,6 @@ AUDIO_DIR = _find_processed_audio_dir() or PROJECT_ROOT / "storage/assets/proces
 
 @pytest.mark.skipif(not AUDIO_DIR.exists(), reason="CSAPP audio sample not present")
 def test_audio_context_has_timestamps() -> None:
-    from services.outline.loaders.audio_context import load_audio_context
-
     middle = next(AUDIO_DIR.glob("*_middle.json"))
     result = load_audio_context(middle, max_chars=50000)
     assert "[t=" in result.context
@@ -61,6 +49,8 @@ def test_audio_context_has_timestamps() -> None:
 
 
 def test_transcript_loaders_share_implementation() -> None:
+    from pathlib import Path
+
     from services.outline.loaders.transcript_context import load_transcript_context
 
     middle = {

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import uuid
-from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
@@ -12,17 +11,13 @@ import pytest
 from database.enums import AssetModality, AssetStatus
 from database.repositories import AssetRepo, OutlineRepo
 from database.session import get_session
+from paths import PROJECT_ROOT
 from services.outline.generate_outline import (
     _should_skip_outline,
     generate_outline_for_processed_dir,
 )
 from tests.helpers.assets import resolve_asset_for_processed_dir
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_DIR = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-)
+from tests.helpers.corpus_paths import AUTORE_DIR, find_audio_processed_dir
 
 
 def _ready_asset(metadata: dict) -> SimpleNamespace:
@@ -53,17 +48,7 @@ async def test_dry_run_does_not_persist() -> None:
     assert summary["coverage"]["context_chars"] > 0
 
 
-def _find_processed_audio_dir() -> Path | None:
-    audio_root = PROJECT_ROOT / "storage/assets/processed/audio"
-    if not audio_root.is_dir():
-        return None
-    for path in sorted(audio_root.iterdir()):
-        if path.is_dir() and any(path.glob("*_middle.json")):
-            return path
-    return None
-
-
-AUDIO_DIR = _find_processed_audio_dir() or PROJECT_ROOT / "storage/assets/processed/audio/_missing"
+AUDIO_DIR = find_audio_processed_dir() or PROJECT_ROOT / "storage/assets/processed/audio/_missing"
 
 
 @pytest.mark.skipif(not AUDIO_DIR.exists(), reason="CSAPP audio sample not present")

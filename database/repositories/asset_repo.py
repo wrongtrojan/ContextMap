@@ -37,6 +37,16 @@ class AssetRepo:
         asset = await self.session.get(Asset, asset_id)
         return AssetRead.model_validate(asset) if asset else None
 
+    async def get_by_ids(self, asset_ids: list[uuid.UUID]) -> dict[uuid.UUID, AssetRead]:
+        if not asset_ids:
+            return {}
+        stmt = select(Asset).where(Asset.id.in_(asset_ids))
+        result = await self.session.execute(stmt)
+        return {
+            asset.id: AssetRead.model_validate(asset)
+            for asset in result.scalars().all()
+        }
+
     async def get_by_file_hash(self, file_hash: str) -> AssetRead | None:
         stmt = select(Asset).where(Asset.file_hash == file_hash)
         result = await self.session.execute(stmt)

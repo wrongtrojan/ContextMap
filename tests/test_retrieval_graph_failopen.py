@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 import uuid
 from unittest.mock import AsyncMock, patch
 
@@ -14,17 +13,12 @@ from database.schemas import AssetCreate, ContentUnitCreate
 from database.session import get_session
 from services.retrieval.prepare import parse_search_needs
 from services.retrieval.search import hybrid_search
-
-
-def _fake_vector(seed: float) -> list[float]:
-    values = [math.sin(seed * (index + 1)) for index in range(1024)]
-    norm = math.sqrt(sum(value * value for value in values))
-    return [value / norm for value in values]
+from tests.helpers.mock_vectors import fake_vector
 
 
 @pytest.mark.asyncio
 async def test_hybrid_search_graph_skipped_when_kg_disabled():
-    query_vector = _fake_vector(2.0)
+    query_vector = fake_vector(2.0)
 
     async with get_session() as session:
         asset_repo = AssetRepo(session)

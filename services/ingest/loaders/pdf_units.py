@@ -33,6 +33,15 @@ class PdfLoadStats:
         self.units_by_type[key] = self.units_by_type.get(key, 0) + 1
 
 
+def _normalize_bbox(raw: Any) -> list[float] | None:
+    if not isinstance(raw, (list, tuple)) or len(raw) < 4:
+        return None
+    try:
+        return [float(raw[0]), float(raw[1]), float(raw[2]), float(raw[3])]
+    except (TypeError, ValueError):
+        return None
+
+
 def _block_text(block: dict[str, Any]) -> str:
     parts: list[str] = []
     for line in block.get("lines", []):
@@ -110,6 +119,7 @@ def _build_image_unit(
     images_dir: Path,
     stats: PdfLoadStats,
     block_type: str,
+    bbox: list[float] | None = None,
 ) -> IngestUnit | None:
     if not image_filename:
         return None
@@ -137,20 +147,24 @@ def _build_image_unit(
             context_confidence = 0.1
             embed = False
 
+    metadata: dict[str, Any] = {
+        "page_label": page_number,
+        "image_filename": image_filename,
+        "context_source": context_source,
+        "context_confidence": context_confidence,
+        "caption_text": caption,
+        "source_block_type": block_type,
+    }
+    if bbox is not None:
+        metadata["bbox"] = bbox
+
     unit = IngestUnit(
         content_type=ContentType.IMAGE,
         search_text=search_text,
         content_ref=image_filename,
         timestamp_anchor=float(page_number),
         chunk_index=chunk_index,
-        metadata={
-            "page_label": page_number,
-            "image_filename": image_filename,
-            "context_source": context_source,
-            "context_confidence": context_confidence,
-            "caption_text": caption,
-            "source_block_type": block_type,
-        },
+        metadata=metadata,
         local_blob_path=str(local_path) if local_path.exists() else None,
         embed=embed,
     )
@@ -170,17 +184,27 @@ def load_pdf_units(middle_path: Path, images_dir: Path) -> tuple[list[IngestUnit
     for page in middle.get("pdf_info", []):
         page_idx = int(page.get("page_idx", 0))
         page_number = page_idx + 1
+        page_size = page.get("page_size")
         blocks = _page_blocks(page)
         headings = _page_headings(blocks)
 
         for block in blocks:
             block_type = block.get("type")
             stats.bump_block(block_type)
+            bbox = _normalize_bbox(block.get("bbox"))
 
             if block_type in _TEXT_BLOCK_TYPES:
                 text = _block_text(block)
                 if not text:
                     continue
+                metadata: dict[str, Any] = {
+                    "page_label": page_number,
+                    "block_type": block_type,
+                }
+                if bbox is not None:
+                    metadata["bbox"] = bbox
+                if isinstance(page_size, (list, tuple)) and len(page_size) >= 2:
+                    metadata["page_size"] = [float(page_size[0]), float(page_size[1])]
                 units.append(
                     IngestUnit(
                         content_type=ContentType.TEXT,
@@ -188,10 +212,7 @@ def load_pdf_units(middle_path: Path, images_dir: Path) -> tuple[list[IngestUnit
                         content_ref=text[:2000],
                         timestamp_anchor=float(page_number),
                         chunk_index=chunk_index,
-                        metadata={
-                            "page_label": page_number,
-                            "block_type": block_type,
-                        },
+                        metadata=metadata,
                     )
                 )
                 stats.bump_unit(ContentType.TEXT)
@@ -207,9 +228,12 @@ def load_pdf_units(middle_path: Path, images_dir: Path) -> tuple[list[IngestUnit
                     images_dir=images_dir,
                     stats=stats,
                     block_type=block_type,
+                    bbox=bbox,
                 )
                 if unit is None:
                     continue
+                if isinstance(page_size, (list, tuple)) and len(page_size) >= 2:
+                    unit.metadata["page_size"] = [float(page_size[0]), float(page_size[1])]
                 units.append(unit)
                 chunk_index += 1
             elif block_type == "table":
@@ -241,6 +265,18 @@ def load_pdf_units(middle_path: Path, images_dir: Path) -> tuple[list[IngestUnit
                         local_path = str(candidate)
                         stats.uploaded_image_candidates.add(image_filename)
 
+                table_meta: dict[str, Any] = {
+                    "page_label": page_number,
+                    "block_type": "table",
+                    "caption_text": caption,
+                    "context_source": context_source,
+                    "image_filename": image_filename,
+                }
+                if bbox is not None:
+                    table_meta["bbox"] = bbox
+                if isinstance(page_size, (list, tuple)) and len(page_size) >= 2:
+                    table_meta["page_size"] = [float(page_size[0]), float(page_size[1])]
+
                 units.append(
                     IngestUnit(
                         content_type=ContentType.TABLE,
@@ -248,13 +284,7 @@ def load_pdf_units(middle_path: Path, images_dir: Path) -> tuple[list[IngestUnit
                         content_ref=(plain_table or search_text)[:4000],
                         timestamp_anchor=float(page_number),
                         chunk_index=chunk_index,
-                        metadata={
-                            "page_label": page_number,
-                            "block_type": "table",
-                            "caption_text": caption,
-                            "context_source": context_source,
-                            "image_filename": image_filename,
-                        },
+                        metadata=table_meta,
                         local_blob_path=local_path,
                         embed=embed,
                     )

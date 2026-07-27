@@ -12,13 +12,7 @@ from services.parse.fingerprint import (
     should_skip,
 )
 from services.parse.parse_audio import ParseSettings, WhisperConfig, _build_settings
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_MIDDLE = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-    / "Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models_middle.json"
-)
+from tests.helpers.corpus_paths import AUTORE_MIDDLE
 
 
 def test_pdf_fingerprints_match_on_config() -> None:

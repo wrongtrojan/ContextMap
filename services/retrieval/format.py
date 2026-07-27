@@ -36,6 +36,11 @@ def format_evidence(hit: ScoredHit, *, rank: int) -> dict:
             "has_visual_asset": bool(image_filename or minio_key),
             "context_source": meta.get("context_source"),
             "processed_path": hit.asset.processed_path,
+            "bbox": meta.get("bbox"),
+            "page_size": meta.get("page_size"),
+            "image_url": (
+                f"/api/v1/assets/media/{image_filename}" if image_filename else None
+            ),
         },
     }
 

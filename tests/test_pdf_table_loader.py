@@ -2,23 +2,12 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import pytest
 
 from database.enums import ContentType
 from services.ingest.loaders.html_utils import html_table_to_text
 from services.ingest.loaders.pdf_units import load_pdf_units
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-AUTORE_DIR = (
-    PROJECT_ROOT
-    / "storage/assets/processed/pdf/Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models"
-)
-AUTORE_MIDDLE = AUTORE_DIR / (
-    "Xue 等 - 2024 - AutoRE Document-Level Relation Extraction with Large Language Models_middle.json"
-)
-AUTORE_IMAGES = AUTORE_DIR / "images"
+from tests.helpers.corpus_paths import AUTORE_DIR, AUTORE_IMAGES, AUTORE_MIDDLE
 
 
 @pytest.mark.skipif(not AUTORE_MIDDLE.exists(), reason="AutoRE sample not present")

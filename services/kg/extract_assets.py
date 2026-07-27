@@ -16,6 +16,7 @@ import argparse
 import asyncio
 import json
 import logging
+import time
 import uuid
 
 from database.enums import KgStatus
@@ -79,6 +80,11 @@ async def extract_kg_for_asset(
         await AssetRepo(session).update_kg_status(asset_id, KgStatus.EXTRACTING)
 
     all_triples: list[Triple] = []
+    last_progress_at = time.monotonic()
+    progress_every_chunks = 5
+    progress_every_sec = 5.0
+    total_chunks = len(chunks)
+
     for index, chunk in enumerate(chunks, start=1):
         if use_mock:
             triples = extract_triples_mock(chunk)
@@ -89,12 +95,20 @@ async def extract_kg_for_asset(
                 logger.warning("Chunk %s extraction failed: %s", index, exc)
                 triples = []
         all_triples.extend(triples)
-        async with get_session() as session:
-            await KgJobRepo(session).update_progress(
-                asset_id,
-                chunks_processed=index,
-                triples_extracted=len(all_triples),
-            )
+        now = time.monotonic()
+        should_update = (
+            index == total_chunks
+            or index % progress_every_chunks == 0
+            or (now - last_progress_at) >= progress_every_sec
+        )
+        if should_update:
+            async with get_session() as session:
+                await KgJobRepo(session).update_progress(
+                    asset_id,
+                    chunks_processed=index,
+                    triples_extracted=len(all_triples),
+                )
+            last_progress_at = now
 
     triple_count = 0
     status = KgStatus.READY
