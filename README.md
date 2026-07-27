@@ -50,23 +50,22 @@ sudo docker compose -f deploy/docker-compose.yml up -d
 # 下载模型权重
 bash models/downloader.sh
 
-# 下载后端环境
-pip install huggingface_hub
-python envs/downloader.py
+# Python 环境（conda + pip，详见 environment/README.md）
+conda create -n ContextMap python=3.11
+conda activate ContextMap
+pip install -r environment/requirements-dev.txt
 
 # 校准配置
 python configs/calibrator.py
 
-# 填写api
-nano .env
+# 填写 API 密钥（Workbench → Settings 标签页，或写入 storage/local/secrets.env）
 
 # 启动后端
-source envs/AgentLogic/bin/activate
 uvicorn web.main:app --host 0.0.0.0 --port 8000 --reload
 
-# 启动前端(新bash内)
-cd Context/web/frontend
-npm install | npm run bulid | npm run start
+# 启动前端(新 bash 内)
+cd web/frontend
+npm install && npm run build && npm run start
 
 ```
 ---
