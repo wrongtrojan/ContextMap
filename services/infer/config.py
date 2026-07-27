@@ -12,10 +12,13 @@ from paths import CONTEXTMAP_CONFIG
 
 def _defaults() -> dict[str, Any]:
     return {
+        "fail_open": True,
         "sandbox": {
             "enabled": True,
             "conda_python": None,
+            "conda_env": "infer-sandbox",
             "timeout_sec": 30,
+            "preflight": True,
         },
         "visual": {
             "enabled": True,
@@ -24,6 +27,13 @@ def _defaults() -> dict[str, Any]:
             "timeout_sec": 120,
             "max_images": 4,
             "device": "cuda",
+            "enforce_eager": True,
+            "preflight": True,
+            "gpu_memory_utilization": 0.85,
+            "dtype": "bfloat16",
+            "max_model_len": 8192,
+            "temperature": 0.1,
+            "max_tokens": 1024,
         },
         "route": {
             "sandbox_keywords": ["计算", "求解", "验证", "equation", "prove"],
