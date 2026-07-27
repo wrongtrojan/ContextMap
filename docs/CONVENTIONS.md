@@ -118,8 +118,10 @@ ContextMap/
 ├── deploy/postgres/        init/ only — fresh cluster bootstrap (no migrations)
 ├── docs/                   CONVENTIONS.md (this file)
 ├── environment/
-│   ├── requirements.txt    main pip deps
-│   └── infer-sandbox.yaml    isolated conda env for infer sandbox
+│   ├── README.md           bootstrap: conda, pip, .env, docker credentials
+│   ├── requirements.txt    runtime pip deps (web + ML/DB + visual infer)
+│   ├── requirements-dev.txt  -r requirements.txt + pytest/httpx
+│   └── infer-sandbox.yaml  isolated conda env for infer sandbox
 ├── services/
 │   ├── common/
 │   ├── parse/

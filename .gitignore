@@ -30,6 +30,8 @@ models/autore/subject/
 models/clip/
 models/dinov2/
 models/qwen2_vl/
+models/bge-reranker-v2-m3/
+models/qwen2-vl-7b-instruct/
 
 # local data volumes & processed assets
 storage/db_data/

@@ -1,4 +1,5 @@
 import logging
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -7,12 +8,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from core.assets_manager import get_assets_manager
+from core.env import load_dotenv, load_secrets, llm_api_key_configured
 from paths import RAW_AUDIO_DIR, RAW_PDF_DIR, RAW_VIDEO_DIR
 from web.api.v1.assets import router as assets_router
 from web.api.v1.chats import router as chats_router
+from web.api.v1.settings import router as settings_router
 from web.api.v1.status import router as status_router
 from web.api.v1.kg import router as kg_router
 from web.api.v1.upload import router as upload_router
+
+load_secrets()
+load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,9 +33,13 @@ async def lifespan(app: FastAPI):
     for directory in (RAW_PDF_DIR, RAW_VIDEO_DIR, RAW_AUDIO_DIR):
         directory.mkdir(parents=True, exist_ok=True)
 
+    from services.cleanup.session_delete_queue import get_session_delete_queue
+
     manager = get_assets_manager()
     await manager.start()
+    await get_session_delete_queue().start()
     yield
+    await get_session_delete_queue().stop()
     await manager.stop()
     logger.info("--- [System Shutdown] ---")
 
@@ -58,6 +68,7 @@ app.include_router(assets_router, prefix="/api/v1/assets", tags=["Assets"])
 app.include_router(kg_router, prefix="/api/v1/kg", tags=["KG"])
 app.include_router(status_router, prefix="/api/v1/status", tags=["Status"])
 app.include_router(chats_router, prefix="/api/v1/chats", tags=["Chats"])
+app.include_router(settings_router, prefix="/api/v1/settings", tags=["Settings"])
 
 
 @app.get("/")
@@ -66,4 +77,5 @@ async def root():
         "message": "ContextMap API is online.",
         "api_v1": "/api/v1",
         "docs": "/docs",
+        "llm_configured": llm_api_key_configured(),
     }

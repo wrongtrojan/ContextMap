@@ -6,6 +6,7 @@ from core.assets_manager import get_assets_manager
 from core.chats_manager import get_chats_manager
 from database.repositories import AssetRepo, PipelineEventRepo
 from database.session import get_session
+from web.api.deps import parse_asset_id, parse_session_id
 
 router = APIRouter()
 chats_manager = get_chats_manager()
@@ -48,10 +49,7 @@ async def _asset_status_payload(asset_id: uuid.UUID) -> dict:
 @router.get("/single_asset")
 async def get_single_status(asset_id: str | None = Query(None)):
     if asset_id:
-        try:
-            asset_uuid = uuid.UUID(asset_id)
-        except ValueError as exc:
-            raise HTTPException(status_code=400, detail="Invalid asset_id UUID") from exc
+        asset_uuid = parse_asset_id(asset_id)
         return {"status": "success", "data": await _asset_status_payload(asset_uuid)}
 
     async with get_session() as session:
@@ -66,7 +64,9 @@ async def get_single_status(asset_id: str | None = Query(None)):
                 "status": item.status.value,
                 "kg_status": item.kg_status.value,
                 "triple_count": item.triple_count,
+                "raw_path": item.raw_path,
                 "processed_path": item.processed_path,
+                "error_message": item.error_message,
             }
             for item in assets
         },
@@ -92,10 +92,7 @@ async def get_global_status():
 @router.get("/single_chat")
 async def get_single_chat_status(session_id: str | None = Query(None)):
     if session_id:
-        try:
-            session_uuid = uuid.UUID(session_id)
-        except ValueError as exc:
-            raise HTTPException(status_code=400, detail="Invalid session_id UUID") from exc
+        session_uuid = parse_session_id(session_id)
         detail = await chats_manager.get_session_detail(session_uuid)
         if detail is None:
             return {"status": "error", "message": "Not Found"}

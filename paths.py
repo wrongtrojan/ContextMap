@@ -6,6 +6,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 CONTEXTMAP_CONFIG = PROJECT_ROOT / "configs" / "contextmap.yaml"
+LOCAL_SECRETS_ENV = PROJECT_ROOT / "storage" / "local" / "secrets.env"
 
 ASSETS_DIR = PROJECT_ROOT / "storage" / "assets"
 RAW_PDF_DIR = ASSETS_DIR / "raw" / "pdf"

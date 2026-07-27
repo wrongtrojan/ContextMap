@@ -23,6 +23,7 @@ import yaml
 from langgraph.graph import END, START, StateGraph
 
 from database.enums import AssetModality, AssetStatus, KgStatus, PipelineEventType
+from core.env import load_dotenv, load_secrets
 from database.repositories import AssetRepo, PipelineEventRepo
 from database.schemas import AssetCreate, AssetRead
 from database.session import get_session
@@ -92,7 +93,15 @@ def _raw_path_for_asset(asset: AssetRead) -> Path:
     raw = Path(asset.raw_path)
     if raw.is_absolute():
         return raw
-    return PROJECT_ROOT / raw
+    candidate = PROJECT_ROOT / raw
+    if candidate.is_file():
+        return candidate
+    # Legacy / ingest bug: bare filename without modality folder.
+    if len(raw.parts) == 1:
+        under_modality = _MODALITY_RAW_DIRS[asset.modality] / raw.name
+        if under_modality.is_file():
+            return under_modality
+    return candidate
 
 
 def _processed_dir_for_asset(asset: AssetRead) -> Path:
@@ -603,6 +612,8 @@ async def _cli_run(asset_id: uuid.UUID | None, raw_path: Path | None) -> int:
 
 
 def main() -> int:
+    load_secrets()
+    load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - [AssetsManager] - %(levelname)s - %(message)s")
     parser = argparse.ArgumentParser(description="Run asset pipeline for one asset")
     parser.add_argument("--asset-id", type=uuid.UUID, default=None)

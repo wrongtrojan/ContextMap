@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Query
 
 from database.session import get_session
 from services.kg.subgraph import get_subgraph, search_entities
+from web.api.deps import parse_asset_id
 
 router = APIRouter()
 
@@ -17,10 +18,7 @@ async def kg_subgraph(
 ):
     asset_uuid: uuid.UUID | None = None
     if asset_id:
-        try:
-            asset_uuid = uuid.UUID(asset_id)
-        except ValueError as exc:
-            raise HTTPException(status_code=400, detail="Invalid asset_id UUID") from exc
+        asset_uuid = parse_asset_id(asset_id)
     if scope == "asset" and asset_uuid is None:
         raise HTTPException(status_code=400, detail="asset_id required when scope=asset")
 
@@ -39,10 +37,7 @@ async def kg_search(
 ):
     asset_uuid: uuid.UUID | None = None
     if asset_id:
-        try:
-            asset_uuid = uuid.UUID(asset_id)
-        except ValueError as exc:
-            raise HTTPException(status_code=400, detail="Invalid asset_id UUID") from exc
+        asset_uuid = parse_asset_id(asset_id)
     async with get_session() as session:
         hits = await search_entities(session, q, asset_uuid)
     return {"status": "success", "data": hits}
