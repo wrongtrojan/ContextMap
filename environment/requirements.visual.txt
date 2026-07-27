@@ -1,0 +1,5 @@
+# visual inference (Linux + CUDA strongly recommended)
+ninja
+vllm>=0.8
+qwen-vl-utils
+flash-attn; platform_system != "Windows"
