@@ -11,10 +11,10 @@ import json
 from typing import TYPE_CHECKING, Any, Literal, TypedDict
 
 from langgraph.graph import END, START, StateGraph
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.chats.config import load_chat_config
 from core.chats.prompts import render_prompt
+from database.session import get_session
 from services.evaluate import evaluate_evidence
 from services.evaluate.types import EvaluationReport, RefetchHint
 from services.infer.infer import run_infer
@@ -145,10 +145,9 @@ async def node_prepare(state: ChatTurnState, manager: ChatsManager) -> dict[str,
 
 async def node_research_search(state: ChatTurnState, manager: ChatsManager) -> dict[str, Any]:
     await manager.on_step_start("research_search")
-    db = manager.turn_db
-    assert db is not None
     search_needs = state.get("search_needs") or {}
-    result = await hybrid_search(db, search_needs=search_needs)
+    async with get_session() as db:
+        result = await hybrid_search(db, search_needs=search_needs)
     if result.get("status") == "error":
         return {"error": result.get("message"), "evidence": []}
     evidence = result.get("results") or []
@@ -213,11 +212,10 @@ async def node_apply_refetch(state: ChatTurnState, manager: ChatsManager) -> dic
 
 async def node_expand_media(state: ChatTurnState, manager: ChatsManager) -> dict[str, Any]:
     await manager.on_step_start("expand_media")
-    db = manager.turn_db
-    assert db is not None
     cfg = load_chat_config()
     window_sec = float((cfg.get("expand_media") or {}).get("window_sec", 2.0))
-    evidence = await expand_linked_media(db, state.get("evidence") or [], window_sec=window_sec)
+    async with get_session() as db:
+        evidence = await expand_linked_media(db, state.get("evidence") or [], window_sec=window_sec)
     assistant_id = await manager.ensure_assistant_placeholder()
     await manager.persist_evidence(evidence, assistant_message_id=assistant_id)
     return {"evidence": evidence, "assistant_message_id": assistant_id}

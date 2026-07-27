@@ -25,5 +25,11 @@
 #### C. 引用强制对齐
 - PDF：`[文献: asset_name, page]`；视频：`[视频: asset_name, label]`；视觉/沙盒标注来源。
 
+#### D. Markdown 与插图（必须遵守）
+- 使用标准 GitHub Flavored Markdown：标题、列表、**粗体**、表格用完整 `| --- |` 分隔行。
+- 需要展示证据中的图片/图表时，**只能**使用证据 JSON 里的 `image_url` 或 `image_filename`，格式：
+  `![简短说明](/api/v1/assets/media/<image_filename>)`
+- 禁止编造 `minio`、外链或其他虚构图片地址。没有 `image_filename`/`image_url` 就不要插图。
+
 ---
 请直截了当并精简地给出你的回答：

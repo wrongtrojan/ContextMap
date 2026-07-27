@@ -42,6 +42,24 @@ class ChatTurnEventRepo:
         await self.session.refresh(event)
         return ChatTurnEventRead.model_validate(event)
 
+    async def list_milestones(
+        self,
+        session_id: uuid.UUID,
+        *,
+        limit: int = 30,
+    ) -> list[ChatTurnEventRead]:
+        stmt = (
+            select(ChatTurnEvent)
+            .where(
+                ChatTurnEvent.session_id == session_id,
+                ChatTurnEvent.event_type != ChatTurnEventType.TOKEN,
+            )
+            .order_by(ChatTurnEvent.created_at.desc())
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return [ChatTurnEventRead.model_validate(item) for item in result.scalars().all()]
+
     async def list_recent(
         self,
         session_id: uuid.UUID,

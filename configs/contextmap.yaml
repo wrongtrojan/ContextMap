@@ -157,10 +157,13 @@ evaluate:
     inherit: outline
 
 infer:
+  fail_open: true
   sandbox:
     enabled: true
     conda_python: null
+    conda_env: infer-sandbox
     timeout_sec: 30
+    preflight: true
   visual:
     enabled: true
     model_dir: models/qwen2-vl-7b-instruct
@@ -168,6 +171,8 @@ infer:
     timeout_sec: 120
     max_images: 4
     device: cuda
+    enforce_eager: true
+    preflight: true
   route:
     sandbox_keywords: ["计算", "求解", "验证", "equation", "prove"]
     visual_content_types: [frame, image, table]
@@ -179,5 +184,13 @@ chat:
     merge_evidence_on_refetch: true
   expand_media:
     window_sec: 2.0
+  streaming:
+    sse_token_batch_ms: 32
+    sse_token_batch_chars: 24
+    assistant_flush_chars: 256
+    assistant_flush_sec: 1.0
+  events:
+    persist_tokens: false
+    milestone_limit: 30
   llm:
     inherit: outline

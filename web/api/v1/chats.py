@@ -1,14 +1,18 @@
 import asyncio
 import json
-import uuid
+import logging
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from core.chats.config import load_chat_config
+from core.chats.streaming import stream_next_event
 from core.chats_manager import get_chats_manager
+from web.api.deps import parse_session_id
 
 router = APIRouter()
+logger = logging.getLogger("ChatsAPI")
 chats_manager = get_chats_manager()
 
 
@@ -29,10 +33,7 @@ async def create_session():
 
 @router.post("/sessions/{session_id}/turns")
 async def start_turn(session_id: str, body: TurnRequest):
-    try:
-        session_uuid = uuid.UUID(session_id)
-    except ValueError as exc:
-        raise HTTPException(status_code=400, detail="Invalid session_id UUID") from exc
+    session_uuid = parse_session_id(session_id)
 
     if session_uuid in chats_manager._active_turns:
         raise HTTPException(status_code=409, detail="Turn already running for this session")
@@ -52,15 +53,36 @@ async def start_turn(session_id: str, body: TurnRequest):
     }
 
 
+@router.delete("/sessions/{session_id}")
+async def delete_session(session_id: str, force: bool = Query(True)):
+    """Enqueue session delete and return immediately.
+
+    Actual removal (SQL CASCADE) runs on a serial background worker so the
+    UI can keep deleting without waiting on DB / active turns.
+    """
+    from services.cleanup.session_delete_queue import get_session_delete_queue
+
+    session_uuid = parse_session_id(session_id)
+    queued = get_session_delete_queue().enqueue(session_uuid)
+    if not force:
+        logger.debug("Delete queued with force=false for %s; treated as force", session_id)
+    return {
+        "status": "accepted",
+        "session_id": session_id,
+        "queued": queued,
+        "pending": get_session_delete_queue().pending_count,
+    }
+
+
 @router.get("/stream")
 async def chat_stream(request: Request, session_id: str = Query(...)):
-    try:
-        session_uuid = uuid.UUID(session_id)
-    except ValueError as exc:
-        raise HTTPException(status_code=400, detail="Invalid session_id UUID") from exc
+    session_uuid = parse_session_id(session_id)
 
     manager = get_chats_manager()
-    queue = manager.event_bus.subscribe(session_id)
+    streaming = load_chat_config().get("streaming") or {}
+    batch_ms = float(streaming.get("sse_token_batch_ms", 50))
+    batch_chars = int(streaming.get("sse_token_batch_chars", 256))
+    sub = await manager.event_bus.subscribe(session_id)
 
     async def event_generator():
         try:
@@ -76,7 +98,12 @@ async def chat_stream(request: Request, session_id: str = Query(...)):
                 if await request.is_disconnected():
                     break
                 try:
-                    event = await asyncio.wait_for(queue.get(), timeout=15.0)
+                    event = await stream_next_event(
+                        sub,
+                        timeout=15.0,
+                        batch_ms=batch_ms,
+                        batch_chars=batch_chars,
+                    )
                 except asyncio.TimeoutError:
                     yield {"event": "ping", "data": "{}"}
                     continue
@@ -88,6 +115,6 @@ async def chat_stream(request: Request, session_id: str = Query(...)):
                 if event_type in {"completed", "error"}:
                     break
         finally:
-            manager.event_bus.unsubscribe(session_id, queue)
+            await manager.event_bus.unsubscribe(session_id, sub)
 
     return EventSourceResponse(event_generator())

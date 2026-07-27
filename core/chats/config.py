@@ -20,6 +20,16 @@ def _defaults() -> dict[str, Any]:
         "expand_media": {
             "window_sec": 2.0,
         },
+        "streaming": {
+            "sse_token_batch_ms": 32,
+            "sse_token_batch_chars": 24,
+            "assistant_flush_chars": 256,
+            "assistant_flush_sec": 1.0,
+        },
+        "events": {
+            "persist_tokens": False,
+            "milestone_limit": 30,
+        },
         "llm": {"inherit": "outline"},
         "context_window_messages": 6,
     }
@@ -32,7 +42,7 @@ def load_chat_config(path: Path | None = None) -> dict[str, Any]:
     defaults = _defaults()
     raw = dict(data.get("chat") or {})
     merged: dict[str, Any] = {**defaults, **raw}
-    for key in ("research", "expand_media", "llm"):
+    for key in ("research", "expand_media", "llm", "streaming", "events"):
         if key in raw and isinstance(raw[key], dict):
             merged[key] = {**defaults.get(key, {}), **raw[key]}
     return merged
