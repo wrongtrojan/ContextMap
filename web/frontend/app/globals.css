@@ -36,6 +36,12 @@
     background-color: var(--color-dracula-bg);
     color: var(--color-dracula-fg);
   }
+
+  /* Electron shell: reduce browser-like overscroll */
+  html.electron-shell,
+  body.electron-shell {
+    overscroll-behavior: none;
+  }
 }
 @keyframes infinite-scroll {
   from { transform: translateX(-100%); }

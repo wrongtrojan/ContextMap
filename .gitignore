@@ -44,3 +44,7 @@ logs/
 # frontend build artifacts (keep source)
 web/frontend/node_modules/
 web/frontend/.next/
+
+# electron desktop shell
+desktop/node_modules/
+desktop/config.json

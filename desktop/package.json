@@ -1,0 +1,15 @@
+{
+  "name": "contextmap-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Electron shell for ContextMap workbench (UI only; backend runs separately)",
+  "main": "electron-main.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0"
+  }
+}

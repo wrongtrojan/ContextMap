@@ -1,0 +1,9 @@
+{
+  "appUrl": "http://127.0.0.1:3000",
+  "window": {
+    "width": 1440,
+    "height": 900,
+    "minWidth": 960,
+    "minHeight": 600
+  }
+}
