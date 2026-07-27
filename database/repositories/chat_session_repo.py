@@ -69,8 +69,11 @@ class ChatSessionRepo:
         await self.session.refresh(row)
         return ChatSessionRead.model_validate(row)
 
-    async def delete(self, session_id: uuid.UUID) -> None:
-        row = await self.session.get(ChatSession, session_id)
-        if row is not None:
-            await self.session.delete(row)
-            await self.session.flush()
+    async def delete(self, session_id: uuid.UUID) -> bool:
+        """Delete session via SQL so Postgres FK CASCADE handles children in one shot.
+
+        Avoid SQLAlchemy relationship cascade (per-row child deletes), which is slow
+        and deadlock-prone under concurrent cleanup.
+        """
+        result = await self.session.execute(delete(ChatSession).where(ChatSession.id == session_id))
+        return bool(result.rowcount)
